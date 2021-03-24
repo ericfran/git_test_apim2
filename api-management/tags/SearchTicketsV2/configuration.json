@@ -1,0 +1,11 @@
+{
+  "id": "/tags/SearchTicketsV2",
+  "name": "SearchTicketsV2",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/SearchTicketsV2_Get"
+  ],
+  "__GitModuleVersion": 15
+}

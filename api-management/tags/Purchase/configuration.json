@@ -1,0 +1,11 @@
+{
+  "id": "/tags/Purchase",
+  "name": "Purchase",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-datadictionary-gen-api/operations/CreateProduct"
+  ],
+  "__GitModuleVersion": 15
+}

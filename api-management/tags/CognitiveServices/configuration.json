@@ -1,0 +1,30 @@
+{
+  "id": "/tags/CognitiveServices",
+  "name": "CognitiveServices",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/delete-api-cognitive-services-id",
+    "/apis/hrx-configuration-api/operations/get-api-cognitive-services",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-cognitive-services",
+    "/apis/hrx-configuration-api/operations/put-api-cognitive-services-id",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-cognitive-services-id",
+    "/apis/hrx-configuration-api/operations/GetCognitiveService",
+    "/apis/hrx-configuration-api/operations/post-api-cognitive-services",
+    "/apis/hrx-configuration-api-v1/operations/get-api-cognitive-services",
+    "/apis/hrx-configuration-api-v1/operations/GetCognitiveService",
+    "/apis/hrx-configuration-api-v1/operations/post-api-cognitive-services",
+    "/apis/hrx-configuration-api-v1/operations/put-api-cognitive-services-id",
+    "/apis/hrx-configuration-api;rev=2/operations/GetCognitiveService",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-cognitive-services",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-cognitive-services-id",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-cognitive-services-id",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-cognitive-services",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-cognitive-services-id",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-cognitive-services-id",
+    "/apis/hrx-configuration-api;rev=3/operations/GetCognitiveService",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-cognitive-services"
+  ],
+  "__GitModuleVersion": 15
+}

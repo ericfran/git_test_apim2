@@ -1,0 +1,20 @@
+{
+  "id": "/tags/Person-Enrollments",
+  "name": "Person Enrollments",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/Enrollment/operations/getPendingElections",
+    "/apis/Enrollment/operations/getAvailableOptions",
+    "/apis/Enrollment/operations/putCancel",
+    "/apis/Enrollment/operations/putCommit",
+    "/apis/Enrollment/operations/getPrimaryCareProviderElections",
+    "/apis/Enrollment/operations/getEligibleDependents",
+    "/apis/Enrollment/operations/getEligiblePlans",
+    "/apis/Enrollment/operations/putReviseCancel",
+    "/apis/Enrollment/operations/putReviseElections",
+    "/apis/Enrollment/operations/putValidate"
+  ],
+  "__GitModuleVersion": 15
+}

@@ -1,0 +1,22 @@
+{
+  "id": "/tags/CustomerAnalyzeEventExternal",
+  "name": "CustomerAnalyzeEventExternal",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api/operations/put-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api/operations/post-api-customers-gcc-analyze-events",
+    "/apis/hrx-configuration-api-v1/operations/get-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-customers-gcc-analyze-events",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-customers-gcc-analyze-events",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api-v1/operations/put-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-customers-gcc-analyze-events-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-customers-gcc-analyze-events"
+  ],
+  "__GitModuleVersion": 15
+}

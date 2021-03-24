@@ -1,0 +1,12 @@
+{
+  "id": "/tags/hrxconfig",
+  "name": "HrxConfig",
+  "apiIds": [
+    "/apis/hrx-configuration-api;rev=1",
+    "/apis/hrx-configuration-api;rev=3"
+  ],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [],
+  "__GitModuleVersion": 15
+}

@@ -1,0 +1,1300 @@
+{
+  "id": "/apis/Enrollment",
+  "name": "Alight Enrollment",
+  "apiRevision": "1",
+  "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/api.description.html",
+  "subscriptionRequired": true,
+  "serviceUrl": "https://virtserver.swaggerhub.com/AlightSolutions1/enrollment/1.2",
+  "path": "enrollment",
+  "protocols": [
+    "https"
+  ],
+  "authenticationSettings": {
+    "oAuth2": null,
+    "openid": null
+  },
+  "subscriptionKeyParameterNames": {
+    "header": "Ocp-Apim-Subscription-Key",
+    "query": "subscription-key"
+  },
+  "isCurrent": true,
+  "operations": [
+    {
+      "id": "/apis/Enrollment/operations/getEnrollments",
+      "name": "Returns all pending enrollment opportunities for the person.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/enrollments/",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollmen1L58DFP.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "testCfg",
+            "description": "Test Only - Config to support multiple test databases for a client.",
+            "type": "string",
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollmen1L58DFP.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "enrollmentsResponse",
+              "generatedSample": "{\r\n  \"enrollments\": [\r\n    {\r\n      \"businessProcess\": {\r\n        \"businessProcessId\": \"5020\",\r\n        \"businessProcessSummary\": \"annualEnrollment\",\r\n        \"businessProcessType\": \"annualEnrollment\",\r\n        \"businessProcessClassification\": \"annualEnrollment\",\r\n        \"businessProcessName\": \"ClientName Active Annual Enrollment\",\r\n        \"businessProcessSaveType\": \"saveAfterCommit\"\r\n      },\r\n      \"pendingPersonBusinessProcess\": {\r\n        \"businessProcessStatus\": \"defaulted\",\r\n        \"businessProcessEffectiveDate\": \"2018-01-01T00:00:00\",\r\n        \"planYearEffectiveBeginDate\": \"2018-01-01T00:00:00\",\r\n        \"businessProcessReferenceId\": \"12531234\",\r\n        \"confirmationNumberId\": \"12531234\",\r\n        \"communicatedWindowBeginDate\": \"2017-10-19T00:00:00\",\r\n        \"communicatedWindowEndDate\": \"2017-10-31T00:00:00\",\r\n        \"actualWindowEndDate\": \"2017-11-05T00:00:00\",\r\n        \"lastConfirmedElectionDate\": \"2017-10-21T00:00:00\",\r\n        \"lastConfirmedByUser\": \"participant\",\r\n        \"multiplePlanYearEnrollment\": \"no\",\r\n        \"singleElectionDate\": \"string\",\r\n        \"enrollmentProfile\": \"M25\",\r\n        \"enrollmentCurrentCoverageType\": \"alwaysShow\",\r\n        \"enrollmentDaysRemaining\": 5,\r\n        \"totalCostSuppression\": true,\r\n        \"benefitSummaryType\": \"annualAndMonthly\",\r\n        \"benefitSummaryDefaultType\": \"annual\",\r\n        \"isActiveEnrollmentPath\": true,\r\n        \"adjustedFrequencyType\": \"monthly\",\r\n        \"businessProcessWindowType\": \"remainOpen\",\r\n        \"enrollmentExperience\": \"basic\",\r\n        \"isReviewProfileEnabled\": true,\r\n        \"customText\": [\r\n          {\r\n            \"customTextId\": \"string\",\r\n            \"customTextValue\": \"string\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollmen1L58DFP.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollmen1L58DFP.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getEnrollmentsBusinessProcessClassification",
+      "name": "Returns all pending enrollment opportunities for the person.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/enrollments/{businessProcessClassification}",
+      "templateParameters": [
+        {
+          "name": "businessProcessClassification",
+          "description": "Defines the business process type being requested:\n  * `annualEnrollment` \n  * `retireeAnnualEnrollment` \n  * `cobraAnnualEnrollment` \n  * `newHireEnrollment` \n  * `cobraInitialEnrollment` \n  * `retireeInitialEnrollment` \n  * `survivorInitialEnrollment` \n  * `addressChange` \n  * `statusChange` \n  * `medicare` \n  * `birthAdoption` \n  * `deathOfDependent` \n  * `deathOfDomesticPartner` \n  * `deathOfSpouse` \n  * `dependentCareCostChange` \n  * `dependentPremiumAssistanceChangeGeneric` \n  * `dependentGainsPremiumAssistance` \n  * `dependentLosesPremiumAssistance` \n  * `divorceSeparation` \n  * `domesticPartnerGainsEligibility` \n  * `domesticPartnershipEnds` \n  * `gainDependentStatusGuardianshipFoster` \n  * `lossOfDependentStatus` \n  * `marriageStartOfDomesticPartnershipCommonLaw` \n  * `participantCOBRACoverageFromOtherEmployerExpires` \n  * `participantGainsEligibilityForMedicareOrMedicaid` \n  * `participantGainsEligibilityForOtherCoverage` \n  * `participantGainsPremiumAssistance` \n  * `participantLosesEligibilityForMedicareOrMedicaid` \n  * `participantLosesEligibilityForOtherCoverage` \n  * `participantLosesGovernmentCoverage` \n  * `participantLosesPremiumAssistance` \n  * `qualifiedMedicalChildSupportOrder` \n  * `spouseOrDependentAnnEnrollDoesNotMatchEmployeeAnnEnroll`\n  * `spouseOrDependentChangeInStatusWithNoEligibilityChange` \n  * `spouseOrDependentChangesEligibilityViaReturnFromUnpaidLOA` \n  * `spouseOrDependentChangesEligibilityViaStartingUnpaidLOA` \n  * `spouseOrDependentCOBRACoveragefromOtherEmployerExpires` \n  * `spouseOrDependentCoverageCostDecrease` \n  * `spouseOrDependentCoverageCostIncrease` \n  * `spouseOrDependentCoverageCurtailmentOrTermination` \n  * `spouseOrDependentGainsEligibilityGeneric` \n  * `spouseOrDependentGainsEligibilityForMedicareOrMedicaid` \n  * `spouseOrDependentGainsEligibilityViaWorkScheduleChange` \n  * `spouseOrDependentGainsEligibilityViaWorkSiteTransfer` \n  * `spouseOrDependentGainsEligibilityViaWorkStatusChange` \n  * `spouseOrDependentGoesOnStrike` \n  * `spouseOrDependentLosesEligibilityGeneric` \n  * `spouseOrDependentLosesEligibilityForMedicareOrMedicaid` \n  * `spouseOrDependentLosesEligibilityViaWorkScheduleChange` \n  * `spouseOrDependentLosesEligibilityViaWorkSiteTransfer` \n  * `spouseOrDependentLosesEligibilityViaWorkStatusChange` \n  * `spouseOrDependentLosesGovernmentCoverage` \n  * `spouseOrDependentReturnsFromStrike` \n  * `spousePlanAddsBenefitOption` \n  * `administrativeEvent` \n  * `custom` - This can be a client defined custom value that does not fall into any other enumerated value. It is not limited to the string 'custom'.\n",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollment4SANYY.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollment4SANYY.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "enrollmentsResponse",
+              "generatedSample": "{\r\n  \"enrollments\": [\r\n    {\r\n      \"businessProcess\": {\r\n        \"businessProcessId\": \"5020\",\r\n        \"businessProcessSummary\": \"annualEnrollment\",\r\n        \"businessProcessType\": \"annualEnrollment\",\r\n        \"businessProcessClassification\": \"annualEnrollment\",\r\n        \"businessProcessName\": \"ClientName Active Annual Enrollment\",\r\n        \"businessProcessSaveType\": \"saveAfterCommit\"\r\n      },\r\n      \"pendingPersonBusinessProcess\": {\r\n        \"businessProcessStatus\": \"defaulted\",\r\n        \"businessProcessEffectiveDate\": \"2018-01-01T00:00:00\",\r\n        \"planYearEffectiveBeginDate\": \"2018-01-01T00:00:00\",\r\n        \"businessProcessReferenceId\": \"12531234\",\r\n        \"confirmationNumberId\": \"12531234\",\r\n        \"communicatedWindowBeginDate\": \"2017-10-19T00:00:00\",\r\n        \"communicatedWindowEndDate\": \"2017-10-31T00:00:00\",\r\n        \"actualWindowEndDate\": \"2017-11-05T00:00:00\",\r\n        \"lastConfirmedElectionDate\": \"2017-10-21T00:00:00\",\r\n        \"lastConfirmedByUser\": \"participant\",\r\n        \"multiplePlanYearEnrollment\": \"no\",\r\n        \"singleElectionDate\": \"string\",\r\n        \"enrollmentProfile\": \"M25\",\r\n        \"enrollmentCurrentCoverageType\": \"alwaysShow\",\r\n        \"enrollmentDaysRemaining\": 5,\r\n        \"totalCostSuppression\": true,\r\n        \"benefitSummaryType\": \"annualAndMonthly\",\r\n        \"benefitSummaryDefaultType\": \"annual\",\r\n        \"isActiveEnrollmentPath\": true,\r\n        \"adjustedFrequencyType\": \"monthly\",\r\n        \"businessProcessWindowType\": \"remainOpen\",\r\n        \"enrollmentExperience\": \"basic\",\r\n        \"isReviewProfileEnabled\": true,\r\n        \"customText\": [\r\n          {\r\n            \"customTextId\": \"string\",\r\n            \"customTextValue\": \"string\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollment4SANYY.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_enrollment4SANYY.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/postEoistatus",
+      "name": "The request allows to find the eoi status for the participants.",
+      "method": "POST",
+      "urlTemplate": "/commonenrollment/eoistatus",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/POST__commonenrollment_eo1TZ5HQS.description.html",
+      "request": {
+        "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/POST__commonenrollment_eo1TZ5HQS.request.html",
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": [
+          {
+            "contentType": "application/json",
+            "schemaId": "603fa9cbd157c90c2c38ed29",
+            "typeName": "eoistatusRequest",
+            "generatedSample": "{\r\n  \"carrierName\": \"VOYA\",\r\n  \"group\": \"11111\",\r\n  \"account\": \"23456\",\r\n  \"location\": \"11111\",\r\n  \"thirdPartyId\": \"12345\",\r\n  \"firstname\": \"Ann\",\r\n  \"lastname\": \"Johnson\",\r\n  \"personId\": \"98526312\",\r\n  \"personIdType\": \"SSN\",\r\n  \"birthDate\": \"1989-12-01T00:00:00\"\r\n}"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/POST__commonenrollment_eo1TZ5HQS.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "eoistatusResponse",
+              "generatedSample": "{\r\n  \"coverageList\": [\r\n    {\r\n      \"customerNumber\": \"12345\",\r\n      \"organizationName\": \"Alight\",\r\n      \"reportNumber\": \"12345\",\r\n      \"reportName\": \"Alight\",\r\n      \"administrativeMemberId\": \"12345\",\r\n      \"currentCoverageAmount\": 1200.0,\r\n      \"coverageBeginDate\": \"2020-04-01T00:00:00\",\r\n      \"firstName\": \"Ann\",\r\n      \"middleName\": \"Marry\",\r\n      \"lastName\": \"Johnson\",\r\n      \"guaranteedInsuredCoverageAmount\": 1200.0,\r\n      \"underwrittenCoverageAmount\": 1200.0,\r\n      \"requestedCoverageAmount\": 1200.0,\r\n      \"coverageStatus\": \"Approved\",\r\n      \"coverageTypeCode\": \"disablity benefit\",\r\n      \"coverageTypeDescription\": \"disability benefit\",\r\n      \"relationshipCode\": \"Spouse\",\r\n      \"coverageStatusDate\": \"2020-12-31 04:03:02.123\",\r\n      \"enrollmentMethodCode\": \"paper\",\r\n      \"enrollmentMethodDescription\": \"paper\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/POST__commonenrollment_eo1TZ5HQS.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/POST__commonenrollment_eo1TZ5HQS.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getEligiblePlans",
+      "name": "Get the eligible plans for this enrollment business process, along with plan attributes and tools.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/eligiblePlans",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroB7EBVS.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "eligiblePlanCode",
+            "description": "Information used to fetch a specific types of Eligible Plans data for the defined business process \n  * `AE` - Enrollment Data \n  * `PD` - Pending Data \n",
+            "type": "array",
+            "values": []
+          },
+          {
+            "name": "planId",
+            "description": "Used to limit the response set to those plans defined by this input.",
+            "type": "array",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroB7EBVS.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "eligiblePlansResponse",
+              "generatedSample": "{\r\n  \"eligiblePlans\": [\r\n    {\r\n      \"eligiblePlanCode\": \"AE\",\r\n      \"plans\": [\r\n        {\r\n          \"planId\": \"3500\",\r\n          \"planDescription\": \"Active Medical\",\r\n          \"planType\": \"medical\",\r\n          \"planSummary\": \"health\",\r\n          \"planIntroductionType\": \"TEXT_KEY\",\r\n          \"transactionId\": \"1000\",\r\n          \"coverageBeginDate\": \"2018-01-01T00:00:00\",\r\n          \"coverageEndDate\": \"2018-12-31T00:00:00\",\r\n          \"coveragePlanYearBeginDate\": \"2018-01-01T00:00:00\",\r\n          \"coveragePlanYear\": \"2018\",\r\n          \"electionStatus\": \"initialized\",\r\n          \"planPricingType\": \"standard\",\r\n          \"hasZeroTotalCost\": false,\r\n          \"taxElectionType\": \"preTax\",\r\n          \"noCoverageOptionId\": \"3500\",\r\n          \"noCoverageCategoryId\": \"3500\",\r\n          \"isEligibleForNoCoverage\": true,\r\n          \"noCoverageFootnote\": \"TEXT_KEY\",\r\n          \"restrictedPlanId\": \"7500\",\r\n          \"dependentCoverageAction\": \"electDependents\",\r\n          \"dependentMaintenanceAction\": \"addAndChange\",\r\n          \"collectBeneficiaries\": \"noBeneficiaries\",\r\n          \"electiveBenefitPlanType\": \"notApplicable\",\r\n          \"isQuestionType\": false,\r\n          \"isInternalPlanEntity\": false,\r\n          \"is401kPlan\": false,\r\n          \"currentCoverageElectionType\": \"notEligible\",\r\n          \"isCreditCapped\": true,\r\n          \"planTools\": [\r\n            {\r\n              \"planToolsCode\": \"providerSearch\",\r\n              \"toolVendor\": \"zelis\",\r\n              \"toolVendorParticipantId\": \"311dk2so-e315-r2d2-8bb8-zx3pi3141592\",\r\n              \"internalSSOPartnerName\": \"CHC\",\r\n              \"planToolsCodeAdditionalInfo\": [\r\n                {\r\n                  \"planToolsAdditionalInfoId\": \"distance\",\r\n                  \"planToolsAdditionalInfoFormatCode\": \"numeric\",\r\n                  \"planToolsAdditionalInfoText\": \"15\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"nonPlanTools\": [\r\n        {\r\n          \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n          \"nonPlanToolsCode\": \"heatlhcareCostSummary\",\r\n          \"toolVendor\": \"zelis\",\r\n          \"toolVendorParticipantId\": \"311dk2so-e315-r2d2-8bb8-zx3pi3141592\",\r\n          \"internalSSOPartnerName\": \"ALX\",\r\n          \"nonPlanToolsAdditionalInfo\": [\r\n            {\r\n              \"nonPlanToolsAdditionalInfoId\": \"key\",\r\n              \"nonPlanToolsAdditionalInfoFormatCode\": \"date\",\r\n              \"nonPlanToolsAdditionalInfoText\": \"2018-01-01\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroB7EBVS.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroB7EBVS.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getEligibleDependents",
+      "name": "Returns an array of plans with an array of eligible dependents for each plan.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/eligibleDependents",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr112GJOF.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "planId",
+            "description": "Used to limit the response set to those plans defined by this input.",
+            "type": "array",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr112GJOF.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "eligibleDependentsResponse",
+              "generatedSample": "{\r\n  \"eligibleDependents\": [\r\n    {\r\n      \"dependentPlans\": [\r\n        {\r\n          \"planId\": \"3500\",\r\n          \"transactionId\": \"3500\",\r\n          \"dependentTransactionId\": \"3505\",\r\n          \"eligibleRelationships\": [\r\n            {\r\n              \"dependentPersonInternalId\": \"123456789\",\r\n              \"isDependentPotentiallyEligible\": false,\r\n              \"isDependentCoveredElection\": true,\r\n              \"isDependentCoveredActual\": true,\r\n              \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n              \"pendingApprovalType\": \"option\",\r\n              \"pendingApprovalReferenceId\": \"\",\r\n              \"enrollmentMessages\": [\r\n                {\r\n                  \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n                  \"enrollmentMessagesType\": \"option\",\r\n                  \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n                  \"enrollmentMessageType\": \"option\",\r\n                  \"enrollmentMessagesAdditionalText\": [\r\n                    {\r\n                      \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                      \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                      \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n                    }\r\n                  ],\r\n                  \"enrollmentMessageAdditionalText\": [\r\n                    {\r\n                      \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                      \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                      \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n                    }\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"customText\": [\r\n            {\r\n              \"customTextId\": \"string\",\r\n              \"customTextValue\": \"string\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"dependents\": [\r\n        {\r\n          \"dependentPersonInternalId\": \"123456789\",\r\n          \"relationshipType\": \"child\",\r\n          \"relationshipDescription\": \"Child\",\r\n          \"firstName\": \"John\",\r\n          \"middleName\": \"Jacob\",\r\n          \"lastName\": \"Doe\",\r\n          \"suffix\": \"IV\",\r\n          \"birthDate\": \"2016-11-02T00:00:00\",\r\n          \"gender\": \"male\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr112GJOF.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr112GJOF.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getPendingElections",
+      "name": "Returns an array of coverages for each plan that the participant has within the business process.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/pendingElections",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro4CGGVQ.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "planId",
+            "description": "Used to limit the response set to those plans defined by this input.",
+            "type": "array",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro4CGGVQ.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "pendingElectionsResponse",
+              "generatedSample": "{\r\n  \"coverages\": [\r\n    {\r\n      \"electionType\": \"optionCoverageCategoryPrice\",\r\n      \"electionStatus\": \"unconfirmedElection\",\r\n      \"transactionId\": \"3500\",\r\n      \"planId\": \"3500\",\r\n      \"planDescription\": \"Active Medical\",\r\n      \"planSummary\": \"health\",\r\n      \"planType\": \"medical\",\r\n      \"coverageBeginDate\": \"2018-01-01T00:00:00\",\r\n      \"coverageEndDate\": \"2018-12-31T00:00:00\",\r\n      \"adjustedFrequencyType\": \"payPeriod\",\r\n      \"employeeAdjustedPrice\": 100.01,\r\n      \"employeeAnnualPrice\": 1200.12,\r\n      \"employeeAdjustedPreTaxPrice\": 100.01,\r\n      \"employeeAnnualPreTaxPrice\": 1200.12,\r\n      \"employeeAdjustedPostTaxPrice\": 0.0,\r\n      \"employeeAnnualPostTaxPrice\": 0.0,\r\n      \"employeeAdjustedTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAnnualTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAdjustedTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalNetPrice\": 0.0,\r\n      \"employeeAnnualTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalNetPrice\": 0.0,\r\n      \"totalActualCoverageAmount\": 0.0,\r\n      \"totalElectedCoverageAmount\": 0.0,\r\n      \"planSummaryTaxCode\": \"preTax\",\r\n      \"planSequence\": 10,\r\n      \"planMaintenanceAction\": \"viewAndChange\",\r\n      \"option\": {\r\n        \"noCoverageOptionId\": \"3501\",\r\n        \"noCoverageCategoryId\": \"20\",\r\n        \"isEligibleForNoCoverage\": true,\r\n        \"isParticipantCovered\": true,\r\n        \"actualOptionId\": \"3701\",\r\n        \"actualCoverageCategoryId\": \"30\",\r\n        \"actualOptionDescription\": \"Aetna PPO\",\r\n        \"actualOptionType\": \"preferredProviderOrganization\",\r\n        \"actualCoverageCategoryDescription\": \"You + Family\",\r\n        \"actualCoverageCategoryType\": \"participantFamily\",\r\n        \"actualOptionTaxCode\": \"preTax\",\r\n        \"electedOptionId\": \"3501\",\r\n        \"electedOptionDescription\": \"Aetna PPO\",\r\n        \"electedOptionType\": \"preferredProviderOrganization\",\r\n        \"electedCoverageCategoryId\": \"30\",\r\n        \"electedCoverageCategoryDescription\": \"You + Family\",\r\n        \"electedCoverageCategoryType\": \"participantFamily\",\r\n        \"electedOptionTaxCode\": \"preTax\",\r\n        \"primaryCareProviderDesignationType\": \"providerLookupOnly\",\r\n        \"savingsAccountPlanChoiceId\": \"120\",\r\n        \"dependentOngoingVerificationCode\": \"open\",\r\n        \"isSideFundAllowed\": false,\r\n        \"benefitAmounts\": [\r\n          {\r\n            \"benefitAmountsCoverageId\": \"3502\",\r\n            \"benefitAmountsSequence\": 10,\r\n            \"benefitAmountsDescription\": \"Aetna\",\r\n            \"actualCoverageAmount\": 0.0,\r\n            \"actualIncrementQuantity\": 0,\r\n            \"electedCoverageAmount\": 0.0,\r\n            \"electedIncrementQuantity\": 0,\r\n            \"incrementType\": \"days\"\r\n          }\r\n        ],\r\n        \"sideFund\": {\r\n          \"actualSideFundAmount\": 1200.0,\r\n          \"actualAdjustedSideFundAmount\": 100.0,\r\n          \"electedSideFundAmount\": 1200.0,\r\n          \"electedAdjustedSideFundAmount\": 100.0,\r\n          \"sideFundAdjustedFrequencyType\": \"monthly\"\r\n        }\r\n      },\r\n      \"relationshipCoverages\": {\r\n        \"dependentTransactionId\": \"3505\",\r\n        \"eligibleRelationships\": [\r\n          {\r\n            \"dependentPersonInternalId\": \"123456789\",\r\n            \"isDependentPotentiallyEligible\": false,\r\n            \"isDependentCoveredElection\": true,\r\n            \"isDependentCoveredActual\": true,\r\n            \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n            \"pendingApprovalType\": \"option\",\r\n            \"pendingApprovalReferenceId\": \"\",\r\n            \"enrollmentMessages\": [\r\n              {\r\n                \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessagesType\": \"option\",\r\n                \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessageType\": \"option\",\r\n                \"enrollmentMessagesAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n                  }\r\n                ],\r\n                \"enrollmentMessageAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"accountPlan\": {\r\n        \"actualAnnualGoalAmount\": 1200.0,\r\n        \"actualAdjustedGoalAmount\": 100.0,\r\n        \"electedAnnualGoalAmount\": 1200.0,\r\n        \"electedAdjustedGoalAmount\": 100.0,\r\n        \"vendorId\": \"3505\",\r\n        \"vendorType\": \"alegeus\",\r\n        \"vendorDescription\": \"Bank\",\r\n        \"savingsAccountPlanChoiceId\": \"3505\",\r\n        \"isLimitedPurpose\": true,\r\n        \"contributionSources\": [\r\n          {\r\n            \"contributionSourcesId\": \"20\",\r\n            \"contributionDisplaySequence\": 10,\r\n            \"electionContributionFrequency\": \"monthly\",\r\n            \"sourceFrequency\": \"monthly\",\r\n            \"contributionSourcesType\": \"employeeContribution\",\r\n            \"contributionSourcesTaxationType\": \"preTax\",\r\n            \"contributionSourcesDescription\": \"Employee Contribution\",\r\n            \"adjustedContributionPreTaxAmount\": 200.0,\r\n            \"adjustedContributionPostTaxAmount\": 0.0,\r\n            \"annualContributionPreTaxAmount\": 2400.0,\r\n            \"annualContributionPostTaxAmount\": 0.0,\r\n            \"adjustedActualContributionAmount\": 200.0,\r\n            \"annualActualContributionAmount\": 2400.0,\r\n            \"adjustedElectedContributionAmount\": 200.0,\r\n            \"annualElectedContributionAmount\": 2400.0\r\n          }\r\n        ]\r\n      },\r\n      \"creditsAndSurcharges\": [\r\n        {\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"transactionId\": \"1001\",\r\n          \"electionType\": \"creditByCoverageCategory\",\r\n          \"effectiveBeginDate\": \"2018-01-01T00:00:00\",\r\n          \"effectiveEndDate\": \"2018-12-31T00:00:00\",\r\n          \"electionStatus\": \"unconfirmedElection\",\r\n          \"annualAmount\": 120.0,\r\n          \"adjustedAmount\": 10.0,\r\n          \"taxationType\": \"preTax\",\r\n          \"creditsAndSurchargesDescription\": \"Healthy Lifestyle Credit\",\r\n          \"creditsAndSurchargesLabel\": \"Health Credit\",\r\n          \"creditsAndSurchargesType\": \"inPlanNoQuestionCredit\"\r\n        }\r\n      ],\r\n      \"questionnaires\": [\r\n        {\r\n          \"questionnairesDescription\": \"Tobacco Status\",\r\n          \"questionnairesType\": \"inPlanCreditsAndSurcharges\",\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"questions\": [\r\n            {\r\n              \"questionsLabel\": \"Employee Smoker Status\",\r\n              \"personInternalId\": \"123456789\",\r\n              \"questionsTransactionId\": \"2020\",\r\n              \"questionsElectionStatus\": \"unconfirmedElection\",\r\n              \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n              \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n              \"answersType\": \"text\",\r\n              \"questionsType\": \"standalone\",\r\n              \"answersValidValueType\": \"match\",\r\n              \"isShowEffectiveDate\": false,\r\n              \"isEffectiveDateElectable\": false,\r\n              \"isQuestionProtected\": false,\r\n              \"questionsRequiredType\": \"alwaysRequired\",\r\n              \"participantAnswers\": {\r\n                \"actualAnswerValue\": \"S\",\r\n                \"electedAnswerValue\": \"S\"\r\n              },\r\n              \"answers\": [\r\n                {\r\n                  \"answersValue\": \"S\",\r\n                  \"answersLabel\": \"Smoker\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"footnotes\": [\r\n        {\r\n          \"footnoteSummary\": \"deductibleEmbedded\",\r\n          \"footnoteType\": \"option\",\r\n          \"footnoteAdditionalText\": [\r\n            {\r\n              \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n              \"footnoteAdditionalTextFieldType\": \"text\",\r\n              \"footnoteAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"customText\": [\r\n        {\r\n          \"customTextId\": \"string\",\r\n          \"customTextValue\": \"string\"\r\n        }\r\n      ],\r\n      \"enrollmentMessages\": [\r\n        {\r\n          \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessagesType\": \"option\",\r\n          \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessageType\": \"option\",\r\n          \"enrollmentMessagesAdditionalText\": [\r\n            {\r\n              \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n            }\r\n          ],\r\n          \"enrollmentMessageAdditionalText\": [\r\n            {\r\n              \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"tipsAndAlerts\": [\r\n        {\r\n          \"tipsAndAlertsId\": \"1111\",\r\n          \"tipsAndAlertsType\": \"currentCoverageUnavailable\",\r\n          \"tipsAndAlertsGroupType\": \"alert\",\r\n          \"tipsAndAlertsLinkType\": \"primaryPlan\",\r\n          \"tipsAndAlertsLinkName\": \"Medical Plan Election\",\r\n          \"tipsAndAlertsLinkValue\": \"02HPE\",\r\n          \"tipsAndAlertsAdditionalText\": [\r\n            {\r\n              \"tipsAndAlertsAdditionalTextSequence\": \"1\",\r\n              \"tipsAndAlertsAdditionalTextType\": \"text\",\r\n              \"tipsAndAlertsAdditionalTextValue\": \"Medical\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"footnotes\": [\r\n    {\r\n      \"footnoteSummary\": \"deductibleEmbedded\",\r\n      \"footnoteType\": \"option\",\r\n      \"footnoteAdditionalText\": [\r\n        {\r\n          \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n          \"footnoteAdditionalTextFieldType\": \"text\",\r\n          \"footnoteAdditionalTextValue\": \"John\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"dependents\": [\r\n    {\r\n      \"dependentPersonInternalId\": \"123456789\",\r\n      \"relationshipDescription\": \"Child\",\r\n      \"relationshipType\": \"child\",\r\n      \"relationshipCode\": \"C\",\r\n      \"firstName\": \"John\",\r\n      \"middleName\": \"Jacob\",\r\n      \"lastName\": \"Doe\",\r\n      \"suffix\": \"IV\",\r\n      \"birthDate\": \"2016-11-02T00:00:00\",\r\n      \"gender\": \"male\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro4CGGVQ.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro4CGGVQ.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getAvailableOptions",
+      "name": "Returns a list of choices for the defined plan that the participant has available to them within the business process.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/plan/{planId}/availableOptions",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        },
+        {
+          "name": "planId",
+          "description": "The plan for which the choices are needed for.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1F9LKWM.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1F9LKWM.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "availableOptionsResponse",
+              "generatedSample": "{\r\n  \"choices\": [\r\n    {\r\n      \"planId\": \"3500\",\r\n      \"transactionId\": \"3500\",\r\n      \"adjustedFrequencyType\": \"monthly\",\r\n      \"employeeDeclineCoverageAdjustedCreditAmount\": 100.01,\r\n      \"employeeDeclineCoverageAnnualCreditAmount\": 1200.12,\r\n      \"stepVariationType\": \"variable\",\r\n      \"options\": [\r\n        {\r\n          \"optionsId\": \"30\",\r\n          \"optionsType\": \"PPO\",\r\n          \"optionsDescription\": \"Aetna PPO\",\r\n          \"isThisParticipantsCurrentOption\": true,\r\n          \"primaryCareProviderDesignationType\": \"providerLookupOnly\",\r\n          \"primaryCareProviderNetworkId\": \"3707\",\r\n          \"savingsAccountPlanChoiceId\": \"120\",\r\n          \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n          \"pendingApprovalType\": \"option\",\r\n          \"pendingApprovalReferenceId\": \"\",\r\n          \"benefitAmounts\": [\r\n            {\r\n              \"benefitAmountsCoverageId\": \"3502\",\r\n              \"benefitAmountsDescription\": \"Aetna\",\r\n              \"minimumCoverageAmount\": 1000.0,\r\n              \"maximumCoverageAmount\": 100000.0,\r\n              \"maximumCoverageAmountAfterApproval\": 150000.0,\r\n              \"coverageAmount\": 0.0,\r\n              \"coveragePriceAmount\": 21.12,\r\n              \"incrementType\": \"days\",\r\n              \"coverageIncrementAmount\": 1.0,\r\n              \"coverageAnnualIncrementRateAmount\": 12.0,\r\n              \"coverageAdjustedIncrementRateAmount\": 1.0,\r\n              \"benefitAmountsPendingApprovalSummary\": \"evidenceOfInsurability\",\r\n              \"benefitAmountsPendingApprovalType\": \"coverage\",\r\n              \"benefitAmountsPendingApprovalReferenceId\": \"\",\r\n              \"answersValue\": \"S\"\r\n            }\r\n          ],\r\n          \"sideFund\": {\r\n            \"minimumSideFundAmount\": 0.0,\r\n            \"maximumSideFundAmount\": 0.0,\r\n            \"sideFundIncrementAmount\": 0.0\r\n          },\r\n          \"optionCoverageCategories\": [\r\n            {\r\n              \"coverageCategoryId\": \"30\",\r\n              \"coverageCategoriesPendingApprovalSummary\": \"evidenceOfInsurability\",\r\n              \"coverageCategoriesPendingApprovalType\": \"coverageCategory\",\r\n              \"coverageCategoriesPendingApprovalReferenceId\": \"\",\r\n              \"coverageCategoryAmounts\": [\r\n                {\r\n                  \"answersValue\": \"S\",\r\n                  \"employeeAdjustedPrice\": 100.01,\r\n                  \"employeeAnnualPrice\": 1200.12,\r\n                  \"employeeAdjustedPreTaxPrice\": 100.01,\r\n                  \"employeeAnnualPreTaxPrice\": 1200.12,\r\n                  \"employeeAdjustedPostTaxPrice\": 0.0,\r\n                  \"employeeAnnualPostTaxPrice\": 0.0,\r\n                  \"employeeAdjustedTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n                  \"employeeAdjustedPreTaxTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n                  \"employeeAdjustedPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n                  \"employeeAnnualTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n                  \"employeeAnnualPreTaxTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n                  \"employeeAnnualPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n                  \"employeeAdjustedTotalNetPrice\": 90.01,\r\n                  \"employeeAdjustedPreTaxTotalNetPrice\": 90.01,\r\n                  \"employeeAdjustedPostTaxTotalNetPrice\": 0.0,\r\n                  \"employeeAnnualTotalNetPrice\": 1080.12,\r\n                  \"employeeAnnualPreTaxTotalNetPrice\": 1080.12,\r\n                  \"employeeAnnualPostTaxTotalNetPrice\": 0.0\r\n                }\r\n              ]\r\n            }\r\n          ],\r\n          \"optionDesignAttributes\": {\r\n            \"compositePlanDesignId\": \"575123\",\r\n            \"designAttributes\": {\r\n              \"individualOutOfPocketMaximumAmount\": \"2000\",\r\n              \"individualOutOfPocketMaximumAmountFieldType\": \"money\",\r\n              \"familyOutOfPocketMaximumAmount\": \"5000\",\r\n              \"familyOutOfPocketMaximumAmountFieldType\": \"money\",\r\n              \"individualAnnualDeductibleAmount\": \"1000\",\r\n              \"individualAnnualDeductibleAmountFieldType\": \"money\",\r\n              \"familyAnnualDeductibleAmount\": \"3000\",\r\n              \"familyAnnualDeductibleAmountFieldType\": \"money\",\r\n              \"coinsurancePercentage\": \"20\",\r\n              \"coinsurancePercentageFieldType\": \"percent\",\r\n              \"primaryVisitCopayAmount\": \"20\",\r\n              \"primaryVisitCopayAmountFieldType\": \"money\",\r\n              \"specialistVisitCopayAmount\": \"20\",\r\n              \"specialistVisitCopayAmountFieldType\": \"money\",\r\n              \"hospitalCopayAmount\": \"200\",\r\n              \"hospitalCopayAmountFieldType\": \"money\",\r\n              \"retailGenericCoverageDescription\": \"75% covered; Participant pays 25%; deductible does not apply.\",\r\n              \"retailFormularyBrandCoverageDescription\": \"70% covered; Participant pays 30%; deductible does not apply.\",\r\n              \"retailNonformularyBrandCoverageDescription\": \"50% covered; Participant pays 50%; deductible does not apply.\",\r\n              \"savingsAccountPlanType\": \"healthSavingsAccount\",\r\n              \"benefitLevelType\": \"inNetwork\"\r\n            },\r\n            \"additionalOptionDesignAttributes\": [\r\n              {\r\n                \"additionalAttributesId\": \"85\",\r\n                \"additionalAttributesSummaryType\": \"prescription\",\r\n                \"additionalAttributesTitleText\": \"prescription\",\r\n                \"additionalAttributesBenefitLevelText\": \"In Network\",\r\n                \"additionalAttributesText\": \"70% of eligible expenses after deductible is met; 30 day supply\"\r\n              }\r\n            ],\r\n            \"footnotes\": [\r\n              {\r\n                \"footnoteSummary\": \"deductibleEmbedded\",\r\n                \"footnoteType\": \"option\",\r\n                \"footnoteAdditionalText\": [\r\n                  {\r\n                    \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n                    \"footnoteAdditionalTextFieldType\": \"text\",\r\n                    \"footnoteAdditionalTextValue\": \"John\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          },\r\n          \"customText\": [\r\n            {\r\n              \"customTextId\": \"string\",\r\n              \"customTextValue\": \"string\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"accountPlan\": {\r\n        \"annualMinimumAmount\": 0.0,\r\n        \"annualMaximumAmount\": 6750.0,\r\n        \"vendorId\": \"3505\",\r\n        \"vendorType\": \"alegeus\",\r\n        \"vendorDescription\": \"Bank\",\r\n        \"savingsAccountPlanChoiceId\": \"3505\",\r\n        \"estimatedTaxRate\": 25.0,\r\n        \"estimatedTaxSavingsAmount\": 600.0,\r\n        \"isLimitedPurpose\": true,\r\n        \"contributionSources\": [\r\n          {\r\n            \"contributionSourcesId\": \"20\",\r\n            \"contributionDisplaySequence\": 10,\r\n            \"totalAnnualContributionPeriods\": 52,\r\n            \"remainingContributionPeriods\": 26,\r\n            \"electionContributionFrequency\": \"monthly\",\r\n            \"sourceFrequency\": \"monthly\",\r\n            \"contributionSourcesType\": \"employeeContribution\",\r\n            \"contributionSourcesTaxationType\": \"preTax\",\r\n            \"contributionSourcesDescription\": \"Employee Contribution\",\r\n            \"minimumSourceAmount\": 100.0,\r\n            \"maximumSourceAmount\": 3450.0,\r\n            \"validElectionIncrementAmount\": 1.0,\r\n            \"maximumCompanyMatchPercent\": 0.0\r\n          }\r\n        ]\r\n      },\r\n      \"creditsAndSurcharges\": [\r\n        {\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"transactionId\": \"1001\",\r\n          \"creditsAndSurchargesDescription\": \"Healthy Lifestyle Credit\",\r\n          \"creditsAndSurchargesLabel\": \"Health Credit\",\r\n          \"electionType\": \"creditByOptionAndCoverageCategory\",\r\n          \"creditsAndSurchargesType\": \"inPlanNoQuestionCredit\",\r\n          \"isCoverageRequiredForCredit\": true,\r\n          \"creditAmounts\": [\r\n            {\r\n              \"annualAmount\": 120.0,\r\n              \"adjustedAmount\": 10.0,\r\n              \"optionId\": \"3701\",\r\n              \"coverageCategoryId\": \"30\",\r\n              \"answerValue\": \"S\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"questionnaires\": [\r\n        {\r\n          \"questionnairesDescription\": \"Tobacco Status\",\r\n          \"questionnairesType\": \"inPlanCreditsAndSurcharges\",\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"questions\": [\r\n            {\r\n              \"questionsLabel\": \"Employee Smoker Status\",\r\n              \"personInternalId\": \"123456789\",\r\n              \"questionsTransactionId\": \"2020\",\r\n              \"questionsElectionStatus\": \"unconfirmedElection\",\r\n              \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n              \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n              \"answersType\": \"text\",\r\n              \"questionsType\": \"standalone\",\r\n              \"answersValidValueType\": \"match\",\r\n              \"isShowEffectiveDate\": false,\r\n              \"isEffectiveDateElectable\": false,\r\n              \"isQuestionProtected\": false,\r\n              \"questionsRequiredType\": \"alwaysRequired\",\r\n              \"answers\": [\r\n                {\r\n                  \"answersValue\": \"S\",\r\n                  \"answersLabel\": \"Smoker\",\r\n                  \"additionalQuestions\": [\r\n                    {\r\n                      \"additionalQuestionsId\": \"EE-SMKR-DT\"\r\n                    }\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"coverageCategories\": [\r\n        {\r\n          \"coverageCategoryId\": \"30\",\r\n          \"coverageCategoryDescription\": \"You + Family\",\r\n          \"coverageCategoryType\": \"participantFamily\"\r\n        }\r\n      ],\r\n      \"designAttributesLabel\": {\r\n        \"individualDesignAttributesLabel\": \"Individual\",\r\n        \"familyDesignAttributesLabel\": \"You + Family\"\r\n      },\r\n      \"steps\": [\r\n        {\r\n          \"stepsSequence\": 1,\r\n          \"stepsType\": \"dependent\",\r\n          \"displayStepIndicator\": \"collapsed\",\r\n          \"isStepVariable\": false\r\n        }\r\n      ],\r\n      \"footnotes\": [\r\n        {\r\n          \"footnoteSummary\": \"deductibleEmbedded\",\r\n          \"footnoteType\": \"option\",\r\n          \"footnoteAdditionalText\": [\r\n            {\r\n              \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n              \"footnoteAdditionalTextFieldType\": \"text\",\r\n              \"footnoteAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"customText\": [\r\n        {\r\n          \"customTextId\": \"string\",\r\n          \"customTextValue\": \"string\"\r\n        }\r\n      ],\r\n      \"enrollmentMessages\": [\r\n        {\r\n          \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessagesType\": \"option\",\r\n          \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessageType\": \"option\",\r\n          \"enrollmentMessagesAdditionalText\": [\r\n            {\r\n              \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n            }\r\n          ],\r\n          \"enrollmentMessageAdditionalText\": [\r\n            {\r\n              \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"suggestions\": [\r\n        {\r\n          \"suggestionsType\": \"spendingAccountSourceAmount\",\r\n          \"suggestionsScoreAmount\": 1.0,\r\n          \"suggestionsTotalContributionAmount\": 7000.0,\r\n          \"isTopSuggestion\": false\r\n        }\r\n      ],\r\n      \"suggestionsExplanations\": [\r\n        {\r\n          \"suggestionsExplanationsType\": \"employerSeed\",\r\n          \"suggestionsExplanationsDiagnostics\": [\r\n            {\r\n              \"suggestionsExplanationsDiagnosticsName\": \"ELEC-SRC-AT\",\r\n              \"suggestionsExplanationsDiagnosticsValueType\": \"money\",\r\n              \"suggestionsExplanationsDiagnosticsValue\": \"2520\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1F9LKWM.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1F9LKWM.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getPrimaryCareProviderElections",
+      "name": "Returns a list of the participants current primary care provider elections for the defined plan.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/plan/{planId}/primaryCareProviderElections",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        },
+        {
+          "name": "planId",
+          "description": "The plan for which the choices are needed for.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro7KVGIT.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro7KVGIT.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "primaryCareProvidersResponse",
+              "generatedSample": "{\r\n  \"isProviderNetworkAvailable\": true,\r\n  \"vendorParticipantId\": \"1234-1234-1234-1234\",\r\n  \"electionStatus\": \"initialized\",\r\n  \"personPrimaryCareProviders\": [\r\n    {\r\n      \"personInternalId\": \"123456789\",\r\n      \"birthDate\": \"2016-11-02T00:00:00\",\r\n      \"isParticipant\": true,\r\n      \"primaryCareProviderDetails\": [\r\n        {\r\n          \"isCurrentPrimaryCareProviderCollected\": true,\r\n          \"primaryCareProvidersType\": \"primaryCareProvider\",\r\n          \"primaryCareProvidersElectionType\": \"bothIdAndName\",\r\n          \"actualPrimaryCareProvidersId\": \"1234\",\r\n          \"actualPrimaryCareProvidersName\": \"Dr. John Doe\",\r\n          \"isActualCurrentProvider\": true,\r\n          \"electedPrimaryCareProvidersId\": \"1234\",\r\n          \"electedPrimaryCareProvidersName\": \"Dr. John Doe\",\r\n          \"isElectedCurrentProvider\": true\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro7KVGIT.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro7KVGIT.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/putReviseElections",
+      "name": "This request allows for participant elections to be made for the plans the participant has available within their business process.",
+      "method": "PUT",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/reviseElections",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr1QVDCBQ.description.html",
+      "request": {
+        "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr1QVDCBQ.request.html",
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": [
+          {
+            "contentType": "application/json",
+            "schemaId": "603fa9cbd157c90c2c38ed29",
+            "typeName": "reviseElectionsRequest",
+            "generatedSample": "{\r\n  \"elections\": [\r\n    {\r\n      \"planId\": \"3500\",\r\n      \"transactionId\": \"3500\",\r\n      \"isFinalElection\": true,\r\n      \"option\": {\r\n        \"electedOptionId\": \"3701\",\r\n        \"electedCoverageCategoryId\": \"30\",\r\n        \"electedOptionTaxCode\": \"preTax\",\r\n        \"unbundledCoverageCategory\": [\r\n          {\r\n            \"electedCoverageCategoryId\": \"30\",\r\n            \"electedDependentQuantity\": 3\r\n          }\r\n        ],\r\n        \"benefitAmounts\": [\r\n          {\r\n            \"electedBenefitAmountsCoverageId\": \"3502\",\r\n            \"electedCoverageAmount\": 50000.0,\r\n            \"electedIncrementQuantity\": 0\r\n          }\r\n        ],\r\n        \"sideFund\": {\r\n          \"electedSideFundAmount\": 0.0\r\n        }\r\n      },\r\n      \"dependentPlans\": [\r\n        {\r\n          \"dependentTransactionId\": \"3505\",\r\n          \"dependentCoverages\": [\r\n            {\r\n              \"dependentPersonInternalId\": \"123456789\",\r\n              \"isDependentCoveredElection\": true\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"personPrimaryCareProviders\": [\r\n        {\r\n          \"personInternalId\": \"123456789\",\r\n          \"dependentPersonInternalId\": \"123456780\",\r\n          \"primaryCareProviders\": [\r\n            {\r\n              \"electedPrimaryCareProvidersId\": \"1234\",\r\n              \"electedPrimaryCareProvidersName\": \"Dr. John Doe\",\r\n              \"isElectedCurrentProvider\": true\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"accountPlan\": {\r\n        \"contributionSources\": [\r\n          {\r\n            \"contributionSourcesId\": \"20\",\r\n            \"electedContributionAmount\": 2500.0,\r\n            \"electionContributionFrequency\": \"annual\"\r\n          }\r\n        ]\r\n      },\r\n      \"questionnaires\": [\r\n        {\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"questions\": [\r\n            {\r\n              \"personInternalId\": \"123456789\",\r\n              \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n              \"questionsTransactionId\": \"2020\",\r\n              \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n              \"answersValue\": \"S\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr1QVDCBQ.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "reviseElectionsResponse",
+              "generatedSample": "{\r\n  \"availableOptions\": {\r\n    \"choices\": [\r\n      {\r\n        \"planId\": \"3500\",\r\n        \"transactionId\": \"3500\",\r\n        \"adjustedFrequencyType\": \"monthly\",\r\n        \"employeeDeclineCoverageAdjustedCreditAmount\": 100.01,\r\n        \"employeeDeclineCoverageAnnualCreditAmount\": 1200.12,\r\n        \"stepVariationType\": \"variable\",\r\n        \"options\": [\r\n          {\r\n            \"optionsId\": \"30\",\r\n            \"optionsType\": \"PPO\",\r\n            \"optionsDescription\": \"Aetna PPO\",\r\n            \"isThisParticipantsCurrentOption\": true,\r\n            \"primaryCareProviderDesignationType\": \"providerLookupOnly\",\r\n            \"primaryCareProviderNetworkId\": \"3707\",\r\n            \"savingsAccountPlanChoiceId\": \"120\",\r\n            \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n            \"pendingApprovalType\": \"option\",\r\n            \"pendingApprovalReferenceId\": \"\",\r\n            \"benefitAmounts\": [\r\n              {\r\n                \"benefitAmountsCoverageId\": \"3502\",\r\n                \"benefitAmountsDescription\": \"Aetna\",\r\n                \"minimumCoverageAmount\": 1000.0,\r\n                \"maximumCoverageAmount\": 100000.0,\r\n                \"maximumCoverageAmountAfterApproval\": 150000.0,\r\n                \"coverageAmount\": 0.0,\r\n                \"coveragePriceAmount\": 21.12,\r\n                \"incrementType\": \"days\",\r\n                \"coverageIncrementAmount\": 1.0,\r\n                \"coverageAnnualIncrementRateAmount\": 12.0,\r\n                \"coverageAdjustedIncrementRateAmount\": 1.0,\r\n                \"benefitAmountsPendingApprovalSummary\": \"evidenceOfInsurability\",\r\n                \"benefitAmountsPendingApprovalType\": \"coverage\",\r\n                \"benefitAmountsPendingApprovalReferenceId\": \"\",\r\n                \"answersValue\": \"S\"\r\n              }\r\n            ],\r\n            \"sideFund\": {\r\n              \"minimumSideFundAmount\": 0.0,\r\n              \"maximumSideFundAmount\": 0.0,\r\n              \"sideFundIncrementAmount\": 0.0\r\n            },\r\n            \"optionCoverageCategories\": [\r\n              {\r\n                \"coverageCategoryId\": \"30\",\r\n                \"coverageCategoriesPendingApprovalSummary\": \"evidenceOfInsurability\",\r\n                \"coverageCategoriesPendingApprovalType\": \"coverageCategory\",\r\n                \"coverageCategoriesPendingApprovalReferenceId\": \"\",\r\n                \"coverageCategoryAmounts\": [\r\n                  {\r\n                    \"answersValue\": \"S\",\r\n                    \"employeeAdjustedPrice\": 100.01,\r\n                    \"employeeAnnualPrice\": 1200.12,\r\n                    \"employeeAdjustedPreTaxPrice\": 100.01,\r\n                    \"employeeAnnualPreTaxPrice\": 1200.12,\r\n                    \"employeeAdjustedPostTaxPrice\": 0.0,\r\n                    \"employeeAnnualPostTaxPrice\": 0.0,\r\n                    \"employeeAdjustedTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n                    \"employeeAdjustedPreTaxTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n                    \"employeeAdjustedPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n                    \"employeeAnnualTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n                    \"employeeAnnualPreTaxTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n                    \"employeeAnnualPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n                    \"employeeAdjustedTotalNetPrice\": 90.01,\r\n                    \"employeeAdjustedPreTaxTotalNetPrice\": 90.01,\r\n                    \"employeeAdjustedPostTaxTotalNetPrice\": 0.0,\r\n                    \"employeeAnnualTotalNetPrice\": 1080.12,\r\n                    \"employeeAnnualPreTaxTotalNetPrice\": 1080.12,\r\n                    \"employeeAnnualPostTaxTotalNetPrice\": 0.0\r\n                  }\r\n                ]\r\n              }\r\n            ],\r\n            \"optionDesignAttributes\": {\r\n              \"compositePlanDesignId\": \"575123\",\r\n              \"designAttributes\": {\r\n                \"individualOutOfPocketMaximumAmount\": \"2000\",\r\n                \"individualOutOfPocketMaximumAmountFieldType\": \"money\",\r\n                \"familyOutOfPocketMaximumAmount\": \"5000\",\r\n                \"familyOutOfPocketMaximumAmountFieldType\": \"money\",\r\n                \"individualAnnualDeductibleAmount\": \"1000\",\r\n                \"individualAnnualDeductibleAmountFieldType\": \"money\",\r\n                \"familyAnnualDeductibleAmount\": \"3000\",\r\n                \"familyAnnualDeductibleAmountFieldType\": \"money\",\r\n                \"coinsurancePercentage\": \"20\",\r\n                \"coinsurancePercentageFieldType\": \"percent\",\r\n                \"primaryVisitCopayAmount\": \"20\",\r\n                \"primaryVisitCopayAmountFieldType\": \"money\",\r\n                \"specialistVisitCopayAmount\": \"20\",\r\n                \"specialistVisitCopayAmountFieldType\": \"money\",\r\n                \"hospitalCopayAmount\": \"200\",\r\n                \"hospitalCopayAmountFieldType\": \"money\",\r\n                \"retailGenericCoverageDescription\": \"75% covered; Participant pays 25%; deductible does not apply.\",\r\n                \"retailFormularyBrandCoverageDescription\": \"70% covered; Participant pays 30%; deductible does not apply.\",\r\n                \"retailNonformularyBrandCoverageDescription\": \"50% covered; Participant pays 50%; deductible does not apply.\",\r\n                \"savingsAccountPlanType\": \"healthSavingsAccount\",\r\n                \"benefitLevelType\": \"inNetwork\"\r\n              },\r\n              \"additionalOptionDesignAttributes\": [\r\n                {\r\n                  \"additionalAttributesId\": \"85\",\r\n                  \"additionalAttributesSummaryType\": \"prescription\",\r\n                  \"additionalAttributesTitleText\": \"prescription\",\r\n                  \"additionalAttributesBenefitLevelText\": \"In Network\",\r\n                  \"additionalAttributesText\": \"70% of eligible expenses after deductible is met; 30 day supply\"\r\n                }\r\n              ],\r\n              \"footnotes\": [\r\n                {\r\n                  \"footnoteSummary\": \"deductibleEmbedded\",\r\n                  \"footnoteType\": \"option\",\r\n                  \"footnoteAdditionalText\": [\r\n                    {\r\n                      \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n                      \"footnoteAdditionalTextFieldType\": \"text\",\r\n                      \"footnoteAdditionalTextValue\": \"John\"\r\n                    }\r\n                  ]\r\n                }\r\n              ]\r\n            },\r\n            \"customText\": [\r\n              {\r\n                \"customTextId\": \"string\",\r\n                \"customTextValue\": \"string\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"accountPlan\": {\r\n          \"annualMinimumAmount\": 0.0,\r\n          \"annualMaximumAmount\": 6750.0,\r\n          \"vendorId\": \"3505\",\r\n          \"vendorType\": \"alegeus\",\r\n          \"vendorDescription\": \"Bank\",\r\n          \"savingsAccountPlanChoiceId\": \"3505\",\r\n          \"estimatedTaxRate\": 25.0,\r\n          \"estimatedTaxSavingsAmount\": 600.0,\r\n          \"isLimitedPurpose\": true,\r\n          \"contributionSources\": [\r\n            {\r\n              \"contributionSourcesId\": \"20\",\r\n              \"contributionDisplaySequence\": 10,\r\n              \"totalAnnualContributionPeriods\": 52,\r\n              \"remainingContributionPeriods\": 26,\r\n              \"electionContributionFrequency\": \"monthly\",\r\n              \"sourceFrequency\": \"monthly\",\r\n              \"contributionSourcesType\": \"employeeContribution\",\r\n              \"contributionSourcesTaxationType\": \"preTax\",\r\n              \"contributionSourcesDescription\": \"Employee Contribution\",\r\n              \"minimumSourceAmount\": 100.0,\r\n              \"maximumSourceAmount\": 3450.0,\r\n              \"validElectionIncrementAmount\": 1.0,\r\n              \"maximumCompanyMatchPercent\": 0.0\r\n            }\r\n          ]\r\n        },\r\n        \"creditsAndSurcharges\": [\r\n          {\r\n            \"creditsAndSurchargesId\": \"1000\",\r\n            \"transactionId\": \"1001\",\r\n            \"creditsAndSurchargesDescription\": \"Healthy Lifestyle Credit\",\r\n            \"creditsAndSurchargesLabel\": \"Health Credit\",\r\n            \"electionType\": \"creditByOptionAndCoverageCategory\",\r\n            \"creditsAndSurchargesType\": \"inPlanNoQuestionCredit\",\r\n            \"isCoverageRequiredForCredit\": true,\r\n            \"creditAmounts\": [\r\n              {\r\n                \"annualAmount\": 120.0,\r\n                \"adjustedAmount\": 10.0,\r\n                \"optionId\": \"3701\",\r\n                \"coverageCategoryId\": \"30\",\r\n                \"answerValue\": \"S\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"questionnaires\": [\r\n          {\r\n            \"questionnairesDescription\": \"Tobacco Status\",\r\n            \"questionnairesType\": \"inPlanCreditsAndSurcharges\",\r\n            \"creditsAndSurchargesId\": \"1000\",\r\n            \"questions\": [\r\n              {\r\n                \"questionsLabel\": \"Employee Smoker Status\",\r\n                \"personInternalId\": \"123456789\",\r\n                \"questionsTransactionId\": \"2020\",\r\n                \"questionsElectionStatus\": \"unconfirmedElection\",\r\n                \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n                \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n                \"answersType\": \"text\",\r\n                \"questionsType\": \"standalone\",\r\n                \"answersValidValueType\": \"match\",\r\n                \"isShowEffectiveDate\": false,\r\n                \"isEffectiveDateElectable\": false,\r\n                \"isQuestionProtected\": false,\r\n                \"questionsRequiredType\": \"alwaysRequired\",\r\n                \"answers\": [\r\n                  {\r\n                    \"answersValue\": \"S\",\r\n                    \"answersLabel\": \"Smoker\",\r\n                    \"additionalQuestions\": [\r\n                      {\r\n                        \"additionalQuestionsId\": \"EE-SMKR-DT\"\r\n                      }\r\n                    ]\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"coverageCategories\": [\r\n          {\r\n            \"coverageCategoryId\": \"30\",\r\n            \"coverageCategoryDescription\": \"You + Family\",\r\n            \"coverageCategoryType\": \"participantFamily\"\r\n          }\r\n        ],\r\n        \"designAttributesLabel\": {\r\n          \"individualDesignAttributesLabel\": \"Individual\",\r\n          \"familyDesignAttributesLabel\": \"You + Family\"\r\n        },\r\n        \"steps\": [\r\n          {\r\n            \"stepsSequence\": 1,\r\n            \"stepsType\": \"dependent\",\r\n            \"displayStepIndicator\": \"collapsed\",\r\n            \"isStepVariable\": false\r\n          }\r\n        ],\r\n        \"footnotes\": [\r\n          {\r\n            \"footnoteSummary\": \"deductibleEmbedded\",\r\n            \"footnoteType\": \"option\",\r\n            \"footnoteAdditionalText\": [\r\n              {\r\n                \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n                \"footnoteAdditionalTextFieldType\": \"text\",\r\n                \"footnoteAdditionalTextValue\": \"John\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"customText\": [\r\n          {\r\n            \"customTextId\": \"string\",\r\n            \"customTextValue\": \"string\"\r\n          }\r\n        ],\r\n        \"enrollmentMessages\": [\r\n          {\r\n            \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n            \"enrollmentMessagesType\": \"option\",\r\n            \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n            \"enrollmentMessageType\": \"option\",\r\n            \"enrollmentMessagesAdditionalText\": [\r\n              {\r\n                \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n              }\r\n            ],\r\n            \"enrollmentMessageAdditionalText\": [\r\n              {\r\n                \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"suggestions\": [\r\n          {\r\n            \"suggestionsType\": \"spendingAccountSourceAmount\",\r\n            \"suggestionsScoreAmount\": 1.0,\r\n            \"suggestionsTotalContributionAmount\": 7000.0,\r\n            \"isTopSuggestion\": false\r\n          }\r\n        ],\r\n        \"suggestionsExplanations\": [\r\n          {\r\n            \"suggestionsExplanationsType\": \"employerSeed\",\r\n            \"suggestionsExplanationsDiagnostics\": [\r\n              {\r\n                \"suggestionsExplanationsDiagnosticsName\": \"ELEC-SRC-AT\",\r\n                \"suggestionsExplanationsDiagnosticsValueType\": \"money\",\r\n                \"suggestionsExplanationsDiagnosticsValue\": \"2520\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"pendingElections\": {\r\n    \"coverages\": [\r\n      {\r\n        \"electionType\": \"optionCoverageCategoryPrice\",\r\n        \"electionStatus\": \"unconfirmedElection\",\r\n        \"transactionId\": \"3500\",\r\n        \"planId\": \"3500\",\r\n        \"planDescription\": \"Active Medical\",\r\n        \"planSummary\": \"health\",\r\n        \"planType\": \"medical\",\r\n        \"coverageBeginDate\": \"2018-01-01T00:00:00\",\r\n        \"coverageEndDate\": \"2018-12-31T00:00:00\",\r\n        \"adjustedFrequencyType\": \"payPeriod\",\r\n        \"employeeAdjustedPrice\": 100.01,\r\n        \"employeeAnnualPrice\": 1200.12,\r\n        \"employeeAdjustedPreTaxPrice\": 100.01,\r\n        \"employeeAnnualPreTaxPrice\": 1200.12,\r\n        \"employeeAdjustedPostTaxPrice\": 0.0,\r\n        \"employeeAnnualPostTaxPrice\": 0.0,\r\n        \"employeeAdjustedTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n        \"employeeAdjustedPreTaxTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n        \"employeeAdjustedPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n        \"employeeAnnualTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n        \"employeeAnnualPreTaxTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n        \"employeeAnnualPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n        \"employeeAdjustedTotalNetPrice\": 90.01,\r\n        \"employeeAdjustedPreTaxTotalNetPrice\": 90.01,\r\n        \"employeeAdjustedPostTaxTotalNetPrice\": 0.0,\r\n        \"employeeAnnualTotalNetPrice\": 1080.12,\r\n        \"employeeAnnualPreTaxTotalNetPrice\": 1080.12,\r\n        \"employeeAnnualPostTaxTotalNetPrice\": 0.0,\r\n        \"totalActualCoverageAmount\": 0.0,\r\n        \"totalElectedCoverageAmount\": 0.0,\r\n        \"planSummaryTaxCode\": \"preTax\",\r\n        \"planSequence\": 10,\r\n        \"planMaintenanceAction\": \"viewAndChange\",\r\n        \"option\": {\r\n          \"noCoverageOptionId\": \"3501\",\r\n          \"noCoverageCategoryId\": \"20\",\r\n          \"isEligibleForNoCoverage\": true,\r\n          \"isParticipantCovered\": true,\r\n          \"actualOptionId\": \"3701\",\r\n          \"actualCoverageCategoryId\": \"30\",\r\n          \"actualOptionDescription\": \"Aetna PPO\",\r\n          \"actualOptionType\": \"preferredProviderOrganization\",\r\n          \"actualCoverageCategoryDescription\": \"You + Family\",\r\n          \"actualCoverageCategoryType\": \"participantFamily\",\r\n          \"actualOptionTaxCode\": \"preTax\",\r\n          \"electedOptionId\": \"3501\",\r\n          \"electedOptionDescription\": \"Aetna PPO\",\r\n          \"electedOptionType\": \"preferredProviderOrganization\",\r\n          \"electedCoverageCategoryId\": \"30\",\r\n          \"electedCoverageCategoryDescription\": \"You + Family\",\r\n          \"electedCoverageCategoryType\": \"participantFamily\",\r\n          \"electedOptionTaxCode\": \"preTax\",\r\n          \"primaryCareProviderDesignationType\": \"providerLookupOnly\",\r\n          \"savingsAccountPlanChoiceId\": \"120\",\r\n          \"dependentOngoingVerificationCode\": \"open\",\r\n          \"isSideFundAllowed\": false,\r\n          \"benefitAmounts\": [\r\n            {\r\n              \"benefitAmountsCoverageId\": \"3502\",\r\n              \"benefitAmountsSequence\": 10,\r\n              \"benefitAmountsDescription\": \"Aetna\",\r\n              \"actualCoverageAmount\": 0.0,\r\n              \"actualIncrementQuantity\": 0,\r\n              \"electedCoverageAmount\": 0.0,\r\n              \"electedIncrementQuantity\": 0,\r\n              \"incrementType\": \"days\"\r\n            }\r\n          ],\r\n          \"sideFund\": {\r\n            \"actualSideFundAmount\": 1200.0,\r\n            \"actualAdjustedSideFundAmount\": 100.0,\r\n            \"electedSideFundAmount\": 1200.0,\r\n            \"electedAdjustedSideFundAmount\": 100.0,\r\n            \"sideFundAdjustedFrequencyType\": \"monthly\"\r\n          }\r\n        },\r\n        \"relationshipCoverages\": {\r\n          \"dependentTransactionId\": \"3505\",\r\n          \"eligibleRelationships\": [\r\n            {\r\n              \"dependentPersonInternalId\": \"123456789\",\r\n              \"isDependentPotentiallyEligible\": false,\r\n              \"isDependentCoveredElection\": true,\r\n              \"isDependentCoveredActual\": true,\r\n              \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n              \"pendingApprovalType\": \"option\",\r\n              \"pendingApprovalReferenceId\": \"\",\r\n              \"enrollmentMessages\": [\r\n                {\r\n                  \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n                  \"enrollmentMessagesType\": \"option\",\r\n                  \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n                  \"enrollmentMessageType\": \"option\",\r\n                  \"enrollmentMessagesAdditionalText\": [\r\n                    {\r\n                      \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                      \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                      \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n                    }\r\n                  ],\r\n                  \"enrollmentMessageAdditionalText\": [\r\n                    {\r\n                      \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                      \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                      \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n                    }\r\n                  ]\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        \"accountPlan\": {\r\n          \"actualAnnualGoalAmount\": 1200.0,\r\n          \"actualAdjustedGoalAmount\": 100.0,\r\n          \"electedAnnualGoalAmount\": 1200.0,\r\n          \"electedAdjustedGoalAmount\": 100.0,\r\n          \"vendorId\": \"3505\",\r\n          \"vendorType\": \"alegeus\",\r\n          \"vendorDescription\": \"Bank\",\r\n          \"savingsAccountPlanChoiceId\": \"3505\",\r\n          \"isLimitedPurpose\": true,\r\n          \"contributionSources\": [\r\n            {\r\n              \"contributionSourcesId\": \"20\",\r\n              \"contributionDisplaySequence\": 10,\r\n              \"electionContributionFrequency\": \"monthly\",\r\n              \"sourceFrequency\": \"monthly\",\r\n              \"contributionSourcesType\": \"employeeContribution\",\r\n              \"contributionSourcesTaxationType\": \"preTax\",\r\n              \"contributionSourcesDescription\": \"Employee Contribution\",\r\n              \"adjustedContributionPreTaxAmount\": 200.0,\r\n              \"adjustedContributionPostTaxAmount\": 0.0,\r\n              \"annualContributionPreTaxAmount\": 2400.0,\r\n              \"annualContributionPostTaxAmount\": 0.0,\r\n              \"adjustedActualContributionAmount\": 200.0,\r\n              \"annualActualContributionAmount\": 2400.0,\r\n              \"adjustedElectedContributionAmount\": 200.0,\r\n              \"annualElectedContributionAmount\": 2400.0\r\n            }\r\n          ]\r\n        },\r\n        \"creditsAndSurcharges\": [\r\n          {\r\n            \"creditsAndSurchargesId\": \"1000\",\r\n            \"transactionId\": \"1001\",\r\n            \"electionType\": \"creditByCoverageCategory\",\r\n            \"effectiveBeginDate\": \"2018-01-01T00:00:00\",\r\n            \"effectiveEndDate\": \"2018-12-31T00:00:00\",\r\n            \"electionStatus\": \"unconfirmedElection\",\r\n            \"annualAmount\": 120.0,\r\n            \"adjustedAmount\": 10.0,\r\n            \"taxationType\": \"preTax\",\r\n            \"creditsAndSurchargesDescription\": \"Healthy Lifestyle Credit\",\r\n            \"creditsAndSurchargesLabel\": \"Health Credit\",\r\n            \"creditsAndSurchargesType\": \"inPlanNoQuestionCredit\"\r\n          }\r\n        ],\r\n        \"questionnaires\": [\r\n          {\r\n            \"questionnairesDescription\": \"Tobacco Status\",\r\n            \"questionnairesType\": \"inPlanCreditsAndSurcharges\",\r\n            \"creditsAndSurchargesId\": \"1000\",\r\n            \"questions\": [\r\n              {\r\n                \"questionsLabel\": \"Employee Smoker Status\",\r\n                \"personInternalId\": \"123456789\",\r\n                \"questionsTransactionId\": \"2020\",\r\n                \"questionsElectionStatus\": \"unconfirmedElection\",\r\n                \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n                \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n                \"answersType\": \"text\",\r\n                \"questionsType\": \"standalone\",\r\n                \"answersValidValueType\": \"match\",\r\n                \"isShowEffectiveDate\": false,\r\n                \"isEffectiveDateElectable\": false,\r\n                \"isQuestionProtected\": false,\r\n                \"questionsRequiredType\": \"alwaysRequired\",\r\n                \"participantAnswers\": {\r\n                  \"actualAnswerValue\": \"S\",\r\n                  \"electedAnswerValue\": \"S\"\r\n                },\r\n                \"answers\": [\r\n                  {\r\n                    \"answersValue\": \"S\",\r\n                    \"answersLabel\": \"Smoker\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"footnotes\": [\r\n          {\r\n            \"footnoteSummary\": \"deductibleEmbedded\",\r\n            \"footnoteType\": \"option\",\r\n            \"footnoteAdditionalText\": [\r\n              {\r\n                \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n                \"footnoteAdditionalTextFieldType\": \"text\",\r\n                \"footnoteAdditionalTextValue\": \"John\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"customText\": [\r\n          {\r\n            \"customTextId\": \"string\",\r\n            \"customTextValue\": \"string\"\r\n          }\r\n        ],\r\n        \"enrollmentMessages\": [\r\n          {\r\n            \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n            \"enrollmentMessagesType\": \"option\",\r\n            \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n            \"enrollmentMessageType\": \"option\",\r\n            \"enrollmentMessagesAdditionalText\": [\r\n              {\r\n                \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n              }\r\n            ],\r\n            \"enrollmentMessageAdditionalText\": [\r\n              {\r\n                \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"tipsAndAlerts\": [\r\n          {\r\n            \"tipsAndAlertsId\": \"1111\",\r\n            \"tipsAndAlertsType\": \"currentCoverageUnavailable\",\r\n            \"tipsAndAlertsGroupType\": \"alert\",\r\n            \"tipsAndAlertsLinkType\": \"primaryPlan\",\r\n            \"tipsAndAlertsLinkName\": \"Medical Plan Election\",\r\n            \"tipsAndAlertsLinkValue\": \"02HPE\",\r\n            \"tipsAndAlertsAdditionalText\": [\r\n              {\r\n                \"tipsAndAlertsAdditionalTextSequence\": \"1\",\r\n                \"tipsAndAlertsAdditionalTextType\": \"text\",\r\n                \"tipsAndAlertsAdditionalTextValue\": \"Medical\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"footnotes\": [\r\n      {\r\n        \"footnoteSummary\": \"deductibleEmbedded\",\r\n        \"footnoteType\": \"option\",\r\n        \"footnoteAdditionalText\": [\r\n          {\r\n            \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n            \"footnoteAdditionalTextFieldType\": \"text\",\r\n            \"footnoteAdditionalTextValue\": \"John\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"dependents\": [\r\n      {\r\n        \"dependentPersonInternalId\": \"123456789\",\r\n        \"relationshipDescription\": \"Child\",\r\n        \"relationshipType\": \"child\",\r\n        \"relationshipCode\": \"C\",\r\n        \"firstName\": \"John\",\r\n        \"middleName\": \"Jacob\",\r\n        \"lastName\": \"Doe\",\r\n        \"suffix\": \"IV\",\r\n        \"birthDate\": \"2016-11-02T00:00:00\",\r\n        \"gender\": \"male\"\r\n      }\r\n    ]\r\n  }\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr1QVDCBQ.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr1QVDCBQ.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/putReviseCancel",
+      "name": "Allows the API consumer to cancel out a participants partial elections that may have occured before a final election was made.",
+      "method": "PUT",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/reviseCancel",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroDSWBU5.description.html",
+      "request": {
+        "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroDSWBU5.request.html",
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": [
+          {
+            "contentType": "application/json",
+            "schemaId": "603fa9cbd157c90c2c38ed29",
+            "typeName": "reviseCancelRequest",
+            "generatedSample": "{\r\n  \"plans\": [\r\n    {\r\n      \"planId\": \"3500\"\r\n    }\r\n  ]\r\n}"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroDSWBU5.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "pendingElectionsResponse",
+              "generatedSample": "{\r\n  \"coverages\": [\r\n    {\r\n      \"electionType\": \"optionCoverageCategoryPrice\",\r\n      \"electionStatus\": \"unconfirmedElection\",\r\n      \"transactionId\": \"3500\",\r\n      \"planId\": \"3500\",\r\n      \"planDescription\": \"Active Medical\",\r\n      \"planSummary\": \"health\",\r\n      \"planType\": \"medical\",\r\n      \"coverageBeginDate\": \"2018-01-01T00:00:00\",\r\n      \"coverageEndDate\": \"2018-12-31T00:00:00\",\r\n      \"adjustedFrequencyType\": \"payPeriod\",\r\n      \"employeeAdjustedPrice\": 100.01,\r\n      \"employeeAnnualPrice\": 1200.12,\r\n      \"employeeAdjustedPreTaxPrice\": 100.01,\r\n      \"employeeAnnualPreTaxPrice\": 1200.12,\r\n      \"employeeAdjustedPostTaxPrice\": 0.0,\r\n      \"employeeAnnualPostTaxPrice\": 0.0,\r\n      \"employeeAdjustedTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAnnualTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAdjustedTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalNetPrice\": 0.0,\r\n      \"employeeAnnualTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalNetPrice\": 0.0,\r\n      \"totalActualCoverageAmount\": 0.0,\r\n      \"totalElectedCoverageAmount\": 0.0,\r\n      \"planSummaryTaxCode\": \"preTax\",\r\n      \"planSequence\": 10,\r\n      \"planMaintenanceAction\": \"viewAndChange\",\r\n      \"option\": {\r\n        \"noCoverageOptionId\": \"3501\",\r\n        \"noCoverageCategoryId\": \"20\",\r\n        \"isEligibleForNoCoverage\": true,\r\n        \"isParticipantCovered\": true,\r\n        \"actualOptionId\": \"3701\",\r\n        \"actualCoverageCategoryId\": \"30\",\r\n        \"actualOptionDescription\": \"Aetna PPO\",\r\n        \"actualOptionType\": \"preferredProviderOrganization\",\r\n        \"actualCoverageCategoryDescription\": \"You + Family\",\r\n        \"actualCoverageCategoryType\": \"participantFamily\",\r\n        \"actualOptionTaxCode\": \"preTax\",\r\n        \"electedOptionId\": \"3501\",\r\n        \"electedOptionDescription\": \"Aetna PPO\",\r\n        \"electedOptionType\": \"preferredProviderOrganization\",\r\n        \"electedCoverageCategoryId\": \"30\",\r\n        \"electedCoverageCategoryDescription\": \"You + Family\",\r\n        \"electedCoverageCategoryType\": \"participantFamily\",\r\n        \"electedOptionTaxCode\": \"preTax\",\r\n        \"primaryCareProviderDesignationType\": \"providerLookupOnly\",\r\n        \"savingsAccountPlanChoiceId\": \"120\",\r\n        \"dependentOngoingVerificationCode\": \"open\",\r\n        \"isSideFundAllowed\": false,\r\n        \"benefitAmounts\": [\r\n          {\r\n            \"benefitAmountsCoverageId\": \"3502\",\r\n            \"benefitAmountsSequence\": 10,\r\n            \"benefitAmountsDescription\": \"Aetna\",\r\n            \"actualCoverageAmount\": 0.0,\r\n            \"actualIncrementQuantity\": 0,\r\n            \"electedCoverageAmount\": 0.0,\r\n            \"electedIncrementQuantity\": 0,\r\n            \"incrementType\": \"days\"\r\n          }\r\n        ],\r\n        \"sideFund\": {\r\n          \"actualSideFundAmount\": 1200.0,\r\n          \"actualAdjustedSideFundAmount\": 100.0,\r\n          \"electedSideFundAmount\": 1200.0,\r\n          \"electedAdjustedSideFundAmount\": 100.0,\r\n          \"sideFundAdjustedFrequencyType\": \"monthly\"\r\n        }\r\n      },\r\n      \"relationshipCoverages\": {\r\n        \"dependentTransactionId\": \"3505\",\r\n        \"eligibleRelationships\": [\r\n          {\r\n            \"dependentPersonInternalId\": \"123456789\",\r\n            \"isDependentPotentiallyEligible\": false,\r\n            \"isDependentCoveredElection\": true,\r\n            \"isDependentCoveredActual\": true,\r\n            \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n            \"pendingApprovalType\": \"option\",\r\n            \"pendingApprovalReferenceId\": \"\",\r\n            \"enrollmentMessages\": [\r\n              {\r\n                \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessagesType\": \"option\",\r\n                \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessageType\": \"option\",\r\n                \"enrollmentMessagesAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n                  }\r\n                ],\r\n                \"enrollmentMessageAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"accountPlan\": {\r\n        \"actualAnnualGoalAmount\": 1200.0,\r\n        \"actualAdjustedGoalAmount\": 100.0,\r\n        \"electedAnnualGoalAmount\": 1200.0,\r\n        \"electedAdjustedGoalAmount\": 100.0,\r\n        \"vendorId\": \"3505\",\r\n        \"vendorType\": \"alegeus\",\r\n        \"vendorDescription\": \"Bank\",\r\n        \"savingsAccountPlanChoiceId\": \"3505\",\r\n        \"isLimitedPurpose\": true,\r\n        \"contributionSources\": [\r\n          {\r\n            \"contributionSourcesId\": \"20\",\r\n            \"contributionDisplaySequence\": 10,\r\n            \"electionContributionFrequency\": \"monthly\",\r\n            \"sourceFrequency\": \"monthly\",\r\n            \"contributionSourcesType\": \"employeeContribution\",\r\n            \"contributionSourcesTaxationType\": \"preTax\",\r\n            \"contributionSourcesDescription\": \"Employee Contribution\",\r\n            \"adjustedContributionPreTaxAmount\": 200.0,\r\n            \"adjustedContributionPostTaxAmount\": 0.0,\r\n            \"annualContributionPreTaxAmount\": 2400.0,\r\n            \"annualContributionPostTaxAmount\": 0.0,\r\n            \"adjustedActualContributionAmount\": 200.0,\r\n            \"annualActualContributionAmount\": 2400.0,\r\n            \"adjustedElectedContributionAmount\": 200.0,\r\n            \"annualElectedContributionAmount\": 2400.0\r\n          }\r\n        ]\r\n      },\r\n      \"creditsAndSurcharges\": [\r\n        {\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"transactionId\": \"1001\",\r\n          \"electionType\": \"creditByCoverageCategory\",\r\n          \"effectiveBeginDate\": \"2018-01-01T00:00:00\",\r\n          \"effectiveEndDate\": \"2018-12-31T00:00:00\",\r\n          \"electionStatus\": \"unconfirmedElection\",\r\n          \"annualAmount\": 120.0,\r\n          \"adjustedAmount\": 10.0,\r\n          \"taxationType\": \"preTax\",\r\n          \"creditsAndSurchargesDescription\": \"Healthy Lifestyle Credit\",\r\n          \"creditsAndSurchargesLabel\": \"Health Credit\",\r\n          \"creditsAndSurchargesType\": \"inPlanNoQuestionCredit\"\r\n        }\r\n      ],\r\n      \"questionnaires\": [\r\n        {\r\n          \"questionnairesDescription\": \"Tobacco Status\",\r\n          \"questionnairesType\": \"inPlanCreditsAndSurcharges\",\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"questions\": [\r\n            {\r\n              \"questionsLabel\": \"Employee Smoker Status\",\r\n              \"personInternalId\": \"123456789\",\r\n              \"questionsTransactionId\": \"2020\",\r\n              \"questionsElectionStatus\": \"unconfirmedElection\",\r\n              \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n              \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n              \"answersType\": \"text\",\r\n              \"questionsType\": \"standalone\",\r\n              \"answersValidValueType\": \"match\",\r\n              \"isShowEffectiveDate\": false,\r\n              \"isEffectiveDateElectable\": false,\r\n              \"isQuestionProtected\": false,\r\n              \"questionsRequiredType\": \"alwaysRequired\",\r\n              \"participantAnswers\": {\r\n                \"actualAnswerValue\": \"S\",\r\n                \"electedAnswerValue\": \"S\"\r\n              },\r\n              \"answers\": [\r\n                {\r\n                  \"answersValue\": \"S\",\r\n                  \"answersLabel\": \"Smoker\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"footnotes\": [\r\n        {\r\n          \"footnoteSummary\": \"deductibleEmbedded\",\r\n          \"footnoteType\": \"option\",\r\n          \"footnoteAdditionalText\": [\r\n            {\r\n              \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n              \"footnoteAdditionalTextFieldType\": \"text\",\r\n              \"footnoteAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"customText\": [\r\n        {\r\n          \"customTextId\": \"string\",\r\n          \"customTextValue\": \"string\"\r\n        }\r\n      ],\r\n      \"enrollmentMessages\": [\r\n        {\r\n          \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessagesType\": \"option\",\r\n          \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessageType\": \"option\",\r\n          \"enrollmentMessagesAdditionalText\": [\r\n            {\r\n              \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n            }\r\n          ],\r\n          \"enrollmentMessageAdditionalText\": [\r\n            {\r\n              \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"tipsAndAlerts\": [\r\n        {\r\n          \"tipsAndAlertsId\": \"1111\",\r\n          \"tipsAndAlertsType\": \"currentCoverageUnavailable\",\r\n          \"tipsAndAlertsGroupType\": \"alert\",\r\n          \"tipsAndAlertsLinkType\": \"primaryPlan\",\r\n          \"tipsAndAlertsLinkName\": \"Medical Plan Election\",\r\n          \"tipsAndAlertsLinkValue\": \"02HPE\",\r\n          \"tipsAndAlertsAdditionalText\": [\r\n            {\r\n              \"tipsAndAlertsAdditionalTextSequence\": \"1\",\r\n              \"tipsAndAlertsAdditionalTextType\": \"text\",\r\n              \"tipsAndAlertsAdditionalTextValue\": \"Medical\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"footnotes\": [\r\n    {\r\n      \"footnoteSummary\": \"deductibleEmbedded\",\r\n      \"footnoteType\": \"option\",\r\n      \"footnoteAdditionalText\": [\r\n        {\r\n          \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n          \"footnoteAdditionalTextFieldType\": \"text\",\r\n          \"footnoteAdditionalTextValue\": \"John\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"dependents\": [\r\n    {\r\n      \"dependentPersonInternalId\": \"123456789\",\r\n      \"relationshipDescription\": \"Child\",\r\n      \"relationshipType\": \"child\",\r\n      \"relationshipCode\": \"C\",\r\n      \"firstName\": \"John\",\r\n      \"middleName\": \"Jacob\",\r\n      \"lastName\": \"Doe\",\r\n      \"suffix\": \"IV\",\r\n      \"birthDate\": \"2016-11-02T00:00:00\",\r\n      \"gender\": \"male\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroDSWBU5.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroDSWBU5.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/putValidate",
+      "name": "Validate elections from the business process.",
+      "method": "PUT",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/validate",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroRKEUZX.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroRKEUZX.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "pendingElectionsResponse",
+              "generatedSample": "{\r\n  \"coverages\": [\r\n    {\r\n      \"electionType\": \"optionCoverageCategoryPrice\",\r\n      \"electionStatus\": \"unconfirmedElection\",\r\n      \"transactionId\": \"3500\",\r\n      \"planId\": \"3500\",\r\n      \"planDescription\": \"Active Medical\",\r\n      \"planSummary\": \"health\",\r\n      \"planType\": \"medical\",\r\n      \"coverageBeginDate\": \"2018-01-01T00:00:00\",\r\n      \"coverageEndDate\": \"2018-12-31T00:00:00\",\r\n      \"adjustedFrequencyType\": \"payPeriod\",\r\n      \"employeeAdjustedPrice\": 100.01,\r\n      \"employeeAnnualPrice\": 1200.12,\r\n      \"employeeAdjustedPreTaxPrice\": 100.01,\r\n      \"employeeAnnualPreTaxPrice\": 1200.12,\r\n      \"employeeAdjustedPostTaxPrice\": 0.0,\r\n      \"employeeAnnualPostTaxPrice\": 0.0,\r\n      \"employeeAdjustedTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAnnualTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAdjustedTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalNetPrice\": 0.0,\r\n      \"employeeAnnualTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalNetPrice\": 0.0,\r\n      \"totalActualCoverageAmount\": 0.0,\r\n      \"totalElectedCoverageAmount\": 0.0,\r\n      \"planSummaryTaxCode\": \"preTax\",\r\n      \"planSequence\": 10,\r\n      \"planMaintenanceAction\": \"viewAndChange\",\r\n      \"option\": {\r\n        \"noCoverageOptionId\": \"3501\",\r\n        \"noCoverageCategoryId\": \"20\",\r\n        \"isEligibleForNoCoverage\": true,\r\n        \"isParticipantCovered\": true,\r\n        \"actualOptionId\": \"3701\",\r\n        \"actualCoverageCategoryId\": \"30\",\r\n        \"actualOptionDescription\": \"Aetna PPO\",\r\n        \"actualOptionType\": \"preferredProviderOrganization\",\r\n        \"actualCoverageCategoryDescription\": \"You + Family\",\r\n        \"actualCoverageCategoryType\": \"participantFamily\",\r\n        \"actualOptionTaxCode\": \"preTax\",\r\n        \"electedOptionId\": \"3501\",\r\n        \"electedOptionDescription\": \"Aetna PPO\",\r\n        \"electedOptionType\": \"preferredProviderOrganization\",\r\n        \"electedCoverageCategoryId\": \"30\",\r\n        \"electedCoverageCategoryDescription\": \"You + Family\",\r\n        \"electedCoverageCategoryType\": \"participantFamily\",\r\n        \"electedOptionTaxCode\": \"preTax\",\r\n        \"primaryCareProviderDesignationType\": \"providerLookupOnly\",\r\n        \"savingsAccountPlanChoiceId\": \"120\",\r\n        \"dependentOngoingVerificationCode\": \"open\",\r\n        \"isSideFundAllowed\": false,\r\n        \"benefitAmounts\": [\r\n          {\r\n            \"benefitAmountsCoverageId\": \"3502\",\r\n            \"benefitAmountsSequence\": 10,\r\n            \"benefitAmountsDescription\": \"Aetna\",\r\n            \"actualCoverageAmount\": 0.0,\r\n            \"actualIncrementQuantity\": 0,\r\n            \"electedCoverageAmount\": 0.0,\r\n            \"electedIncrementQuantity\": 0,\r\n            \"incrementType\": \"days\"\r\n          }\r\n        ],\r\n        \"sideFund\": {\r\n          \"actualSideFundAmount\": 1200.0,\r\n          \"actualAdjustedSideFundAmount\": 100.0,\r\n          \"electedSideFundAmount\": 1200.0,\r\n          \"electedAdjustedSideFundAmount\": 100.0,\r\n          \"sideFundAdjustedFrequencyType\": \"monthly\"\r\n        }\r\n      },\r\n      \"relationshipCoverages\": {\r\n        \"dependentTransactionId\": \"3505\",\r\n        \"eligibleRelationships\": [\r\n          {\r\n            \"dependentPersonInternalId\": \"123456789\",\r\n            \"isDependentPotentiallyEligible\": false,\r\n            \"isDependentCoveredElection\": true,\r\n            \"isDependentCoveredActual\": true,\r\n            \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n            \"pendingApprovalType\": \"option\",\r\n            \"pendingApprovalReferenceId\": \"\",\r\n            \"enrollmentMessages\": [\r\n              {\r\n                \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessagesType\": \"option\",\r\n                \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessageType\": \"option\",\r\n                \"enrollmentMessagesAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n                  }\r\n                ],\r\n                \"enrollmentMessageAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"accountPlan\": {\r\n        \"actualAnnualGoalAmount\": 1200.0,\r\n        \"actualAdjustedGoalAmount\": 100.0,\r\n        \"electedAnnualGoalAmount\": 1200.0,\r\n        \"electedAdjustedGoalAmount\": 100.0,\r\n        \"vendorId\": \"3505\",\r\n        \"vendorType\": \"alegeus\",\r\n        \"vendorDescription\": \"Bank\",\r\n        \"savingsAccountPlanChoiceId\": \"3505\",\r\n        \"isLimitedPurpose\": true,\r\n        \"contributionSources\": [\r\n          {\r\n            \"contributionSourcesId\": \"20\",\r\n            \"contributionDisplaySequence\": 10,\r\n            \"electionContributionFrequency\": \"monthly\",\r\n            \"sourceFrequency\": \"monthly\",\r\n            \"contributionSourcesType\": \"employeeContribution\",\r\n            \"contributionSourcesTaxationType\": \"preTax\",\r\n            \"contributionSourcesDescription\": \"Employee Contribution\",\r\n            \"adjustedContributionPreTaxAmount\": 200.0,\r\n            \"adjustedContributionPostTaxAmount\": 0.0,\r\n            \"annualContributionPreTaxAmount\": 2400.0,\r\n            \"annualContributionPostTaxAmount\": 0.0,\r\n            \"adjustedActualContributionAmount\": 200.0,\r\n            \"annualActualContributionAmount\": 2400.0,\r\n            \"adjustedElectedContributionAmount\": 200.0,\r\n            \"annualElectedContributionAmount\": 2400.0\r\n          }\r\n        ]\r\n      },\r\n      \"creditsAndSurcharges\": [\r\n        {\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"transactionId\": \"1001\",\r\n          \"electionType\": \"creditByCoverageCategory\",\r\n          \"effectiveBeginDate\": \"2018-01-01T00:00:00\",\r\n          \"effectiveEndDate\": \"2018-12-31T00:00:00\",\r\n          \"electionStatus\": \"unconfirmedElection\",\r\n          \"annualAmount\": 120.0,\r\n          \"adjustedAmount\": 10.0,\r\n          \"taxationType\": \"preTax\",\r\n          \"creditsAndSurchargesDescription\": \"Healthy Lifestyle Credit\",\r\n          \"creditsAndSurchargesLabel\": \"Health Credit\",\r\n          \"creditsAndSurchargesType\": \"inPlanNoQuestionCredit\"\r\n        }\r\n      ],\r\n      \"questionnaires\": [\r\n        {\r\n          \"questionnairesDescription\": \"Tobacco Status\",\r\n          \"questionnairesType\": \"inPlanCreditsAndSurcharges\",\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"questions\": [\r\n            {\r\n              \"questionsLabel\": \"Employee Smoker Status\",\r\n              \"personInternalId\": \"123456789\",\r\n              \"questionsTransactionId\": \"2020\",\r\n              \"questionsElectionStatus\": \"unconfirmedElection\",\r\n              \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n              \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n              \"answersType\": \"text\",\r\n              \"questionsType\": \"standalone\",\r\n              \"answersValidValueType\": \"match\",\r\n              \"isShowEffectiveDate\": false,\r\n              \"isEffectiveDateElectable\": false,\r\n              \"isQuestionProtected\": false,\r\n              \"questionsRequiredType\": \"alwaysRequired\",\r\n              \"participantAnswers\": {\r\n                \"actualAnswerValue\": \"S\",\r\n                \"electedAnswerValue\": \"S\"\r\n              },\r\n              \"answers\": [\r\n                {\r\n                  \"answersValue\": \"S\",\r\n                  \"answersLabel\": \"Smoker\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"footnotes\": [\r\n        {\r\n          \"footnoteSummary\": \"deductibleEmbedded\",\r\n          \"footnoteType\": \"option\",\r\n          \"footnoteAdditionalText\": [\r\n            {\r\n              \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n              \"footnoteAdditionalTextFieldType\": \"text\",\r\n              \"footnoteAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"customText\": [\r\n        {\r\n          \"customTextId\": \"string\",\r\n          \"customTextValue\": \"string\"\r\n        }\r\n      ],\r\n      \"enrollmentMessages\": [\r\n        {\r\n          \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessagesType\": \"option\",\r\n          \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessageType\": \"option\",\r\n          \"enrollmentMessagesAdditionalText\": [\r\n            {\r\n              \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n            }\r\n          ],\r\n          \"enrollmentMessageAdditionalText\": [\r\n            {\r\n              \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"tipsAndAlerts\": [\r\n        {\r\n          \"tipsAndAlertsId\": \"1111\",\r\n          \"tipsAndAlertsType\": \"currentCoverageUnavailable\",\r\n          \"tipsAndAlertsGroupType\": \"alert\",\r\n          \"tipsAndAlertsLinkType\": \"primaryPlan\",\r\n          \"tipsAndAlertsLinkName\": \"Medical Plan Election\",\r\n          \"tipsAndAlertsLinkValue\": \"02HPE\",\r\n          \"tipsAndAlertsAdditionalText\": [\r\n            {\r\n              \"tipsAndAlertsAdditionalTextSequence\": \"1\",\r\n              \"tipsAndAlertsAdditionalTextType\": \"text\",\r\n              \"tipsAndAlertsAdditionalTextValue\": \"Medical\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"footnotes\": [\r\n    {\r\n      \"footnoteSummary\": \"deductibleEmbedded\",\r\n      \"footnoteType\": \"option\",\r\n      \"footnoteAdditionalText\": [\r\n        {\r\n          \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n          \"footnoteAdditionalTextFieldType\": \"text\",\r\n          \"footnoteAdditionalTextValue\": \"John\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"dependents\": [\r\n    {\r\n      \"dependentPersonInternalId\": \"123456789\",\r\n      \"relationshipDescription\": \"Child\",\r\n      \"relationshipType\": \"child\",\r\n      \"relationshipCode\": \"C\",\r\n      \"firstName\": \"John\",\r\n      \"middleName\": \"Jacob\",\r\n      \"lastName\": \"Doe\",\r\n      \"suffix\": \"IV\",\r\n      \"birthDate\": \"2016-11-02T00:00:00\",\r\n      \"gender\": \"male\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroRKEUZX.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroRKEUZX.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/putCommit",
+      "name": "Commits elections to the system.",
+      "method": "PUT",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/commit",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroBHL262.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroBHL262.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "pendingElectionsResponse",
+              "generatedSample": "{\r\n  \"coverages\": [\r\n    {\r\n      \"electionType\": \"optionCoverageCategoryPrice\",\r\n      \"electionStatus\": \"unconfirmedElection\",\r\n      \"transactionId\": \"3500\",\r\n      \"planId\": \"3500\",\r\n      \"planDescription\": \"Active Medical\",\r\n      \"planSummary\": \"health\",\r\n      \"planType\": \"medical\",\r\n      \"coverageBeginDate\": \"2018-01-01T00:00:00\",\r\n      \"coverageEndDate\": \"2018-12-31T00:00:00\",\r\n      \"adjustedFrequencyType\": \"payPeriod\",\r\n      \"employeeAdjustedPrice\": 100.01,\r\n      \"employeeAnnualPrice\": 1200.12,\r\n      \"employeeAdjustedPreTaxPrice\": 100.01,\r\n      \"employeeAnnualPreTaxPrice\": 1200.12,\r\n      \"employeeAdjustedPostTaxPrice\": 0.0,\r\n      \"employeeAnnualPostTaxPrice\": 0.0,\r\n      \"employeeAdjustedTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalPriceMinusPlanEmployerSubsidy\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAnnualTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalPriceMinusPlanEmployerSubsidy\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalPriceMinusPlanEmployerSubsidy\": 0.0,\r\n      \"employeeAdjustedTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPreTaxTotalNetPrice\": 90.01,\r\n      \"employeeAdjustedPostTaxTotalNetPrice\": 0.0,\r\n      \"employeeAnnualTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPreTaxTotalNetPrice\": 1080.12,\r\n      \"employeeAnnualPostTaxTotalNetPrice\": 0.0,\r\n      \"totalActualCoverageAmount\": 0.0,\r\n      \"totalElectedCoverageAmount\": 0.0,\r\n      \"planSummaryTaxCode\": \"preTax\",\r\n      \"planSequence\": 10,\r\n      \"planMaintenanceAction\": \"viewAndChange\",\r\n      \"option\": {\r\n        \"noCoverageOptionId\": \"3501\",\r\n        \"noCoverageCategoryId\": \"20\",\r\n        \"isEligibleForNoCoverage\": true,\r\n        \"isParticipantCovered\": true,\r\n        \"actualOptionId\": \"3701\",\r\n        \"actualCoverageCategoryId\": \"30\",\r\n        \"actualOptionDescription\": \"Aetna PPO\",\r\n        \"actualOptionType\": \"preferredProviderOrganization\",\r\n        \"actualCoverageCategoryDescription\": \"You + Family\",\r\n        \"actualCoverageCategoryType\": \"participantFamily\",\r\n        \"actualOptionTaxCode\": \"preTax\",\r\n        \"electedOptionId\": \"3501\",\r\n        \"electedOptionDescription\": \"Aetna PPO\",\r\n        \"electedOptionType\": \"preferredProviderOrganization\",\r\n        \"electedCoverageCategoryId\": \"30\",\r\n        \"electedCoverageCategoryDescription\": \"You + Family\",\r\n        \"electedCoverageCategoryType\": \"participantFamily\",\r\n        \"electedOptionTaxCode\": \"preTax\",\r\n        \"primaryCareProviderDesignationType\": \"providerLookupOnly\",\r\n        \"savingsAccountPlanChoiceId\": \"120\",\r\n        \"dependentOngoingVerificationCode\": \"open\",\r\n        \"isSideFundAllowed\": false,\r\n        \"benefitAmounts\": [\r\n          {\r\n            \"benefitAmountsCoverageId\": \"3502\",\r\n            \"benefitAmountsSequence\": 10,\r\n            \"benefitAmountsDescription\": \"Aetna\",\r\n            \"actualCoverageAmount\": 0.0,\r\n            \"actualIncrementQuantity\": 0,\r\n            \"electedCoverageAmount\": 0.0,\r\n            \"electedIncrementQuantity\": 0,\r\n            \"incrementType\": \"days\"\r\n          }\r\n        ],\r\n        \"sideFund\": {\r\n          \"actualSideFundAmount\": 1200.0,\r\n          \"actualAdjustedSideFundAmount\": 100.0,\r\n          \"electedSideFundAmount\": 1200.0,\r\n          \"electedAdjustedSideFundAmount\": 100.0,\r\n          \"sideFundAdjustedFrequencyType\": \"monthly\"\r\n        }\r\n      },\r\n      \"relationshipCoverages\": {\r\n        \"dependentTransactionId\": \"3505\",\r\n        \"eligibleRelationships\": [\r\n          {\r\n            \"dependentPersonInternalId\": \"123456789\",\r\n            \"isDependentPotentiallyEligible\": false,\r\n            \"isDependentCoveredElection\": true,\r\n            \"isDependentCoveredActual\": true,\r\n            \"pendingApprovalSummary\": \"evidenceOfInsurability\",\r\n            \"pendingApprovalType\": \"option\",\r\n            \"pendingApprovalReferenceId\": \"\",\r\n            \"enrollmentMessages\": [\r\n              {\r\n                \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessagesType\": \"option\",\r\n                \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n                \"enrollmentMessageType\": \"option\",\r\n                \"enrollmentMessagesAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n                  }\r\n                ],\r\n                \"enrollmentMessageAdditionalText\": [\r\n                  {\r\n                    \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n                    \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n                    \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n                  }\r\n                ]\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"accountPlan\": {\r\n        \"actualAnnualGoalAmount\": 1200.0,\r\n        \"actualAdjustedGoalAmount\": 100.0,\r\n        \"electedAnnualGoalAmount\": 1200.0,\r\n        \"electedAdjustedGoalAmount\": 100.0,\r\n        \"vendorId\": \"3505\",\r\n        \"vendorType\": \"alegeus\",\r\n        \"vendorDescription\": \"Bank\",\r\n        \"savingsAccountPlanChoiceId\": \"3505\",\r\n        \"isLimitedPurpose\": true,\r\n        \"contributionSources\": [\r\n          {\r\n            \"contributionSourcesId\": \"20\",\r\n            \"contributionDisplaySequence\": 10,\r\n            \"electionContributionFrequency\": \"monthly\",\r\n            \"sourceFrequency\": \"monthly\",\r\n            \"contributionSourcesType\": \"employeeContribution\",\r\n            \"contributionSourcesTaxationType\": \"preTax\",\r\n            \"contributionSourcesDescription\": \"Employee Contribution\",\r\n            \"adjustedContributionPreTaxAmount\": 200.0,\r\n            \"adjustedContributionPostTaxAmount\": 0.0,\r\n            \"annualContributionPreTaxAmount\": 2400.0,\r\n            \"annualContributionPostTaxAmount\": 0.0,\r\n            \"adjustedActualContributionAmount\": 200.0,\r\n            \"annualActualContributionAmount\": 2400.0,\r\n            \"adjustedElectedContributionAmount\": 200.0,\r\n            \"annualElectedContributionAmount\": 2400.0\r\n          }\r\n        ]\r\n      },\r\n      \"creditsAndSurcharges\": [\r\n        {\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"transactionId\": \"1001\",\r\n          \"electionType\": \"creditByCoverageCategory\",\r\n          \"effectiveBeginDate\": \"2018-01-01T00:00:00\",\r\n          \"effectiveEndDate\": \"2018-12-31T00:00:00\",\r\n          \"electionStatus\": \"unconfirmedElection\",\r\n          \"annualAmount\": 120.0,\r\n          \"adjustedAmount\": 10.0,\r\n          \"taxationType\": \"preTax\",\r\n          \"creditsAndSurchargesDescription\": \"Healthy Lifestyle Credit\",\r\n          \"creditsAndSurchargesLabel\": \"Health Credit\",\r\n          \"creditsAndSurchargesType\": \"inPlanNoQuestionCredit\"\r\n        }\r\n      ],\r\n      \"questionnaires\": [\r\n        {\r\n          \"questionnairesDescription\": \"Tobacco Status\",\r\n          \"questionnairesType\": \"inPlanCreditsAndSurcharges\",\r\n          \"creditsAndSurchargesId\": \"1000\",\r\n          \"questions\": [\r\n            {\r\n              \"questionsLabel\": \"Employee Smoker Status\",\r\n              \"personInternalId\": \"123456789\",\r\n              \"questionsTransactionId\": \"2020\",\r\n              \"questionsElectionStatus\": \"unconfirmedElection\",\r\n              \"questionsId\": \"EE-SMKR-STAT-CD\",\r\n              \"effectiveDate\": \"2018-01-01T00:00:00\",\r\n              \"answersType\": \"text\",\r\n              \"questionsType\": \"standalone\",\r\n              \"answersValidValueType\": \"match\",\r\n              \"isShowEffectiveDate\": false,\r\n              \"isEffectiveDateElectable\": false,\r\n              \"isQuestionProtected\": false,\r\n              \"questionsRequiredType\": \"alwaysRequired\",\r\n              \"participantAnswers\": {\r\n                \"actualAnswerValue\": \"S\",\r\n                \"electedAnswerValue\": \"S\"\r\n              },\r\n              \"answers\": [\r\n                {\r\n                  \"answersValue\": \"S\",\r\n                  \"answersLabel\": \"Smoker\"\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"footnotes\": [\r\n        {\r\n          \"footnoteSummary\": \"deductibleEmbedded\",\r\n          \"footnoteType\": \"option\",\r\n          \"footnoteAdditionalText\": [\r\n            {\r\n              \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n              \"footnoteAdditionalTextFieldType\": \"text\",\r\n              \"footnoteAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"customText\": [\r\n        {\r\n          \"customTextId\": \"string\",\r\n          \"customTextValue\": \"string\"\r\n        }\r\n      ],\r\n      \"enrollmentMessages\": [\r\n        {\r\n          \"enrollmentMessagesSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessagesType\": \"option\",\r\n          \"enrollmentMessageSummary\": \"evidenceOfInsurability\",\r\n          \"enrollmentMessageType\": \"option\",\r\n          \"enrollmentMessagesAdditionalText\": [\r\n            {\r\n              \"enrollmentMessagesAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessagesAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessagesAdditionalTextValue\": \"John\"\r\n            }\r\n          ],\r\n          \"enrollmentMessageAdditionalText\": [\r\n            {\r\n              \"enrollmentMessageAdditionalTextId\": \"FRST-NM\",\r\n              \"enrollmentMessageAdditionalTextFieldType\": \"text\",\r\n              \"enrollmentMessageAdditionalTextValue\": \"John\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"tipsAndAlerts\": [\r\n        {\r\n          \"tipsAndAlertsId\": \"1111\",\r\n          \"tipsAndAlertsType\": \"currentCoverageUnavailable\",\r\n          \"tipsAndAlertsGroupType\": \"alert\",\r\n          \"tipsAndAlertsLinkType\": \"primaryPlan\",\r\n          \"tipsAndAlertsLinkName\": \"Medical Plan Election\",\r\n          \"tipsAndAlertsLinkValue\": \"02HPE\",\r\n          \"tipsAndAlertsAdditionalText\": [\r\n            {\r\n              \"tipsAndAlertsAdditionalTextSequence\": \"1\",\r\n              \"tipsAndAlertsAdditionalTextType\": \"text\",\r\n              \"tipsAndAlertsAdditionalTextValue\": \"Medical\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"footnotes\": [\r\n    {\r\n      \"footnoteSummary\": \"deductibleEmbedded\",\r\n      \"footnoteType\": \"option\",\r\n      \"footnoteAdditionalText\": [\r\n        {\r\n          \"footnoteAdditionalTextId\": \"FRST-NM\",\r\n          \"footnoteAdditionalTextFieldType\": \"text\",\r\n          \"footnoteAdditionalTextValue\": \"John\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"dependents\": [\r\n    {\r\n      \"dependentPersonInternalId\": \"123456789\",\r\n      \"relationshipDescription\": \"Child\",\r\n      \"relationshipType\": \"child\",\r\n      \"relationshipCode\": \"C\",\r\n      \"firstName\": \"John\",\r\n      \"middleName\": \"Jacob\",\r\n      \"lastName\": \"Doe\",\r\n      \"suffix\": \"IV\",\r\n      \"birthDate\": \"2016-11-02T00:00:00\",\r\n      \"gender\": \"male\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroBHL262.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroBHL262.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/putCancel",
+      "name": "Request to back out any pending changes.",
+      "method": "PUT",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/cancel",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "Business Process Reference Id for the participant's specific business process being run.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr19QF9IK.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr19QF9IK.response.200.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr19QF9IK.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnr19QF9IK.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getAvailableProviderNetworks",
+      "name": "Get the provider information for the plan provided.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/plan/{planId}/availableProviderNetworks",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "This request is coming from a context of a business process, this field will be used to pull provider information for the available options in the provided plan.",
+          "type": "string",
+          "required": true,
+          "values": []
+        },
+        {
+          "name": "planId",
+          "description": "The plan the provider information should be pulled for.  This is used to pull the available options to provide the provider networks.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1OYS3AR.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "viewCode",
+            "description": "Defines the type of response that is returned from the system. In the context of a business process, eligibleOptions can be selected to return all option information. Default is singleOption.\n  * `singleOption` - Current option returned.\n  * `eligibleOptions` - All eligible options returned.\n",
+            "type": "string",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1OYS3AR.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "providerNetworksResponse",
+              "generatedSample": "{\r\n  \"city\": \"Cityopolis\",\r\n  \"state\": \"IL\",\r\n  \"zipcode\": \"60000\",\r\n  \"planId\": \"3500\",\r\n  \"planType\": \"medical\",\r\n  \"vendor\": \"zelis\",\r\n  \"vendorParticipantId\": \"311dk2so-e315-r2d2-8bb8-zx3pi3141592\",\r\n  \"providerNetworks\": [\r\n    {\r\n      \"primaryCareProviderNetworkId\": \"1234\",\r\n      \"optionId\": \"3700\",\r\n      \"optionDescription\": \"Aetna PPO\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1OYS3AR.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnr1OYS3AR.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getHealthPlanComparisonAvailableOptions",
+      "name": "Returns a list options for the plan comparison chart tool.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/plan/{planId}/healthPlanComparisonAvailableOptions",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "This request is coming from a context of a business process, this field will be used to pull provider information for the available options in the provided plan.",
+          "type": "string",
+          "required": true,
+          "values": []
+        },
+        {
+          "name": "planId",
+          "description": "The plan the provider information should be pulled for.  This is used to pull the available options to provide the provider networks.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroQP2RUL.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "effectiveDate",
+            "description": "Format - date (as full-date in RFC3339). The date the plan information should be pulled for. Default is the businessProcessEffectiveDate. \n",
+            "type": "string",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroQP2RUL.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "healthPlanComparisonAvailableOptionsResponse",
+              "generatedSample": "{\r\n  \"planId\": \"3500\",\r\n  \"chartId\": \"10\",\r\n  \"effectiveDate\": \"2019-01-01T00:00:00\",\r\n  \"availableOptions\": [\r\n    {\r\n      \"optionId\": \"3511\",\r\n      \"optionDescription\": \"Aetna PPO\",\r\n      \"compositePlanDesignId\": \"953456\",\r\n      \"isCurrentOption\": true,\r\n      \"optionType\": \"preferredProviderOrganization\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroQP2RUL.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroQP2RUL.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getHealthPlanComparisonChart",
+      "name": "Get the health plan information for comparison.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/plan/{planId}/healthPlanComparisonChart/{chartId}",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "This request is coming from a context of a business process, this field will be used to pull provider information for the available options in the provided plan.",
+          "type": "string",
+          "required": true,
+          "values": []
+        },
+        {
+          "name": "planId",
+          "description": "The plan the provider information should be pulled for.  This is used to pull the available options to provide the provider networks.",
+          "type": "string",
+          "required": true,
+          "values": []
+        },
+        {
+          "name": "chartId",
+          "description": "The chart the health plan data is being requested for.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroCN0T28.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "optionIds",
+            "description": "This is used to get the array of optionIds to be compared.",
+            "type": "array",
+            "values": []
+          },
+          {
+            "name": "compositePlanDesignIds",
+            "description": "Used to get the plan design data for this set of ids. If not present this will return all compositePlanDesignIds for the plan in the businessProcess identified.",
+            "type": "array",
+            "values": []
+          },
+          {
+            "name": "effectiveDate",
+            "description": "Format - date (as full-date in RFC3339). The date the plan information should be pulled for. Default is the businessProcessEffectiveDate. \n",
+            "type": "string",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroCN0T28.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "healthPlanComparisonResponse",
+              "generatedSample": "{\r\n  \"healthPlanComparisonChartReferenceId\": \"string\",\r\n  \"chartAttributes\": {\r\n    \"chartId\": \"10\",\r\n    \"chartTitle\": \"Health\",\r\n    \"effectiveDate\": \"2018-01-01\",\r\n    \"superSections\": [\r\n      {\r\n        \"superSectionsId\": \"10\",\r\n        \"superSectionsTitle\": \"Key Benefits\",\r\n        \"superSectionSummary\": \"Key Benefits\",\r\n        \"sections\": [\r\n          {\r\n            \"sectionsId\": \"10\",\r\n            \"sectionsTitle\": \"Specialist office visit\",\r\n            \"dataElements\": [\r\n              {\r\n                \"dataElementsId\": \"9248\",\r\n                \"dataElementsType\": \"outOfPocket\",\r\n                \"dataElementsTitle\": \"You and family\"\r\n              }\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  },\r\n  \"planDesigns\": [\r\n    {\r\n      \"compositePlanDesignId\": \"953456\",\r\n      \"dataElements\": [\r\n        {\r\n          \"dataElementsId\": \"9248\",\r\n          \"dataElementsKeyId\": \"1234\",\r\n          \"dataElementsValue\": \"string\",\r\n          \"dataElementsURL\": \"string\",\r\n          \"titleFlagCode\": \"T\",\r\n          \"dataElementsValueFormatType\": \"text\",\r\n          \"dataElementsBenefitLevels\": [\r\n            {\r\n              \"dataElementsBenefitLevelsCode\": \"inNetwork\",\r\n              \"dataElementsBenefitLevelsText\": \"In-Network\",\r\n              \"dataElementsValue\": \"70% covered after deductible is met\"\r\n            }\r\n          ],\r\n          \"files\": [\r\n            {\r\n              \"filesDisplayText\": \"Carrier - Traditional PPO - All Locations\",\r\n              \"filesName\": \"190514\",\r\n              \"filesSize\": \"323\",\r\n              \"filesInventoryManagementId\": \"H000190514\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"customText\": [\r\n    {\r\n      \"customTextId\": \"string\",\r\n      \"customTextValue\": \"string\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroCN0T28.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnroCN0T28.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/getPersonTasks",
+      "name": "Get the tasks for this participant's business process.",
+      "method": "GET",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/personTasks",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "This request is coming from a context of a business process, this field will be used to pull tasks for this specific business process.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro5ULY8O.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "taskGroupTypes",
+            "description": "Used to get specific groups of tasks for display. Default when not present is toDo.\n  * `toDo` - 'To Do' Tasks\n  * `followUp` - Tasks that require participant follow up.\n  * `enrollmentResource` - Resources for the business process enrollment opportunity.",
+            "type": "array",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro5ULY8O.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "603fa9cbd157c90c2c38ed29",
+              "typeName": "personTasksResponse",
+              "generatedSample": "[\r\n  {\r\n    \"personTasksId\": \"54898\",\r\n    \"personTasksTypeCode\": \"healthCareSpendingAccount\",\r\n    \"personTasksGroupTypeCode\": \"toDo\",\r\n    \"personTasksStatusDerivedByCode\": \"system\",\r\n    \"personTasksStatus\": \"outstanding\",\r\n    \"tasksText\": [\r\n      {\r\n        \"tasksTextStatus\": \"outstanding\",\r\n        \"tasksTextAdditionalInfo\": [\r\n          {\r\n            \"tasksTextAdditionalInfoId\": \"PLAN-DESC\",\r\n            \"tasksTextAdditionalInfoSequence\": \"1\",\r\n            \"tasksTextAdditionalInfoName\": \"planDesc\",\r\n            \"tasksTextAdditionalInfoType\": \"text\",\r\n            \"tasksTextAdditionalInfoValue\": \"Health Care Spending Account\"\r\n          }\r\n        ],\r\n        \"tasksLink\": [\r\n          {\r\n            \"tasksLinkType\": \"primaryPlan\",\r\n            \"tasksLinkName\": \"Health Care Spending Account\",\r\n            \"tasksLinkValue\": \"HmEnrl040PlElecFSA\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }\r\n]"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro5ULY8O.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/GET__enrollment_personEnro5ULY8O.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/Enrollment/operations/putPersonTasks",
+      "name": "Update the tasks for this participant's business process.",
+      "method": "PUT",
+      "urlTemplate": "/enrollment/personEnrollments/{businessProcessReferenceId}/personTasks",
+      "templateParameters": [
+        {
+          "name": "businessProcessReferenceId",
+          "description": "This request is coming from a context of a business process, this field will be used to update tasks for this specific business process.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroI3E1WR.description.html",
+      "request": {
+        "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroI3E1WR.request.html",
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token.",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header.",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": [
+          {
+            "contentType": "application/json",
+            "schemaId": "603fa9cbd157c90c2c38ed29",
+            "typeName": "updatePersonTasksRequest",
+            "generatedSample": "[\r\n  {\r\n    \"personTasksId\": \"54898\",\r\n    \"personTasksStatus\": \"completed\"\r\n  }\r\n]"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroI3E1WR.response.200.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroI3E1WR.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/operations/PUT__enrollment_personEnroI3E1WR.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    }
+  ],
+  "apiSchemas": [
+    {
+      "id": "/apis/Enrollment/schemas/603fa9cbd157c90c2c38ed29",
+      "contentType": "application/vnd.oai.openapi.components+json",
+      "$ref-documentValue": "api-management/apis/Alight_Enrollment__1[CurreK70FFM/apiSchemas/603fa9cbd157c90c2c38ed29.document"
+    }
+  ],
+  "__GitModuleVersion": 15
+}

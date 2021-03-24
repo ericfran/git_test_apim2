@@ -1,0 +1,18 @@
+{
+  "id": "/products/alight-wealth-basic",
+  "name": "Alight Wealth - Basic",
+  "$ref-description": "api-management/products/Alight_Wealth_-_Basic_aligY8Z1NI/product.description.html",
+  "terms": null,
+  "subscriptionRequired": true,
+  "approvalRequired": false,
+  "subscriptionsLimit": null,
+  "state": "published",
+  "$refs-groups": [
+    "api-management/groups/Administrators/configuration.json",
+    "api-management/groups/Developers/configuration.json"
+  ],
+  "$refs-apis": [
+    "api-management/apis/Alight__Person_Defined_Co14LFGT0/configuration.json"
+  ],
+  "__GitModuleVersion": 15
+}

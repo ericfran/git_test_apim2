@@ -1,0 +1,30 @@
+{
+  "id": "/tags/CustomerIntentDomains",
+  "name": "CustomerIntentDomains",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/delete-api-customers-gcc-intent-domains-id",
+    "/apis/hrx-configuration-api/operations/post-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api/operations/GetCustomerIntentDomain",
+    "/apis/hrx-configuration-api/operations/get-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api/operations/put-api-customers-gcc-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-customers-gcc-intent-domains-id",
+    "/apis/hrx-configuration-api-v1/operations/get-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-customers-gcc-intent-domains-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api-v1/operations/GetCustomerIntentDomain",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-customers-gcc-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=2/operations/GetCustomerIntentDomain",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-customers-gcc-intent-domains-id",
+    "/apis/hrx-configuration-api-v1/operations/put-api-customers-gcc-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-customers-gcc-intent-domains",
+    "/apis/hrx-configuration-api;rev=3/operations/GetCustomerIntentDomain",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-customers-gcc-intent-domains-id"
+  ],
+  "__GitModuleVersion": 15
+}

@@ -1,0 +1,30 @@
+{
+  "id": "/tags/MessageTemplates",
+  "name": "MessageTemplates",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-message-templates",
+    "/apis/hrx-configuration-api/operations/delete-api-message-templates-id",
+    "/apis/hrx-configuration-api/operations/put-api-message-templates-id",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-message-templates-id",
+    "/apis/hrx-configuration-api/operations/GetMessageTemplate",
+    "/apis/hrx-configuration-api/operations/post-api-message-templates",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-message-templates",
+    "/apis/hrx-configuration-api;rev=2/operations/GetMessageTemplate",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-message-templates-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-message-templates",
+    "/apis/hrx-configuration-api-v1/operations/get-api-message-templates",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-message-templates-id",
+    "/apis/hrx-configuration-api-v1/operations/GetMessageTemplate",
+    "/apis/hrx-configuration-api-v1/operations/post-api-message-templates",
+    "/apis/hrx-configuration-api-v1/operations/put-api-message-templates-id",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-message-templates-id",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-message-templates-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-message-templates",
+    "/apis/hrx-configuration-api;rev=3/operations/GetMessageTemplate",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-message-templates"
+  ],
+  "__GitModuleVersion": 15
+}

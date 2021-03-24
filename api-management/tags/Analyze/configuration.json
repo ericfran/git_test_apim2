@@ -1,0 +1,22 @@
+{
+  "id": "/tags/Analyze",
+  "name": "Analyze",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-analyze-reports",
+    "/apis/hrx-configuration-api/operations/get-api-analyze-reports-reportname",
+    "/apis/hrx-configuration-api/operations/get-api-analyze-reports-reportname-gccs",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-analyze-reports",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-analyze-reports-reportname",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-analyze-reports-reportname-gccs",
+    "/apis/hrx-configuration-api-v1/operations/get-api-analyze-reports",
+    "/apis/hrx-configuration-api-v1/operations/get-api-analyze-reports-reportname",
+    "/apis/hrx-configuration-api-v1/operations/get-api-analyze-reports-reportname-gccs",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-analyze-reports",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-analyze-reports-reportname",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-analyze-reports-reportname-gccs"
+  ],
+  "__GitModuleVersion": 15
+}

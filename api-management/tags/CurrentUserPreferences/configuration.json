@@ -1,0 +1,18 @@
+{
+  "id": "/tags/CurrentUserPreferences",
+  "name": "CurrentUserPreferences",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/put-api-users-current-preferences",
+    "/apis/hrx-configuration-api/operations/get-api-users-current-preferences",
+    "/apis/hrx-configuration-api-v1/operations/get-api-users-current-preferences",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-users-current-preferences",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-users-current-preferences",
+    "/apis/hrx-configuration-api-v1/operations/put-api-users-current-preferences",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-users-current-preferences",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-users-current-preferences"
+  ],
+  "__GitModuleVersion": 15
+}

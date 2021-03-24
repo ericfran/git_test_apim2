@@ -1,0 +1,8 @@
+{
+  "type": "aad",
+  "authority": "login.microsoftonline.com",
+  "allowedTenants": [
+    "NorthgateISLtd.onmicrosoft.com"
+  ],
+  "__GitModuleVersion": 15
+}

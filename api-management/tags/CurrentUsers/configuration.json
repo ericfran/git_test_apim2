@@ -1,0 +1,26 @@
+{
+  "id": "/tags/CurrentUsers",
+  "name": "CurrentUsers",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/GetCurrentUser",
+    "/apis/hrx-configuration-api/operations/GetCurrentUserCompanies",
+    "/apis/hrx-configuration-api/operations/GetCurrentUserScopes",
+    "/apis/hrx-configuration-api/operations/SetLastLoginDateCurrentUser",
+    "/apis/hrx-configuration-api;rev=2/operations/SetLastLoginDateCurrentUser",
+    "/apis/hrx-configuration-api;rev=2/operations/GetCurrentUser",
+    "/apis/hrx-configuration-api;rev=2/operations/GetCurrentUserCompanies",
+    "/apis/hrx-configuration-api;rev=2/operations/GetCurrentUserScopes",
+    "/apis/hrx-configuration-api-v1/operations/GetCurrentUser",
+    "/apis/hrx-configuration-api-v1/operations/GetCurrentUserCompanies",
+    "/apis/hrx-configuration-api-v1/operations/GetCurrentUserScopes",
+    "/apis/hrx-configuration-api;rev=3/operations/GetCurrentUser",
+    "/apis/hrx-configuration-api;rev=3/operations/GetCurrentUserCompanies",
+    "/apis/hrx-configuration-api;rev=3/operations/GetCurrentUserScopes",
+    "/apis/hrx-configuration-api;rev=3/operations/SetLastLoginDateCurrentUser",
+    "/apis/hrx-configuration-api-v1/operations/SetLastLoginDateCurrentUser"
+  ],
+  "__GitModuleVersion": 15
+}

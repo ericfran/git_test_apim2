@@ -1,0 +1,11 @@
+{
+  "id": "/tags/starter",
+  "name": "Starter",
+  "apiIds": [
+    "/apis/echo-api;rev=1"
+  ],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [],
+  "__GitModuleVersion": 15
+}

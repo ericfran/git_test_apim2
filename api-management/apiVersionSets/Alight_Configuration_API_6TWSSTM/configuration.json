@@ -1,0 +1,9 @@
+{
+  "id": "/api-version-sets/603cbc8694dd997fe065520b",
+  "name": "Alight Configuration API",
+  "description": null,
+  "versioningScheme": "Header",
+  "versionQueryName": null,
+  "versionHeaderName": "Api-version",
+  "__GitModuleVersion": 15
+}

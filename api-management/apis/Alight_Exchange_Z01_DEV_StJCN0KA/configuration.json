@@ -1,0 +1,42 @@
+{
+  "id": "/apis/alight-exchange-z01-dev-status",
+  "name": "Alight Exchange Z01 DEV Status",
+  "apiRevision": "1",
+  "$ref-description": "",
+  "subscriptionRequired": true,
+  "serviceUrl": "https://devxch.ngahr.com/z01/ping",
+  "path": "exchange",
+  "protocols": [
+    "https"
+  ],
+  "authenticationSettings": {
+    "oAuth2": null,
+    "openid": null
+  },
+  "subscriptionKeyParameterNames": {
+    "header": "Ocp-Apim-Subscription-Key",
+    "query": "subscription-key"
+  },
+  "isCurrent": true,
+  "operations": [
+    {
+      "id": "/apis/alight-exchange-z01-dev-status/operations/get-status-exchange",
+      "name": "Get Status of Exchange instance",
+      "method": "GET",
+      "urlTemplate": "/monitor",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Exchange_Z01_DEV_StJCN0KA/operations/GET__monitor_alight-exchanYKFAC1.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [],
+      "policies": null,
+      "$ref-policy": "api-management/policies/apis/Alight_Exchange_Z01_DEV_StJCN0KA/operations/GET__monitor_alight-exchanYKFAC1.xml"
+    }
+  ],
+  "apiSchemas": [],
+  "$ref-policy": "api-management/policies/apis/Alight_Exchange_Z01_DEV_StJCN0KA.xml",
+  "__GitModuleVersion": 15
+}

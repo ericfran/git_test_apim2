@@ -1,0 +1,12 @@
+{
+  "id": "/tags/TestV2",
+  "name": "TestV2",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/TestV2_Get",
+    "/apis/hrx-assist-core-api/operations/TestV2_PostDummies"
+  ],
+  "__GitModuleVersion": 15
+}

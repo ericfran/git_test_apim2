@@ -1,0 +1,154 @@
+{
+  "id": "/apis/ace-apis-for-developer-portal",
+  "name": "Alight ACE APIs for Developer Portal",
+  "apiRevision": "1",
+  "$ref-description": null,
+  "subscriptionRequired": true,
+  "serviceUrl": null,
+  "path": "ace",
+  "protocols": [
+    "https"
+  ],
+  "authenticationSettings": {
+    "oAuth2": null,
+    "openid": null
+  },
+  "subscriptionKeyParameterNames": {
+    "header": "Ocp-Apim-Subscription-Key",
+    "query": "subscription-key"
+  },
+  "isCurrent": true,
+  "operations": [
+    {
+      "id": "/apis/ace-apis-for-developer-portal/operations/ApiSessionStartsessionforpersonPost",
+      "name": "startSessionForPerson",
+      "method": "POST",
+      "urlTemplate": "/api/session/startSessionForPerson",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_ACE_APIs_for_Devel151IISQ/operations/POST__api_session_startSe111IZSJ.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "Authorization",
+            "description": "Bearer received from previous API",
+            "type": "string",
+            "required": true,
+            "values": [
+              "Bearer eyJhbGciOiJSUzI1NiJ9.eyJicm9rZXJVc2VySWQiOiJEb21haW5UZXN0VXNlciIsImV4cCI6MTYxNTY2Mjg3MH0.EkhhsCoOgjl6zMiA0hnHi3VwpiEAWI_tD_N-b0x39laPaYOj6thbmuY3PkmVeu3rGDBDsKmznpbMnF2KehV7srWhqxrxg8ORKTKlI5UVCYArhBwwhC8mNZgFcWvdcD0txgJoW96EAcEq6sIwDUhgP4vfAhZH3LtMC8EOiw8DPpUm-cwFfjT3JJuc-mHIlyFolRkOybwcz2Fopa0HIRZSqm0ypG-sjjZIP4oTlpdKW6MVKfnGH7re1-hBrqIWgRMK53e0QdEaF7cSQoiRPYcbFJooJQEvGWt5_EptAeWv1VGGlpZsYZpzFaGcdJuWbFAnT60dSuTFEPkV3-o6E5ik0w"
+            ]
+          },
+          {
+            "name": "Content-Type",
+            "description": "Type of content",
+            "type": "string",
+            "defaultValue": "application/json",
+            "required": true,
+            "values": [
+              "application/json"
+            ]
+          }
+        ],
+        "representations": [
+          {
+            "contentType": "*/*",
+            "$ref-sample": "api-management/apis/Alight_ACE_APIs_for_Devel151IISQ/operations/POST__api_session_startSe111IZSJ.request.____brokerUserId-DomainTe1PRN9OV.html",
+            "schemaId": "604b82ac01f91f10c0ff8f0d",
+            "typeName": "ApiSessionStartSessionForPersonPostRequest"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/ace-apis-for-developer-portal/operations/ApiV2PersonsGet",
+      "name": "persons-v2",
+      "method": "GET",
+      "urlTemplate": "/api/v2/persons",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_ACE_APIs_for_Devel151IISQ/operations/GET__api_v2_persons_ace-a1H6XNDW.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "type": "string",
+            "defaultValue": "c16fc022-e8fa-481f-acc0-9f4873c322b1",
+            "required": true,
+            "values": [
+              "c16fc022-e8fa-481f-acc0-9f4873c322b1"
+            ]
+          },
+          {
+            "name": "Authorization",
+            "type": "string",
+            "defaultValue": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJicm9rZXJVc2VySWQiOiJEb21haW5UZXN0VXNlciIsImV4cCI6MTYxNTY2Mjg3MH0.EkhhsCoOgjl6zMiA0hnHi3VwpiEAWI_tD_N-b0x39laPaYOj6thbmuY3PkmVeu3rGDBDsKmznpbMnF2KehV7srWhqxrxg8ORKTKlI5UVCYArhBwwhC8mNZgFcWvdcD0txgJoW96EAcEq6sIwDUhgP4vfAhZH3LtMC8EOiw8DPpUm-cwFfjT3JJuc-mHIlyFolRkOybwcz2Fopa0HIRZSqm0ypG-sjjZIP4oTlpdKW6MVKfnGH7re1-hBrqIWgRMK53e0QdEaF7cSQoiRPYcbFJooJQEvGWt5_EptAeWv1VGGlpZsYZpzFaGcdJuWbFAnT60dSuTFEPkV3-o6E5ik0w",
+            "required": true,
+            "values": [
+              "Bearer eyJhbGciOiJSUzI1NiJ9.eyJicm9rZXJVc2VySWQiOiJEb21haW5UZXN0VXNlciIsImV4cCI6MTYxNTY2Mjg3MH0.EkhhsCoOgjl6zMiA0hnHi3VwpiEAWI_tD_N-b0x39laPaYOj6thbmuY3PkmVeu3rGDBDsKmznpbMnF2KehV7srWhqxrxg8ORKTKlI5UVCYArhBwwhC8mNZgFcWvdcD0txgJoW96EAcEq6sIwDUhgP4vfAhZH3LtMC8EOiw8DPpUm-cwFfjT3JJuc-mHIlyFolRkOybwcz2Fopa0HIRZSqm0ypG-sjjZIP4oTlpdKW6MVKfnGH7re1-hBrqIWgRMK53e0QdEaF7cSQoiRPYcbFJooJQEvGWt5_EptAeWv1VGGlpZsYZpzFaGcdJuWbFAnT60dSuTFEPkV3-o6E5ik0w"
+            ]
+          },
+          {
+            "name": "alightRequestHeader",
+            "type": "string",
+            "defaultValue": "{\"clientId\" : \"00095\"}",
+            "required": true,
+            "values": [
+              "{\"clientId\" : \"00095\"}"
+            ]
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/ace-apis-for-developer-portal/operations/ApiOauthTokenPost",
+      "name": "Get Access Token",
+      "method": "POST",
+      "urlTemplate": "/api/oauth/token",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_ACE_APIs_for_Devel151IISQ/operations/POST__api_oauth_token_ace-0D16IY.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null,
+      "$ref-policy": "api-management/policies/apis/Alight_ACE_APIs_for_Devel151IISQ/operations/POST__api_oauth_token_ace-0D16IY.xml"
+    }
+  ],
+  "apiSchemas": [
+    {
+      "id": "/apis/ace-apis-for-developer-portal/schemas/604b82ac01f91f10c0ff8f0d",
+      "contentType": "application/vnd.oai.openapi.components+json",
+      "$ref-documentValue": "api-management/apis/Alight_ACE_APIs_for_Devel151IISQ/apiSchemas/604b82ac01f91f10c0ff8f0d.document"
+    }
+  ],
+  "$ref-policy": "api-management/policies/apis/Alight_ACE_APIs_for_Devel151IISQ.xml",
+  "__GitModuleVersion": 15
+}

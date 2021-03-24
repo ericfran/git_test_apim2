@@ -1,0 +1,11 @@
+{
+  "id": "/tags/ExportV2",
+  "name": "ExportV2",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/ExportV2_ExportGroupedTickets"
+  ],
+  "__GitModuleVersion": 15
+}

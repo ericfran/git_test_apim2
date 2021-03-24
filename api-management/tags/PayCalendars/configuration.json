@@ -1,0 +1,26 @@
+{
+  "id": "/tags/PayCalendars",
+  "name": "PayCalendars",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api/operations/get-api-pay-calendars-gcc-id",
+    "/apis/hrx-configuration-api/operations/post-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api/operations/put-api-pay-calendars-gcc-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api-v1/operations/get-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api-v1/operations/get-api-pay-calendars-gcc-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-pay-calendars-gcc-id",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-pay-calendars-gcc-id",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-pay-calendars-gcc-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-pay-calendars-gcc",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-pay-calendars-gcc-id",
+    "/apis/hrx-configuration-api-v1/operations/put-api-pay-calendars-gcc-id"
+  ],
+  "__GitModuleVersion": 15
+}

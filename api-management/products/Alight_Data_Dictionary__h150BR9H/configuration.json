@@ -1,0 +1,18 @@
+{
+  "id": "/products/hrx-data-dictionary",
+  "name": "Alight Data Dictionary ",
+  "$ref-description": "api-management/products/Alight_Data_Dictionary__h150BR9H/product.description.html",
+  "terms": null,
+  "subscriptionRequired": false,
+  "approvalRequired": null,
+  "subscriptionsLimit": null,
+  "state": "published",
+  "$refs-groups": [
+    "api-management/groups/Administrators/configuration.json",
+    "api-management/groups/Developers/configuration.json"
+  ],
+  "$refs-apis": [
+    "api-management/apis/Alight_DataDictionary_Gen1V69ENM/configuration.json"
+  ],
+  "__GitModuleVersion": 15
+}

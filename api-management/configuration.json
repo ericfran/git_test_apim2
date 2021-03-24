@@ -1,0 +1,19 @@
+{
+  "settings": {
+    "RegistrationEnabled": "True",
+    "UserRegistrationTerms": "You agree with Alight terms ....",
+    "UserRegistrationTermsEnabled": "True",
+    "UserRegistrationTermsConsentRequired": "True",
+    "DelegationEnabled": "False",
+    "DelegationUrl": "",
+    "DelegatedSubscriptionEnabled": "False",
+    "RequireUserSigninEnabled": "False"
+  },
+  "$ref-policy": "api-management/policies/global.xml",
+  "IntegrationModuleVersion": "15",
+  "IntegrationModuleBitsVersion": "0.18.1158.0",
+  "ExportDate": "2021-03-24T09:17:11.6265028Z",
+  "SupportedPreviousBitsVersions": [
+    14
+  ]
+}

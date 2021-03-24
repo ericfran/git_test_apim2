@@ -1,0 +1,306 @@
+{
+  "id": "/apis/hrx-datadictionary-gen-api",
+  "name": "Alight DataDictionary Gen API",
+  "apiRevision": "1",
+  "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/api.description.html",
+  "subscriptionRequired": true,
+  "serviceUrl": "https://nga-d-weu-dmt-03-web.azurewebsites.net",
+  "path": "datadictionary",
+  "protocols": [
+    "https"
+  ],
+  "authenticationSettings": {
+    "oAuth2": null,
+    "openid": null
+  },
+  "subscriptionKeyParameterNames": {
+    "header": "Ocp-Apim-Subscription-Key",
+    "query": "subscription-key"
+  },
+  "isCurrent": true,
+  "operations": [
+    {
+      "id": "/apis/hrx-datadictionary-gen-api/operations/get-azuread-account-signin-scheme",
+      "name": "/AzureAD/Account/SignIn/{scheme} - GET",
+      "method": "GET",
+      "urlTemplate": "/AzureAD/Account/SignIn/{scheme}",
+      "templateParameters": [
+        {
+          "name": "scheme",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": null,
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/GET__AzureAD_Account_SignI6UO68P.response.200.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/hrx-datadictionary-gen-api/operations/get-azuread-account-signout-scheme",
+      "name": "/AzureAD/Account/SignOut/{scheme} - GET",
+      "method": "GET",
+      "urlTemplate": "/AzureAD/Account/SignOut/{scheme}",
+      "templateParameters": [
+        {
+          "name": "scheme",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": null,
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/GET__AzureAD_Account_Sign1FFNPW2.response.200.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/hrx-datadictionary-gen-api/operations/post-datadictionary-generate",
+      "name": "/DataDictionary/Generate - POST",
+      "method": "POST",
+      "urlTemplate": "/DataDictionary/Generate",
+      "templateParameters": [],
+      "$ref-description": null,
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__DataDictionary_Gene1W3FGDB.response.200.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/hrx-datadictionary-gen-api/operations/post-api-values-createticket",
+      "name": "Create a new ticket in MyHRW.",
+      "method": "POST",
+      "urlTemplate": "/api/Values/CreateTicket",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__api_Values_CreateTicNNPSR1.description.html",
+      "request": {
+        "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__api_Values_CreateTicNNPSR1.request.html",
+        "queryParameters": [
+          {
+            "name": "enableAIPrediction",
+            "description": "enable AI Prediction is going allow Assist to provide assisted solution",
+            "type": "boolean",
+            "defaultValue": "false",
+            "values": []
+          },
+          {
+            "name": "sendEmailNotification",
+            "description": "to send email Notification to the end user",
+            "type": "boolean",
+            "defaultValue": "false",
+            "values": []
+          }
+        ],
+        "headers": [],
+        "representations": [
+          {
+            "contentType": "application/json",
+            "schemaId": "6041fc0fd157c90c2c38ed76",
+            "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+            "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+          },
+          {
+            "contentType": "text/json",
+            "schemaId": "6041fc0fd157c90c2c38ed76",
+            "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+            "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+          },
+          {
+            "contentType": "application/*+json",
+            "schemaId": "6041fc0fd157c90c2c38ed76",
+            "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+            "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 201,
+          "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__api_Values_CreateTicNNPSR1.response.201.description.html",
+          "representations": [
+            {
+              "contentType": "text/plain",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket"
+            },
+            {
+              "contentType": "application/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+              "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+            },
+            {
+              "contentType": "text/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+              "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__api_Values_CreateTicNNPSR1.response.400.description.html",
+          "representations": [
+            {
+              "contentType": "text/plain",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Microsoft.AspNetCore.Mvc.ProblemDetails"
+            },
+            {
+              "contentType": "application/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+              "generatedSample": "{\r\n  \"type\": \"string\",\r\n  \"title\": \"string\",\r\n  \"status\": 0,\r\n  \"detail\": \"string\",\r\n  \"instance\": \"string\"\r\n}"
+            },
+            {
+              "contentType": "text/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+              "generatedSample": "{\r\n  \"type\": \"string\",\r\n  \"title\": \"string\",\r\n  \"status\": 0,\r\n  \"detail\": \"string\",\r\n  \"instance\": \"string\"\r\n}"
+            }
+          ],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/hrx-datadictionary-gen-api/operations/CreateProduct",
+      "name": "Creates a new product",
+      "method": "POST",
+      "urlTemplate": "/api/Values/CreateTicket2",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__api_Values_CreateTic06K44K.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "enableAIPrediction",
+            "type": "boolean",
+            "defaultValue": "false",
+            "values": []
+          },
+          {
+            "name": "sendEmailNotification",
+            "type": "boolean",
+            "defaultValue": "false",
+            "values": []
+          }
+        ],
+        "headers": [],
+        "representations": [
+          {
+            "contentType": "application/json",
+            "schemaId": "6041fc0fd157c90c2c38ed76",
+            "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+            "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+          },
+          {
+            "contentType": "text/json",
+            "schemaId": "6041fc0fd157c90c2c38ed76",
+            "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+            "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+          },
+          {
+            "contentType": "application/*+json",
+            "schemaId": "6041fc0fd157c90c2c38ed76",
+            "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+            "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 201,
+          "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__api_Values_CreateTic06K44K.response.201.description.html",
+          "representations": [
+            {
+              "contentType": "text/plain",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket"
+            },
+            {
+              "contentType": "application/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+              "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+            },
+            {
+              "contentType": "text/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Hrx.DataDictionary.WebAPI.Controllers.Ticket",
+              "generatedSample": "{\r\n  \"id\": 0,\r\n  \"description\": \"string\",\r\n  \"gcc\": \"Z05\",\r\n  \"lcc\": \"string\"\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/operations/POST__api_Values_CreateTic06K44K.response.400.description.html",
+          "representations": [
+            {
+              "contentType": "text/plain",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Microsoft.AspNetCore.Mvc.ProblemDetails"
+            },
+            {
+              "contentType": "application/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+              "generatedSample": "{\r\n  \"type\": \"string\",\r\n  \"title\": \"string\",\r\n  \"status\": 0,\r\n  \"detail\": \"string\",\r\n  \"instance\": \"string\"\r\n}"
+            },
+            {
+              "contentType": "text/json",
+              "schemaId": "6041fc0fd157c90c2c38ed76",
+              "typeName": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+              "generatedSample": "{\r\n  \"type\": \"string\",\r\n  \"title\": \"string\",\r\n  \"status\": 0,\r\n  \"detail\": \"string\",\r\n  \"instance\": \"string\"\r\n}"
+            }
+          ],
+          "headers": []
+        }
+      ],
+      "policies": null
+    }
+  ],
+  "apiSchemas": [
+    {
+      "id": "/apis/hrx-datadictionary-gen-api/schemas/6041fc0fd157c90c2c38ed76",
+      "contentType": "application/vnd.oai.openapi.components+json",
+      "$ref-documentValue": "api-management/apis/Alight_DataDictionary_Gen1V69ENM/apiSchemas/6041fc0fd157c90c2c38ed76.document"
+    }
+  ],
+  "__GitModuleVersion": 15
+}

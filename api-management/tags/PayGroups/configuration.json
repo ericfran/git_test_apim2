@@ -1,0 +1,22 @@
+{
+  "id": "/tags/PayGroups",
+  "name": "PayGroups",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api/operations/post-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api/operations/put-api-pay-groups-gcc-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api-v1/operations/get-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-pay-groups-gcc-id",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-pay-groups-gcc",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-pay-groups-gcc-id",
+    "/apis/hrx-configuration-api-v1/operations/put-api-pay-groups-gcc-id"
+  ],
+  "__GitModuleVersion": 15
+}

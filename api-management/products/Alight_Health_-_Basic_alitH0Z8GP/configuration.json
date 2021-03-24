@@ -1,0 +1,15 @@
+{
+  "id": "/products/alith-health-basic",
+  "name": "Alight Health - Basic",
+  "$ref-description": "api-management/products/Alight_Health_-_Basic_alitH0Z8GP/product.description.html",
+  "terms": null,
+  "subscriptionRequired": false,
+  "approvalRequired": null,
+  "subscriptionsLimit": null,
+  "state": "notPublished",
+  "$refs-groups": [
+    "api-management/groups/Administrators/configuration.json"
+  ],
+  "$refs-apis": [],
+  "__GitModuleVersion": 15
+}

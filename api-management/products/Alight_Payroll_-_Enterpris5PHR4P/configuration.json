@@ -1,0 +1,15 @@
+{
+  "id": "/products/payroll-enterprise",
+  "name": "Alight Payroll - Enterprise",
+  "$ref-description": "api-management/products/Alight_Payroll_-_Enterpris5PHR4P/product.description.html",
+  "terms": null,
+  "subscriptionRequired": true,
+  "approvalRequired": true,
+  "subscriptionsLimit": null,
+  "state": "notPublished",
+  "$refs-groups": [
+    "api-management/groups/Administrators/configuration.json"
+  ],
+  "$refs-apis": [],
+  "__GitModuleVersion": 15
+}

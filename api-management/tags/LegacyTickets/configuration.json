@@ -1,0 +1,16 @@
+{
+  "id": "/tags/LegacyTickets",
+  "name": "LegacyTickets",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/LegacyTickets_GetLegacyTicket",
+    "/apis/hrx-assist-core-api/operations/LegacyTickets_GetLegacyTicketItem",
+    "/apis/hrx-assist-core-api/operations/LegacyTickets_GetLegacyTicketItemV2",
+    "/apis/hrx-assist-core-api/operations/LegacyTickets_GetLegacyTicketSearchOptions",
+    "/apis/hrx-assist-core-api/operations/LegacyTickets_GetLegacyTicketSearchOptionsByOptionName",
+    "/apis/hrx-assist-core-api/operations/LegacyTickets_SearchLegacyTickets"
+  ],
+  "__GitModuleVersion": 15
+}

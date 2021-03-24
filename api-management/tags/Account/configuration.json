@@ -1,0 +1,12 @@
+{
+  "id": "/tags/Account",
+  "name": "Account",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-datadictionary-gen-api/operations/get-azuread-account-signin-scheme",
+    "/apis/hrx-datadictionary-gen-api/operations/get-azuread-account-signout-scheme"
+  ],
+  "__GitModuleVersion": 15
+}

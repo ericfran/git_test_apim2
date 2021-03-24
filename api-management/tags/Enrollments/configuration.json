@@ -1,0 +1,15 @@
+{
+  "id": "/tags/Enrollments",
+  "name": "Enrollments",
+  "apiIds": [
+    "/apis/Enrollment;rev=1"
+  ],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/Enrollment/operations/postEoistatus",
+    "/apis/Enrollment/operations/getEnrollments",
+    "/apis/Enrollment/operations/getEnrollmentsBusinessProcessClassification"
+  ],
+  "__GitModuleVersion": 15
+}

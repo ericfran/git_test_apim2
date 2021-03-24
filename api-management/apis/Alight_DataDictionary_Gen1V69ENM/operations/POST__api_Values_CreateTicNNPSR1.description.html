@@ -1,0 +1,18 @@
+The behaviour of the create ticket API is strongly linked to the application type selected for your application key. 
+Based on the application type, the validation and value required in the payload may vary. 
+The examples provided in the next topics are specific to an application of the type "Partner".
+
+A ticket has 2 employees
+- The requester
+- The affected employee
+
+The ticket is always created in the company of the affected employee.
+
+If at ticket creation you only specify requester or affected employee, the API is considering them as being equal.
+
+The company of the requester and the affected employee can be different but must always be under the same organisation/customer.
+
+Having a different requester and affected employee is useful in the scenario where a manager is requesting something for an employee. 
+Note that the relationship between the employee and the requester is never validated by the API, the caller should verify this relationship in the HRIS system.
+At ticket creation, the API also offers you the possibility to directly attach one or more files to the ticket.
+The binary should be encoded as a Base64 string. (see RFC 2045). http://tools.ietf.org/html/rfc2045

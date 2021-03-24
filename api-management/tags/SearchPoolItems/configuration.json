@@ -1,0 +1,12 @@
+{
+  "id": "/tags/SearchPoolItems",
+  "name": "SearchPoolItems",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/SearchPoolItems_Get",
+    "/apis/hrx-assist-core-api/operations/SearchPoolItems_Post"
+  ],
+  "__GitModuleVersion": 15
+}

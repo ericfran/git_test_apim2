@@ -1,0 +1,4597 @@
+{
+  "definitions": {
+    "AgentTicketingProfile": {
+      "type": "object",
+      "properties": {
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Team"
+          }
+        },
+        "isOpm": {
+          "type": "boolean"
+        },
+        "isWorkgroupOpm": {
+          "type": "boolean"
+        },
+        "dashboardDefaultPoolToDisplay": {
+          "enum": [
+            "MyUnsolved",
+            "Unassigned",
+            "AllUnsolved",
+            "MyRecentUpdates",
+            "MyReminders",
+            "MyCollaborations",
+            "Reviewer",
+            "MyDrafts",
+            "AssignedToHR",
+            "MyTicketsPlusTicketBacklog",
+            "ProcessingTickets"
+          ],
+          "type": "string"
+        },
+        "dashboardDataRefreshDelay": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "agentPools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isHrView": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Team": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "FilterParam": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pool": {
+          "type": "string"
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Filter"
+          }
+        }
+      }
+    },
+    "Filter": {
+      "type": "object",
+      "properties": {
+        "fieldName": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "Id",
+            "Bool",
+            "Date"
+          ],
+          "type": "string"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FilterValue"
+          }
+        },
+        "multiSelect": {
+          "type": "boolean"
+        }
+      }
+    },
+    "FilterValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "LegacyTicketSearchParams": {
+      "type": "object",
+      "properties": {
+        "companyIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "subject": {
+          "type": "string"
+        },
+        "employeeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "requesterId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "onCreation": {
+          "type": "boolean"
+        },
+        "startDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "endDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "PoolGroupNode": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "nodeHash": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "itemCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "estimatedTimeSum": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "filterInfo": {
+          "$ref": "#/definitions/FilterInfo"
+        },
+        "isClickable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "FilterInfo": {
+      "type": "object",
+      "properties": {
+        "filterFieldName": {
+          "type": "string"
+        },
+        "filterType": {
+          "enum": [
+            "Id",
+            "Bool",
+            "Date"
+          ],
+          "type": "string"
+        },
+        "filterValue": {
+          "type": "string"
+        }
+      }
+    },
+    "PoolItemSearchArgs": {
+      "type": "object",
+      "properties": {
+        "companySkillIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "fromDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "toDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "searchIntervalScope": {
+          "enum": [
+            "CreationDateTime",
+            "CloseDateTime"
+          ],
+          "type": "string"
+        },
+        "status": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "All",
+              "New",
+              "Open",
+              "Pended",
+              "Closed",
+              "Resolved"
+            ],
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "employeeId": {
+          "type": "string"
+        },
+        "ticketId": {
+          "type": "string"
+        },
+        "requesterId": {
+          "type": "string"
+        }
+      }
+    },
+    "Dummy": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "PublicTicketEmailParams": {
+      "type": "object",
+      "properties": {
+        "sendEmail": {
+          "type": "boolean"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "recipients": {
+          "enum": [
+            "None",
+            "TicketRequester",
+            "TicketEmployee"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/File"
+          }
+        },
+        "comment": {
+          "type": "string"
+        },
+        "defectiveInputReasonId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "documentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "watchers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicWatcher"
+          }
+        }
+      }
+    },
+    "File": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "ticketTaskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "documentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "contentLength": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "binaryData": {
+          "format": "byte",
+          "type": "string"
+        },
+        "creationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "documentTypeName": {
+          "type": "string"
+        },
+        "agent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "taskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isEvidence": {
+          "type": "boolean"
+        },
+        "hyperlink": {
+          "type": "string"
+        },
+        "relatedTicketItemId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isPiiSafe": {
+          "type": "boolean"
+        },
+        "piiData": {
+          "$ref": "#/definitions/PublicPiiData"
+        },
+        "origin": {
+          "enum": [
+            "None",
+            "CloseAsDefectiveInput",
+            "NewEmail",
+            "Resolve",
+            "TicketCreation",
+            "Action",
+            "Note"
+          ],
+          "type": "string"
+        },
+        "isTemporary": {
+          "type": "boolean"
+        },
+        "relatedTicketActionId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isTicketOnly": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PublicWatcher": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "entityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "None",
+            "NGA",
+            "TSL"
+          ],
+          "type": "string"
+        },
+        "authorizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TslAuthorization"
+          }
+        },
+        "expirationDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "Agent": {
+      "type": "object",
+      "properties": {
+        "frid": {
+          "type": "string"
+        },
+        "employeeId": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "fax": {
+          "type": "string"
+        },
+        "timeZoneId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dateTimeFormat": {
+          "type": "string"
+        },
+        "cultureId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cti": {
+          "type": "boolean"
+        },
+        "acdExtension": {
+          "type": "string"
+        },
+        "telephonyLinkId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isSpecialAgent": {
+          "type": "boolean"
+        },
+        "createTicketWithStatusNew": {
+          "type": "boolean"
+        },
+        "settings": {
+          "$ref": "#/definitions/AgentSettings"
+        },
+        "entityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "None",
+            "Active",
+            "Obsolete"
+          ],
+          "type": "string"
+        },
+        "enableBulkFtr": {
+          "type": "boolean"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "privacyAccessLevelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "employer": {
+          "type": "string"
+        }
+      }
+    },
+    "PublicPiiData": {
+      "type": "object",
+      "properties": {
+        "affectedEmployee": {
+          "$ref": "#/definitions/PublicEmployee"
+        },
+        "requester": {
+          "$ref": "#/definitions/PublicEmployee"
+        },
+        "affectedEmployees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicEmployee"
+          }
+        }
+      }
+    },
+    "TslAuthorization": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "AgentSettings": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "emailOnAssignTicket": {
+          "type": "boolean"
+        },
+        "emailOnActionsOnMyTicket": {
+          "type": "boolean"
+        },
+        "emailOnOutOfSlaOfMyTicket": {
+          "type": "boolean"
+        },
+        "emailOnAmberAlertOfMyTicket": {
+          "type": "boolean"
+        },
+        "emailOnAssignToMyWorkgroups": {
+          "type": "boolean"
+        },
+        "cultureName": {
+          "type": "string"
+        },
+        "isOutOfOffice": {
+          "type": "boolean"
+        },
+        "outOfOfficeAction": {
+          "enum": [
+            "AcceptTickets",
+            "ForwardToMyBackup",
+            "RefuseTickets"
+          ],
+          "type": "string"
+        },
+        "backupAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "outOfOfficeReason": {
+          "type": "string"
+        },
+        "timeZone": {
+          "type": "string"
+        },
+        "emailOnAssignedTask": {
+          "type": "boolean"
+        },
+        "emailOnActionsOrItemsAddedToMyTasks": {
+          "type": "boolean"
+        },
+        "emailOnOutOfSlaTasks": {
+          "type": "boolean"
+        },
+        "emailOnTasksAssignedToMyWorkgroups": {
+          "type": "boolean"
+        },
+        "defaultCompanySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "serviceAutoClassification": {
+          "type": "boolean"
+        },
+        "emailAutoComplete": {
+          "type": "boolean"
+        },
+        "emailOnOutOfOlaTicket": {
+          "type": "boolean"
+        },
+        "emailOnAmberOlaTicket": {
+          "type": "boolean"
+        },
+        "privacyAccessLevelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "emailNotifOnCollabTask": {
+          "type": "boolean"
+        },
+        "emailNotifOnCollabTicket": {
+          "type": "boolean"
+        },
+        "emailNotifWhenReportIsReady": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PublicEmployee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "company": {
+          "$ref": "#/definitions/Company"
+        },
+        "lccForTsl": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "employeeInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicEmployeeField"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicEmployeeField"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SkillDefinition"
+          }
+        },
+        "securityQuestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityQuestion"
+          }
+        },
+        "source": {
+          "type": "string"
+        },
+        "backendType": {
+          "enum": [
+            "Sap",
+            "Oracle",
+            "MsSql",
+            "MySql",
+            "ActiveDirectory",
+            "Workday",
+            "ResourceLink",
+            "SuccessFactors",
+            "Pex",
+            "Preceda",
+            "Cdm",
+            "Udp"
+          ],
+          "type": "string"
+        },
+        "backendHandleInbox": {
+          "type": "boolean"
+        },
+        "freelyCreated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Company": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "organisationId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "organisationName": {
+          "type": "string"
+        },
+        "skillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "opmSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "gmtSummerTimeStart": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "gmtSummerTimeEnd": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "backendServiceId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "companySettings": {
+          "$ref": "#/definitions/CompanySettings"
+        },
+        "email": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "hrIsId": {
+          "type": "string"
+        },
+        "newModel": {
+          "type": "boolean"
+        },
+        "templateCompanyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "Onboarding",
+            "Active",
+            "Replatformed",
+            "Obsolete",
+            "FasingOut"
+          ],
+          "type": "string"
+        },
+        "ticketCreationEnabled": {
+          "type": "boolean"
+        },
+        "migratedFromCompanyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "gcc": {
+          "type": "string"
+        },
+        "lcc": {
+          "type": "string"
+        },
+        "countryPrefix": {
+          "type": "string"
+        },
+        "enabledForFreeEmployeeCreation": {
+          "type": "boolean"
+        },
+        "cmsModel": {
+          "enum": [
+            "NotCms",
+            "CMS10",
+            "CMS20"
+          ],
+          "type": "string"
+        },
+        "newUx": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PublicEmployeeField": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "defaultLabel": {
+          "type": "string"
+        },
+        "translationId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "value": {
+          "type": "string"
+        },
+        "valueType": {
+          "type": "string"
+        },
+        "customField": {
+          "type": "string"
+        }
+      }
+    },
+    "SkillDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "skillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "skillRouting": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "ivrId": {
+          "type": "string"
+        },
+        "sirId": {
+          "type": "string"
+        },
+        "shortDescription": {
+          "type": "string"
+        },
+        "lastRecordUpdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isObsolete": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "skillType": {
+          "$ref": "#/definitions/SkillTypeDefinition"
+        },
+        "isLimited": {
+          "type": "boolean"
+        },
+        "isValidForInteraction": {
+          "type": "boolean"
+        },
+        "externalId": {
+          "type": "string"
+        },
+        "overrideOnUpdate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SecurityQuestion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "question": {
+          "type": "string"
+        },
+        "answer": {
+          "type": "string"
+        }
+      }
+    },
+    "CompanySettings": {
+      "type": "object",
+      "properties": {
+        "companyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "companySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "defaultDocumentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "defaultServiceSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "enableDocumentType": {
+          "type": "boolean"
+        },
+        "enableEwsInbox": {
+          "type": "boolean"
+        },
+        "enableServiceArea": {
+          "type": "boolean"
+        },
+        "fileStoreId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "groupSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "levelSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "opmSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "prioritySkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sourceSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "customerSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "defaultServiceIdForPartner": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "maxFileItemSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "maxEmailSize": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "resetSlaOnReopenTicket": {
+          "type": "boolean"
+        },
+        "enableChangeCompany": {
+          "type": "boolean"
+        },
+        "enableDueDateDynamic": {
+          "type": "boolean"
+        },
+        "enableSolvedStatus": {
+          "type": "boolean"
+        },
+        "maxSearchTicketCount": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "taskGroupId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "customActionTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomActionType"
+          }
+        },
+        "customFieldTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomFieldType"
+          }
+        },
+        "enableDeEscalate": {
+          "type": "boolean"
+        },
+        "enableEscalate": {
+          "type": "boolean"
+        },
+        "simplifiedDueDateThreshold": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "alerterEmailRecipient": {
+          "enum": [
+            "None",
+            "TicketOwner",
+            "TicketOwnerManagers",
+            "Both"
+          ],
+          "type": "string"
+        },
+        "alerterEmailFromAddress": {
+          "type": "string"
+        },
+        "alerterEmailFromCredential": {
+          "$ref": "#/definitions/SmtpCredential"
+        },
+        "alerterOutOfSlaTicketEmailSubject": {
+          "type": "string"
+        },
+        "alerterOutOfSlaTicketEmailBody": {
+          "type": "string"
+        },
+        "alerterAmberTicketEmailSubject": {
+          "type": "string"
+        },
+        "alerterAmberTicketEmailBody": {
+          "type": "string"
+        },
+        "alerterOutOfOlaTicketEmailSubject": {
+          "type": "string"
+        },
+        "alerterOutOfOlaTicketEmailBody": {
+          "type": "string"
+        },
+        "alerterAmberOlaTicketEmailSubject": {
+          "type": "string"
+        },
+        "alerterAmberOlaTicketEmailBody": {
+          "type": "string"
+        },
+        "createTicketEmailVisible": {
+          "type": "boolean"
+        },
+        "createTicketEmailDefault": {
+          "type": "boolean"
+        },
+        "createTicketEmailSubject": {
+          "type": "string"
+        },
+        "createTicketEmailBody": {
+          "type": "string"
+        },
+        "closeTicketEmailVisible": {
+          "type": "boolean"
+        },
+        "closeTicketEmailDefault": {
+          "type": "boolean"
+        },
+        "closeTicketEmailSubject": {
+          "type": "string"
+        },
+        "closeTicketEmailBody": {
+          "type": "string"
+        },
+        "closeInteractionEmailBody": {
+          "type": "string"
+        },
+        "closeInteractionEmailSubject": {
+          "type": "string"
+        },
+        "endOfReviewDay": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "openingHoursPerDay": {
+          "format": "float",
+          "type": "number"
+        },
+        "bulkFtrSubmittedSubject": {
+          "type": "string"
+        },
+        "bulkFtrSubmittedBody": {
+          "type": "string"
+        },
+        "bulkFtrProcessedSubject": {
+          "type": "string"
+        },
+        "bulkFtrProcessedBody": {
+          "type": "string"
+        },
+        "primaryEmployeeInfo": {
+          "type": "string"
+        },
+        "secondaryEmployeeInfo": {
+          "type": "string"
+        },
+        "enableEmployeeDenormalisation": {
+          "type": "boolean"
+        },
+        "formId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "disableSendEmail": {
+          "type": "boolean"
+        },
+        "autoCloseAfterBusinessHours": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "reopenTicketEmailSubject": {
+          "type": "string"
+        },
+        "reopenTicketEmailBody": {
+          "type": "string"
+        },
+        "reopenTicketDescription": {
+          "type": "string"
+        },
+        "reopenTicketObsoleteDescription": {
+          "type": "string"
+        },
+        "resolvedTicketSubject": {
+          "type": "string"
+        },
+        "resolvedTicketBody": {
+          "type": "string"
+        },
+        "defaultTelephonySkill": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "defaultBulkSkill": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "trustedEmails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "companyEntitySettings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CompanyEntitySettings"
+          }
+        },
+        "requestorSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "contReasCodeSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rootCauseSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "defectiveInputReasons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DefectiveInputReason"
+          }
+        },
+        "privacyAccessLevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PrivacyAccessLevel"
+          }
+        },
+        "closeAsDefectiveInputEmailSubject": {
+          "type": "string"
+        },
+        "closeAsDefectiveInputEmailBody": {
+          "type": "string"
+        },
+        "enableEmailAutofillSecurity": {
+          "type": "boolean"
+        },
+        "closeAsDefectiveInputEnabled": {
+          "type": "boolean"
+        },
+        "isPexCustomer": {
+          "type": "boolean"
+        },
+        "legalEntitySkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "surfAsLink": {
+          "type": "string"
+        },
+        "unauthenticatedResponseEmailSubject": {
+          "type": "string"
+        },
+        "unauthenticatedResponseEmailBody": {
+          "type": "string"
+        },
+        "extraEmployeeSearchField": {
+          "type": "string"
+        },
+        "extraEmployeeSearchFieldLabel": {
+          "type": "string"
+        },
+        "autoResolveUnauthenticatedTicketAfterBusinessHours": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "allowMultipleEmployees": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SkillTypeDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "shortDescription": {
+          "type": "string"
+        },
+        "isCreationMandatory": {
+          "type": "boolean"
+        },
+        "isCloseMandatory": {
+          "type": "boolean"
+        },
+        "isPoolMandatory": {
+          "type": "boolean"
+        },
+        "isServiceCreationMandatory": {
+          "type": "boolean"
+        },
+        "isIvrMandatory": {
+          "type": "boolean"
+        },
+        "isUpdateAllowed": {
+          "type": "boolean"
+        },
+        "isMultiselect": {
+          "type": "boolean"
+        },
+        "isTicketFilter": {
+          "type": "boolean"
+        },
+        "isOpmSkillType": {
+          "type": "boolean"
+        },
+        "skillTypeColumnId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "columnSkillId": {
+          "type": "string"
+        },
+        "columnSkillName": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomActionType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "predefinedText": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "notificationType": {
+          "enum": [
+            "None",
+            "SendNotificationToEmployee",
+            "SendInformationToEmployee",
+            "RequestDocumentToEmployee",
+            "RequestInformationToEmployee",
+            "NotifyParent",
+            "NotifyChild",
+            "NotifyParentAndChild",
+            "SendMessageToAgent"
+          ],
+          "type": "string"
+        },
+        "companyId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "CustomFieldType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dataType": {
+          "enum": [
+            "UnsignedInteger",
+            "Text",
+            "Date",
+            "Integer",
+            "Double"
+          ],
+          "type": "string"
+        },
+        "isReadOnly": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SmtpCredential": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "CompanyEntitySettings": {
+      "type": "object",
+      "properties": {
+        "companyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "enableEmailAutofillSecurity": {
+          "type": "boolean"
+        },
+        "closeAsDefectiveInputEnabled": {
+          "type": "boolean"
+        },
+        "lastUpdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "Insert",
+            "Update",
+            "Delete"
+          ],
+          "type": "string"
+        },
+        "modifiedProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isNew": {
+          "type": "boolean"
+        },
+        "hasBeenComparedWithDatabaseVersion": {
+          "type": "boolean"
+        }
+      }
+    },
+    "DefectiveInputReason": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "fieldValueId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sortOrder": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "PrivacyAccessLevel": {
+      "type": "object",
+      "properties": {
+        "privacyAccessLevelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "automaticallyCheckOtherPrivacyAccessLevelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "lastUpdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "Insert",
+            "Update",
+            "Delete"
+          ],
+          "type": "string"
+        },
+        "modifiedProperties": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isNew": {
+          "type": "boolean"
+        },
+        "hasBeenComparedWithDatabaseVersion": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PublicTicket": {
+      "type": "object",
+      "properties": {
+        "lastUpdate": {
+          "format": "date-time",
+          "type": "string",
+          "readOnly": true
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "creationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "currentStartTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "scheduleTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "amberDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "closeDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "Closed",
+            "Open",
+            "Processing",
+            "Scheduled",
+            "Waiting",
+            "Unknown",
+            "Pending",
+            "External",
+            "SchedulePending"
+          ],
+          "type": "string"
+        },
+        "statusName": {
+          "type": "string"
+        },
+        "securityQuestions": {
+          "enum": [
+            "AllChecked",
+            "AllUnchecked",
+            "Skipped"
+          ],
+          "type": "string"
+        },
+        "flag": {
+          "enum": [
+            "FlagBlack",
+            "FlagBlue",
+            "FlagGreen",
+            "FlagOrange",
+            "FlagPurple",
+            "FlagRed",
+            "FlagYellow",
+            "FlagNoFlagged"
+          ],
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "External",
+            "Internal"
+          ],
+          "type": "string"
+        },
+        "companySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "company": {
+          "$ref": "#/definitions/Company"
+        },
+        "serviceSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "service": {
+          "$ref": "#/definitions/Service"
+        },
+        "serviceGroup": {
+          "$ref": "#/definitions/ServiceGroup"
+        },
+        "serviceArea": {
+          "$ref": "#/definitions/ServiceArea"
+        },
+        "groupingSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "groupingPrivacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "groupingSkill": {
+          "$ref": "#/definitions/TicketSkill"
+        },
+        "tierLevelSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "tierLevelSkill": {
+          "$ref": "#/definitions/TicketSkill"
+        },
+        "prioritySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "prioritySkill": {
+          "$ref": "#/definitions/TicketSkill"
+        },
+        "shortDescription": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "solution": {
+          "type": "string"
+        },
+        "employeeId": {
+          "type": "string"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "requesterId": {
+          "type": "string"
+        },
+        "requester": {
+          "$ref": "#/definitions/Employee"
+        },
+        "partnerSystemId": {
+          "type": "string"
+        },
+        "partnerReference": {
+          "type": "string"
+        },
+        "currentAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "currentAgent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "closerAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "closerAgent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "creatorAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "creatorAgent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "pendingReasonId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pendingReason": {
+          "type": "string"
+        },
+        "externalStatusId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketGroupId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "requesterClientSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ewsInboxId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "unflaggableByOther": {
+          "type": "boolean"
+        },
+        "solved": {
+          "type": "boolean"
+        },
+        "isLinkedTicket": {
+          "type": "boolean"
+        },
+        "customFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomField"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TicketSkill"
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicTicketAction"
+          }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TicketItem"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicTicketTask"
+          }
+        },
+        "childTicketId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "childPartnerTicketId": {
+          "type": "string"
+        },
+        "childCompanyName": {
+          "type": "string"
+        },
+        "parentTicketId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "parentPartnerTicketId": {
+          "type": "string"
+        },
+        "parentCompanyName": {
+          "type": "string"
+        },
+        "creationApp": {
+          "type": "string"
+        },
+        "isDueDateDynamicSet": {
+          "type": "boolean"
+        },
+        "opmSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "buttons": {
+          "enum": [
+            "None",
+            "TakeOwnership",
+            "Pend",
+            "Unpend",
+            "SendToAgent",
+            "SendToWorkgroup",
+            "Escalate",
+            "DeEscalate",
+            "SetReminder",
+            "RemoveReminder",
+            "Unassign",
+            "Close",
+            "Save",
+            "Email",
+            "Upload",
+            "AddCommunication",
+            "AddTask",
+            "MarkReviewed",
+            "Resolve",
+            "Reopen",
+            "StartWorking",
+            "UpdateProcess",
+            "AddCollaborator"
+          ],
+          "type": "string"
+        },
+        "isInteraction": {
+          "type": "boolean"
+        },
+        "version": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isNew": {
+          "type": "boolean"
+        },
+        "isPending": {
+          "type": "boolean"
+        },
+        "csatDuedate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "entityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pendingType": {
+          "enum": [
+            "None",
+            "Entity",
+            "Employee"
+          ],
+          "type": "string"
+        },
+        "dynamicDueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dueDateDynamicElapsedDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "hasPartnerTasks": {
+          "type": "boolean"
+        },
+        "trimmedDescription": {
+          "type": "string"
+        },
+        "endOfReviewDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastReviewDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "reclassifiedAfterClosure": {
+          "type": "boolean"
+        },
+        "reclassifiedInSLAAfterClosure": {
+          "type": "boolean"
+        },
+        "reviewCompleted": {
+          "type": "boolean"
+        },
+        "lastArchiveDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "payrollGroup": {
+          "type": "string"
+        },
+        "pexBodId": {
+          "type": "string"
+        },
+        "initiatedBy": {
+          "type": "string"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "pexUrl": {
+          "type": "string"
+        },
+        "jobId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "cdmCustomerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "companyFormFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicTicketField"
+          }
+        },
+        "serviceFormFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicTicketField"
+          }
+        },
+        "oldHrwTicketId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "newModel": {
+          "type": "boolean"
+        },
+        "estimatedWorkingTime": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "requestTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "requestType": {
+          "$ref": "#/definitions/PublicRequestType"
+        },
+        "priority": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "escalationReasonId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isVipEmployee": {
+          "type": "boolean"
+        },
+        "isVipRequester": {
+          "type": "boolean"
+        },
+        "lastResolvedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastResolvedAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "lastResolvedAgent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "hasTaskWithLongerDueDate": {
+          "type": "boolean"
+        },
+        "causedByTaskIds": {
+          "type": "array",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sourceSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "legalEntitySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ppmId": {
+          "type": "string"
+        },
+        "collaborationPrivacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "emailParams": {
+          "$ref": "#/definitions/PublicTicketEmailParams"
+        },
+        "intentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "intentName": {
+          "type": "string"
+        },
+        "intentSolutionDegraded": {
+          "type": "boolean"
+        },
+        "intentUsage": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "workInstructions": {
+          "type": "string"
+        },
+        "policyFiles": {
+          "type": "string"
+        },
+        "policyLinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicPolicyLink"
+          }
+        },
+        "defectiveInputReasonId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "interactionId": {
+          "type": "string"
+        },
+        "freeEmployees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TicketFreeEmployee"
+          }
+        },
+        "cmsModel": {
+          "enum": [
+            "NotCms",
+            "CMS10",
+            "CMS20"
+          ],
+          "type": "string"
+        },
+        "shouldReclassifyOnTakeOwnership": {
+          "type": "boolean"
+        },
+        "employees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TicketEmployee"
+          }
+        }
+      }
+    },
+    "Service": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "skillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "serviceGroupId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "labelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "usePriority": {
+          "type": "boolean"
+        },
+        "isValidForInteraction": {
+          "type": "boolean"
+        },
+        "percentageCertainty": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "enableDynamicDueDate": {
+          "type": "boolean"
+        },
+        "olrId": {
+          "type": "string"
+        },
+        "dateModified": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isHrSensitiveData": {
+          "type": "boolean"
+        },
+        "defaultPrioritySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "mustBeChangedOnFirstUpdate": {
+          "type": "boolean"
+        },
+        "useDocumentTypes": {
+          "type": "boolean"
+        },
+        "isObsolete": {
+          "type": "boolean"
+        },
+        "isNewModel": {
+          "type": "boolean"
+        },
+        "enabledForFreeEmployeeCreation": {
+          "type": "boolean"
+        },
+        "cms20ServiceId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "ServiceGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceAreaId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Service"
+          }
+        },
+        "percentageCertainty": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "olrId": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "canBeUsedAsTslAuthorization": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ServiceArea": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "isNewModel": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TicketSkill": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "skillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "skillTypeName": {
+          "type": "string"
+        },
+        "isAgentSkill": {
+          "type": "boolean"
+        },
+        "isValidForInteraction": {
+          "type": "boolean"
+        },
+        "poolMandatory": {
+          "type": "boolean"
+        },
+        "isObsolete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Employee": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "company": {
+          "$ref": "#/definitions/Company"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "customerName": {
+          "type": "string"
+        },
+        "employeeInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmployeeField"
+          }
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EmployeeField"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SkillDefinition"
+          }
+        },
+        "securityQuestions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SecurityQuestion"
+          }
+        },
+        "source": {
+          "type": "string"
+        },
+        "backendType": {
+          "enum": [
+            "Sap",
+            "Oracle",
+            "MsSql",
+            "MySql",
+            "ActiveDirectory",
+            "Workday",
+            "ResourceLink",
+            "SuccessFactors",
+            "Pex",
+            "Preceda",
+            "Cdm",
+            "Udp"
+          ],
+          "type": "string"
+        },
+        "backendHandleInbox": {
+          "type": "boolean"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "lcc": {
+          "type": "string"
+        },
+        "lccForTsl": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "freelyCreated": {
+          "type": "boolean"
+        },
+        "proxyType": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "CustomField": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "PublicTicketAction": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "assignedAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "assignedWorkGroupSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "agentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "agent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "type": {
+          "enum": [
+            "CreateTicket",
+            "CloseTicket",
+            "ScheduleTicket",
+            "ScheduleTicketToAgent",
+            "AssignTicket",
+            "SendToGeneralPool",
+            "EscalateTicket",
+            "SendToMyPool",
+            "StartProcessing",
+            "AddAttachment",
+            "AddMail",
+            "AddNote",
+            "CustomAction",
+            "PredefinedAction",
+            "ChangePreActionState",
+            "AddTicketSkill",
+            "RemoveTicketSkill",
+            "UpdateTicketInfo",
+            "ChangeTicketCompany",
+            "ChangeTicketService",
+            "DeleteTicketItem",
+            "DuplicateTicket",
+            "ReopenTicket",
+            "SendToAmo",
+            "SendMailOnCreate",
+            "SendMailOnClose",
+            "SwitchToPending",
+            "StopPending",
+            "SirAction",
+            "StopWaiting",
+            "StopProcessing",
+            "StopExternal",
+            "StopSchedule",
+            "StopGeneralPool",
+            "AddTicketToGroup",
+            "RemoveTicketFromGroup",
+            "ChangeExternalStatus",
+            "MergeTicket",
+            "OutOfSla",
+            "AmberSla",
+            "SendToPendingGeneralPool",
+            "StopPendingGeneralPool",
+            "ScheduleTicketPending",
+            "ScheduleTicketToAgentPending",
+            "StopSchedulePending",
+            "AddParentTicket",
+            "AddChildTicket",
+            "ParentAction",
+            "ChildAction",
+            "ParentItemAdded",
+            "ChildItemAdded",
+            "ParentClosed",
+            "ChildClosed",
+            "StartTransfer",
+            "StopTransfer",
+            "StopTransferRequest",
+            "StopTransferAccepted",
+            "StopTransferDenied",
+            "OutOfSlaByAlerter",
+            "StopTransferHasBeenRequested",
+            "StopTransferHasBeenAccepted",
+            "StopTransferHasBeenDenied",
+            "NoEmailFound",
+            "DynamicDueDateDefined",
+            "DueDateDefault",
+            "ScheduleToGroup",
+            "ScheduleToGroupPending",
+            "SurveySent",
+            "SentToWebService",
+            "OutOfOfficeRoutedToBackup",
+            "ImportantParentDataUpdated",
+            "ChildTicketUpdatedWithNewParentData",
+            "OutOfOffice",
+            "StartTransferComment",
+            "SendCloseMailOnAcceptStopTransfer",
+            "SendTicketForApproval",
+            "SendTicketForApprovalCanceled",
+            "TicketForApprovalApproved",
+            "TicketForApprovalRejected",
+            "ReuseParentTicket",
+            "ReuseChildTicket",
+            "AddTicketTask",
+            "RemoveTicketTask",
+            "UpdateTicketTask",
+            "ReopenParentTicket",
+            "ReopenChildTicket",
+            "DelegateTicket",
+            "ChangeActionPrivacy",
+            "ChangeItemPrivacy",
+            "ChangeItemDocumentType",
+            "BadEmailDelivery",
+            "TicketFlagged",
+            "TicketUnflagged",
+            "TicketLinked",
+            "TicketUnlinked",
+            "ResolveTicket",
+            "StopSolved",
+            "SapTransaction",
+            "RequestCloseTicket",
+            "SendTicketToPartner",
+            "PartnerNotification",
+            "TicketCreatedByPartner",
+            "PartnerTicketStatusUpdated",
+            "ScheduleElapsed",
+            "TakeTask",
+            "SendTaskToAgent",
+            "SendTaskToWorkgroup",
+            "SkipTask",
+            "CloseTask",
+            "CancelTask",
+            "UpdateTaskDueDate",
+            "TakeOverTask",
+            "TaskReclassification",
+            "PushedNotificationDeleted",
+            "AssignTicketToWorkgroup",
+            "TaskDueDateElapsed",
+            "NotificationMailSent",
+            "AttachPartnerTicketToPartnerTask",
+            "IncomingPartnerTicketUpdate",
+            "SendMessageToAgent",
+            "TicketOwnershipChanged",
+            "TaskOwnershipChanged",
+            "SendFileToPartner",
+            "SetReminder",
+            "RemoveReminder",
+            "DueDateChanged",
+            "PendTicket",
+            "UnpendTicket",
+            "ReceiveFileFromPartner",
+            "SendMessageToPartner",
+            "ReceiveMessageFromPartner",
+            "TicketReviewed",
+            "ReviewCompleted",
+            "TaskActivated",
+            "ReadyToArchive",
+            "OutOfOla",
+            "AmberOla",
+            "EmployeeSearch",
+            "MessageReceivedFromInbox",
+            "TicketForApprovalApprovedFromInbox",
+            "TicketForApprovalRejectedFromInbox",
+            "CloseRequestFromInbox",
+            "RequestDocumentToInbox",
+            "RequestApprovalToInbox",
+            "SendNotificationToInbox",
+            "RequestInformationToInbox",
+            "ReOpenTicketByEmployee",
+            "ReOpenTicketByAgent",
+            "AddTicketTag",
+            "DeleteTicketTag",
+            "StartWorking",
+            "StopWorking",
+            "MailSentToUntrustedEmailAddress",
+            "TicketErrorSaved",
+            "TimeRecordedManuallyAdded",
+            "TimeRecordedManuallyUpdated",
+            "MarkAsDefectiveInput",
+            "OutOfTat",
+            "PartnerTicketChangeDueDateRequest",
+            "PartnerTicketAcceptChangeDueDate",
+            "PartnerTicketRejectChangeDueDate",
+            "ChangeTaskPrivacy",
+            "SetAsEvidence",
+            "ItemUploadedToDocumentum",
+            "AddCollaboratorToTicket",
+            "AddCollaboratorToTask",
+            "RemoveCollaboratorFromTicket",
+            "RemoveCollaboratorFromTask",
+            "SendMessageToTicketCollaborators",
+            "SendMessageToTaskCollaborators",
+            "TicketDraftCompleted",
+            "TicketTaskDraftCompleted",
+            "ExportToCsv",
+            "GenerateDwhReport",
+            "EmailForciblySentWithUnsafeFiles",
+            "SendEmailWithProtectedFile",
+            "SendEmailWithPassword",
+            "WatchersAdded",
+            "SendMassCommunicationEmail",
+            "SendEmailWithSafeboxLink",
+            "RegisterInteractionId",
+            "TicketIntentChange"
+          ],
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "relatedTicketItemId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "customActionTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "timeSpent": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "creationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "completedTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "relatedTicketTaskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "scheduleTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ticketCurrentAgentID": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "documentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketHistoryBitMask": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "pendingReasonId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "externalStatusId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerTicketStatus": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "currentTaskAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "destinationAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "skillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ownershipChangeReason": {
+          "enum": [
+            "None",
+            "TakeTicket",
+            "TakeoverTicket",
+            "SendTicketToAgent",
+            "SendTicketToWorkgroup",
+            "UnassignTicket",
+            "TakeTask",
+            "SendTaskToAgent",
+            "SendTaskToWorkgroup",
+            "ReassignTask",
+            "TakeOverTask",
+            "ChangeWorkgroup"
+          ],
+          "type": "string"
+        },
+        "ticketCurrentWorkGroupSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "taskCurrentWorkgroupSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entityName": {
+          "type": "string"
+        },
+        "dueDateChangeType": {
+          "enum": [
+            "None",
+            "Reclassification",
+            "ChangePriority",
+            "DynamicDuedateDefined",
+            "UnpendEntity",
+            "UnpendEmployee",
+            "ReassignedToEntity",
+            "PartnerTicketDueDateChange",
+            "RecalculateOnClose"
+          ],
+          "type": "string"
+        },
+        "oldDueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "newDueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "additionalInfo": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicSummaryItem"
+          }
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dynamicDueDateChangingReasonId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "actionDetails": {
+          "type": "string"
+        }
+      }
+    },
+    "TicketItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "creationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "Email",
+            "File",
+            "Note",
+            "Unknown",
+            "SapShortcut",
+            "Executable",
+            "Hyperlink",
+            "HyperlinkSir",
+            "ParentTicket",
+            "ChildTicket",
+            "Shortcut",
+            "LinkedTicket",
+            "ChildPartnerTicket",
+            "ParentPartnerTicket"
+          ],
+          "type": "string"
+        },
+        "agentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "agent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "relatedTicketItemId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "documentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
+        "action": {
+          "$ref": "#/definitions/PublicTicketAction"
+        },
+        "email": {
+          "$ref": "#/definitions/EmailItem"
+        },
+        "file": {
+          "$ref": "#/definitions/FileItem"
+        },
+        "partnerTicket": {
+          "$ref": "#/definitions/PartnerTicketItem"
+        },
+        "parentChildTicket": {
+          "$ref": "#/definitions/ParentChildTicketItem"
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isPiiSafe": {
+          "type": "boolean"
+        },
+        "origin": {
+          "enum": [
+            "None",
+            "CloseAsDefectiveInput",
+            "NewEmail",
+            "Resolve",
+            "TicketCreation",
+            "Action",
+            "Note"
+          ],
+          "type": "string"
+        },
+        "isTemporary": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PublicTicketTask": {
+      "type": "object",
+      "properties": {
+        "ticketId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "creationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModificationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "resolutionTime": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "agent": {
+          "$ref": "#/definitions/Agent"
+        },
+        "agentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "workgroup": {
+          "$ref": "#/definitions/Workgroup"
+        },
+        "workGroupSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "ToDo",
+            "InProgress",
+            "Done",
+            "Failed",
+            "Skipped",
+            "Open",
+            "Closed",
+            "Cancelled",
+            "ObsoleteDueToReclassification",
+            "CancelledDueToReclassification",
+            "WaitingPartnerTicketToBeAttached",
+            "ObsoleteDueToTicketClosure"
+          ],
+          "type": "string"
+        },
+        "predefTaskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "resolutionTimeMandatory": {
+          "type": "boolean"
+        },
+        "timeSpent": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "buttons": {
+          "enum": [
+            "None",
+            "Cancel",
+            "Close",
+            "SendToAgent",
+            "SendToWorkgroup",
+            "TakeOwnership",
+            "AddCommunication",
+            "Email",
+            "ChangeDueDate",
+            "Upload",
+            "StartWorking",
+            "AddTask",
+            "AddCollaborator"
+          ],
+          "type": "string"
+        },
+        "partnerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partner": {
+          "$ref": "#/definitions/Partner"
+        },
+        "partnerTicket": {
+          "$ref": "#/definitions/PartnerTicket"
+        },
+        "communications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TicketCommunication"
+          }
+        },
+        "partnerFiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicTicketItem2Task"
+          }
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/File"
+          }
+        },
+        "type": {
+          "enum": [
+            "Planned",
+            "Template",
+            "FreeForm",
+            "Partner",
+            "PPM"
+          ],
+          "type": "string"
+        },
+        "parentTaskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "closeTicketMandatory": {
+          "type": "boolean"
+        },
+        "formFields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicTicketField"
+          }
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "ppmEventId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "evidenceRequired": {
+          "type": "boolean"
+        },
+        "collaborationPrivacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "creatorAgentName": {
+          "type": "string"
+        },
+        "creationAssignedAgentName": {
+          "type": "string"
+        },
+        "creationAssignedWrkgrpName": {
+          "type": "string"
+        },
+        "templateName": {
+          "type": "string"
+        }
+      }
+    },
+    "PublicTicketField": {
+      "type": "object",
+      "properties": {
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "ticketId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "taskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "fieldId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "formFieldId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "shortDescription": {
+          "type": "string"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isMandatoryOnClose": {
+          "type": "boolean"
+        },
+        "isMandatoryOnCreate": {
+          "type": "boolean"
+        },
+        "type": {
+          "enum": [
+            "UnsignedInteger",
+            "Text",
+            "DateAndTime",
+            "Integer",
+            "Double",
+            "Xml",
+            "StringFixed",
+            "StringVariable",
+            "StringLong",
+            "ByteArray",
+            "Float",
+            "Boolean",
+            "Image",
+            "None",
+            "View"
+          ],
+          "type": "string"
+        },
+        "minValueOrLength": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "maxValueOrLength": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "value": {
+          "type": "string"
+        },
+        "predefinedValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FormFieldValue"
+          }
+        },
+        "lastModificationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "lastModificationBy": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "skillId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "PublicRequestType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lastUpdate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "action": {
+          "enum": [
+            "Insert",
+            "Update",
+            "Delete"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "PublicPolicyLink": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "linkName": {
+          "type": "string"
+        },
+        "linkTarget": {
+          "type": "string"
+        },
+        "lastUpdate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "TicketFreeEmployee": {
+      "type": "object",
+      "properties": {
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "employeeId": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "isEmployee": {
+          "type": "boolean"
+        },
+        "isRequester": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TicketEmployee": {
+      "type": "object",
+      "properties": {
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "companySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "isVip": {
+          "type": "boolean"
+        },
+        "lcc": {
+          "type": "string"
+        },
+        "lccForTsl": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "freelyCreated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "EmployeeField": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "defaultLabel": {
+          "type": "string"
+        },
+        "translationId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "value": {
+          "type": "string"
+        },
+        "valueType": {
+          "type": "string"
+        },
+        "customField": {
+          "type": "string"
+        },
+        "saveToColumn": {
+          "type": "string"
+        }
+      }
+    },
+    "PublicSummaryItem": {
+      "type": "object",
+      "properties": {
+        "labelId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "Integer",
+            "String",
+            "DateTime",
+            "Bool",
+            "Double"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "EmailItem": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bcc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subject": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/File"
+          }
+        },
+        "documentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "FileItem": {
+      "type": "object",
+      "properties": {
+        "documentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "fileName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "contentLength": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "binaryData": {
+          "format": "byte",
+          "type": "string"
+        },
+        "hyperlink": {
+          "type": "string"
+        }
+      }
+    },
+    "PartnerTicketItem": {
+      "type": "object",
+      "properties": {
+        "partnerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerGroupSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "partnerTicketId": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "Closed",
+            "Open",
+            "Solved",
+            "Cancelled"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "ParentChildTicketItem": {
+      "type": "object",
+      "properties": {
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "companySkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "Closed",
+            "Open",
+            "Solved",
+            "Cancelled"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "Workgroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "entityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "entityName": {
+          "type": "string"
+        },
+        "canViewHrSensitiveData": {
+          "type": "boolean"
+        },
+        "roleGroupId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "isObsolete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Partner": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ticketCreationUrl": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "employeeId": {
+          "type": "string"
+        },
+        "employee": {
+          "$ref": "#/definitions/Employee"
+        },
+        "groupSkillTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "config": {
+          "type": "string"
+        },
+        "connectorConfig": {
+          "$ref": "#/definitions/XElement"
+        },
+        "sourceSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roleName": {
+          "type": "string"
+        },
+        "showTicketDetails": {
+          "type": "boolean"
+        },
+        "closedStatuses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PartnerTicket": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayId": {
+          "type": "string"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "partnerId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketTaskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "shortDescription": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "assignmentGroup": {
+          "type": "string"
+        },
+        "assignedTo": {
+          "type": "string"
+        },
+        "dueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "dueDateProposalStatus": {
+          "enum": [
+            "NotRequested",
+            "Requested",
+            "Approved",
+            "Rejected"
+          ],
+          "type": "string"
+        },
+        "proposedDueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dueDateProposedBy": {
+          "type": "string"
+        },
+        "dueDateProposalComment": {
+          "type": "string"
+        },
+        "isSla": {
+          "type": "boolean"
+        },
+        "isClosed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "TicketCommunication": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "dateCreated": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "type": {
+          "enum": [
+            "CreateTicket",
+            "CloseTicket",
+            "ScheduleTicket",
+            "ScheduleTicketToAgent",
+            "AssignTicket",
+            "SendToGeneralPool",
+            "EscalateTicket",
+            "SendToMyPool",
+            "StartProcessing",
+            "AddAttachment",
+            "AddMail",
+            "AddNote",
+            "CustomAction",
+            "PredefinedAction",
+            "ChangePreActionState",
+            "AddTicketSkill",
+            "RemoveTicketSkill",
+            "UpdateTicketInfo",
+            "ChangeTicketCompany",
+            "ChangeTicketService",
+            "DeleteTicketItem",
+            "DuplicateTicket",
+            "ReopenTicket",
+            "SendToAmo",
+            "SendMailOnCreate",
+            "SendMailOnClose",
+            "SwitchToPending",
+            "StopPending",
+            "SirAction",
+            "StopWaiting",
+            "StopProcessing",
+            "StopExternal",
+            "StopSchedule",
+            "StopGeneralPool",
+            "AddTicketToGroup",
+            "RemoveTicketFromGroup",
+            "ChangeExternalStatus",
+            "MergeTicket",
+            "OutOfSla",
+            "AmberSla",
+            "SendToPendingGeneralPool",
+            "StopPendingGeneralPool",
+            "ScheduleTicketPending",
+            "ScheduleTicketToAgentPending",
+            "StopSchedulePending",
+            "AddParentTicket",
+            "AddChildTicket",
+            "ParentAction",
+            "ChildAction",
+            "ParentItemAdded",
+            "ChildItemAdded",
+            "ParentClosed",
+            "ChildClosed",
+            "StartTransfer",
+            "StopTransfer",
+            "StopTransferRequest",
+            "StopTransferAccepted",
+            "StopTransferDenied",
+            "OutOfSlaByAlerter",
+            "StopTransferHasBeenRequested",
+            "StopTransferHasBeenAccepted",
+            "StopTransferHasBeenDenied",
+            "NoEmailFound",
+            "DynamicDueDateDefined",
+            "DueDateDefault",
+            "ScheduleToGroup",
+            "ScheduleToGroupPending",
+            "SurveySent",
+            "SentToWebService",
+            "OutOfOfficeRoutedToBackup",
+            "ImportantParentDataUpdated",
+            "ChildTicketUpdatedWithNewParentData",
+            "OutOfOffice",
+            "StartTransferComment",
+            "SendCloseMailOnAcceptStopTransfer",
+            "SendTicketForApproval",
+            "SendTicketForApprovalCanceled",
+            "TicketForApprovalApproved",
+            "TicketForApprovalRejected",
+            "ReuseParentTicket",
+            "ReuseChildTicket",
+            "AddTicketTask",
+            "RemoveTicketTask",
+            "UpdateTicketTask",
+            "ReopenParentTicket",
+            "ReopenChildTicket",
+            "DelegateTicket",
+            "ChangeActionPrivacy",
+            "ChangeItemPrivacy",
+            "ChangeItemDocumentType",
+            "BadEmailDelivery",
+            "TicketFlagged",
+            "TicketUnflagged",
+            "TicketLinked",
+            "TicketUnlinked",
+            "ResolveTicket",
+            "StopSolved",
+            "SapTransaction",
+            "RequestCloseTicket",
+            "SendTicketToPartner",
+            "PartnerNotification",
+            "TicketCreatedByPartner",
+            "PartnerTicketStatusUpdated",
+            "ScheduleElapsed",
+            "TakeTask",
+            "SendTaskToAgent",
+            "SendTaskToWorkgroup",
+            "SkipTask",
+            "CloseTask",
+            "CancelTask",
+            "UpdateTaskDueDate",
+            "TakeOverTask",
+            "TaskReclassification",
+            "PushedNotificationDeleted",
+            "AssignTicketToWorkgroup",
+            "TaskDueDateElapsed",
+            "NotificationMailSent",
+            "AttachPartnerTicketToPartnerTask",
+            "IncomingPartnerTicketUpdate",
+            "SendMessageToAgent",
+            "TicketOwnershipChanged",
+            "TaskOwnershipChanged",
+            "SendFileToPartner",
+            "SetReminder",
+            "RemoveReminder",
+            "DueDateChanged",
+            "PendTicket",
+            "UnpendTicket",
+            "ReceiveFileFromPartner",
+            "SendMessageToPartner",
+            "ReceiveMessageFromPartner",
+            "TicketReviewed",
+            "ReviewCompleted",
+            "TaskActivated",
+            "ReadyToArchive",
+            "OutOfOla",
+            "AmberOla",
+            "EmployeeSearch",
+            "MessageReceivedFromInbox",
+            "TicketForApprovalApprovedFromInbox",
+            "TicketForApprovalRejectedFromInbox",
+            "CloseRequestFromInbox",
+            "RequestDocumentToInbox",
+            "RequestApprovalToInbox",
+            "SendNotificationToInbox",
+            "RequestInformationToInbox",
+            "ReOpenTicketByEmployee",
+            "ReOpenTicketByAgent",
+            "AddTicketTag",
+            "DeleteTicketTag",
+            "StartWorking",
+            "StopWorking",
+            "MailSentToUntrustedEmailAddress",
+            "TicketErrorSaved",
+            "TimeRecordedManuallyAdded",
+            "TimeRecordedManuallyUpdated",
+            "MarkAsDefectiveInput",
+            "OutOfTat",
+            "PartnerTicketChangeDueDateRequest",
+            "PartnerTicketAcceptChangeDueDate",
+            "PartnerTicketRejectChangeDueDate",
+            "ChangeTaskPrivacy",
+            "SetAsEvidence",
+            "ItemUploadedToDocumentum",
+            "AddCollaboratorToTicket",
+            "AddCollaboratorToTask",
+            "RemoveCollaboratorFromTicket",
+            "RemoveCollaboratorFromTask",
+            "SendMessageToTicketCollaborators",
+            "SendMessageToTaskCollaborators",
+            "TicketDraftCompleted",
+            "TicketTaskDraftCompleted",
+            "ExportToCsv",
+            "GenerateDwhReport",
+            "EmailForciblySentWithUnsafeFiles",
+            "SendEmailWithProtectedFile",
+            "SendEmailWithPassword",
+            "WatchersAdded",
+            "SendMassCommunicationEmail",
+            "SendEmailWithSafeboxLink",
+            "RegisterInteractionId",
+            "TicketIntentChange"
+          ],
+          "type": "string"
+        },
+        "ticketActionId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketItemId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketTaskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sender": {
+          "type": "string"
+        },
+        "senderAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "receiver": {
+          "type": "string"
+        },
+        "receiverAgentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "customActionType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "summary": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PublicSummaryItem"
+          }
+        },
+        "isIncomingPartnerAction": {
+          "type": "boolean"
+        },
+        "ownershipChangeReason": {
+          "enum": [
+            "None",
+            "TakeTicket",
+            "TakeoverTicket",
+            "SendTicketToAgent",
+            "SendTicketToWorkgroup",
+            "UnassignTicket",
+            "TakeTask",
+            "SendTaskToAgent",
+            "SendTaskToWorkgroup",
+            "ReassignTask",
+            "TakeOverTask",
+            "ChangeWorkgroup"
+          ],
+          "type": "string"
+        },
+        "targetWorkgroupSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "targetWorkgroup": {
+          "type": "string"
+        },
+        "sourceWorkgroupSkillId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sourceWorkgroup": {
+          "type": "string"
+        },
+        "proposedDueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "dueDateProposedBy": {
+          "type": "string"
+        },
+        "relatedCommunicationId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketStatus": {
+          "enum": [
+            "Closed",
+            "Open",
+            "Pending",
+            "New",
+            "Resolved"
+          ],
+          "type": "string"
+        },
+        "ticketId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "shortDescription": {
+          "type": "string"
+        },
+        "mailTo": {
+          "type": "string"
+        },
+        "mailCc": {
+          "type": "string"
+        },
+        "mailWatchers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Watcher"
+          }
+        },
+        "ticketTaskStatus": {
+          "enum": [
+            "ToDo",
+            "InProgress",
+            "Done",
+            "Failed",
+            "Skipped",
+            "Open",
+            "Closed",
+            "Cancelled",
+            "ObsoleteDueToReclassification",
+            "CancelledDueToReclassification",
+            "WaitingPartnerTicketToBeAttached",
+            "ObsoleteDueToTicketClosure"
+          ],
+          "type": "string"
+        }
+      }
+    },
+    "PublicTicketItem2Task": {
+      "type": "object",
+      "properties": {
+        "applicationId": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "string"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "ticketItemId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketTaskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sendDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "isSensitive": {
+          "type": "boolean"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "file": {
+          "$ref": "#/definitions/File"
+        },
+        "status": {
+          "type": "string"
+        },
+        "isPartnerRelated": {
+          "type": "boolean"
+        },
+        "isEvidence": {
+          "type": "boolean"
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "FormFieldValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "order": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "isDefault": {
+          "type": "boolean"
+        }
+      }
+    },
+    "XElement": {
+      "type": "object",
+      "properties": {
+        "firstAttribute": {
+          "$ref": "#/definitions/XAttribute",
+          "readOnly": true
+        },
+        "hasAttributes": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "hasElements": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "isEmpty": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "lastAttribute": {
+          "$ref": "#/definitions/XAttribute",
+          "readOnly": true
+        },
+        "name": {
+          "type": "object"
+        },
+        "nodeType": {
+          "enum": [
+            "None",
+            "Element",
+            "Attribute",
+            "Text",
+            "CDATA",
+            "EntityReference",
+            "Entity",
+            "ProcessingInstruction",
+            "Comment",
+            "Document",
+            "DocumentType",
+            "DocumentFragment",
+            "Notation",
+            "Whitespace",
+            "SignificantWhitespace",
+            "EndElement",
+            "EndEntity",
+            "XmlDeclaration"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string"
+        },
+        "firstNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "lastNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "nextNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "previousNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "baseUri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "document": {
+          "$ref": "#/definitions/XDocument",
+          "readOnly": true
+        },
+        "parent": {
+          "$ref": "#/definitions/XElement",
+          "readOnly": true
+        }
+      }
+    },
+    "Watcher": {
+      "type": "object",
+      "properties": {
+        "agentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "entityId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "None",
+            "NGA",
+            "TSL"
+          ],
+          "type": "string"
+        },
+        "authorizations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TslAuthorization"
+          }
+        },
+        "expirationDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "XAttribute": {
+      "type": "object",
+      "properties": {
+        "isNamespaceDeclaration": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "name": {
+          "type": "object",
+          "readOnly": true
+        },
+        "nextAttribute": {
+          "$ref": "#/definitions/XAttribute",
+          "readOnly": true
+        },
+        "nodeType": {
+          "enum": [
+            "None",
+            "Element",
+            "Attribute",
+            "Text",
+            "CDATA",
+            "EntityReference",
+            "Entity",
+            "ProcessingInstruction",
+            "Comment",
+            "Document",
+            "DocumentType",
+            "DocumentFragment",
+            "Notation",
+            "Whitespace",
+            "SignificantWhitespace",
+            "EndElement",
+            "EndEntity",
+            "XmlDeclaration"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "previousAttribute": {
+          "$ref": "#/definitions/XAttribute",
+          "readOnly": true
+        },
+        "value": {
+          "type": "string"
+        },
+        "baseUri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "document": {
+          "$ref": "#/definitions/XDocument",
+          "readOnly": true
+        },
+        "parent": {
+          "$ref": "#/definitions/XElement",
+          "readOnly": true
+        }
+      }
+    },
+    "XNode": {
+      "type": "object",
+      "properties": {
+        "nextNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "previousNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "baseUri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "document": {
+          "$ref": "#/definitions/XDocument",
+          "readOnly": true
+        },
+        "nodeType": {
+          "enum": [
+            "None",
+            "Element",
+            "Attribute",
+            "Text",
+            "CDATA",
+            "EntityReference",
+            "Entity",
+            "ProcessingInstruction",
+            "Comment",
+            "Document",
+            "DocumentType",
+            "DocumentFragment",
+            "Notation",
+            "Whitespace",
+            "SignificantWhitespace",
+            "EndElement",
+            "EndEntity",
+            "XmlDeclaration"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "parent": {
+          "$ref": "#/definitions/XElement",
+          "readOnly": true
+        }
+      }
+    },
+    "XDocument": {
+      "type": "object",
+      "properties": {
+        "declaration": {
+          "$ref": "#/definitions/XDeclaration"
+        },
+        "documentType": {
+          "$ref": "#/definitions/XDocumentType",
+          "readOnly": true
+        },
+        "nodeType": {
+          "enum": [
+            "None",
+            "Element",
+            "Attribute",
+            "Text",
+            "CDATA",
+            "EntityReference",
+            "Entity",
+            "ProcessingInstruction",
+            "Comment",
+            "Document",
+            "DocumentType",
+            "DocumentFragment",
+            "Notation",
+            "Whitespace",
+            "SignificantWhitespace",
+            "EndElement",
+            "EndEntity",
+            "XmlDeclaration"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "root": {
+          "$ref": "#/definitions/XElement",
+          "readOnly": true
+        },
+        "firstNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "lastNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "nextNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "previousNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "baseUri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "document": {
+          "$ref": "#/definitions/XDocument",
+          "readOnly": true
+        },
+        "parent": {
+          "$ref": "#/definitions/XElement",
+          "readOnly": true
+        }
+      }
+    },
+    "XDeclaration": {
+      "type": "object",
+      "properties": {
+        "encoding": {
+          "type": "string"
+        },
+        "standalone": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "XDocumentType": {
+      "type": "object",
+      "properties": {
+        "internalSubset": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nodeType": {
+          "enum": [
+            "None",
+            "Element",
+            "Attribute",
+            "Text",
+            "CDATA",
+            "EntityReference",
+            "Entity",
+            "ProcessingInstruction",
+            "Comment",
+            "Document",
+            "DocumentType",
+            "DocumentFragment",
+            "Notation",
+            "Whitespace",
+            "SignificantWhitespace",
+            "EndElement",
+            "EndEntity",
+            "XmlDeclaration"
+          ],
+          "type": "string",
+          "readOnly": true
+        },
+        "publicId": {
+          "type": "string"
+        },
+        "systemId": {
+          "type": "string"
+        },
+        "nextNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "previousNode": {
+          "$ref": "#/definitions/XNode",
+          "readOnly": true
+        },
+        "baseUri": {
+          "type": "string",
+          "readOnly": true
+        },
+        "document": {
+          "$ref": "#/definitions/XDocument",
+          "readOnly": true
+        },
+        "parent": {
+          "$ref": "#/definitions/XElement",
+          "readOnly": true
+        }
+      }
+    },
+    "Email": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "ticketUid": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "taskId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "from": {
+          "type": "string"
+        },
+        "to": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bcc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "subject": {
+          "type": "string"
+        },
+        "body": {
+          "type": "string"
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/File"
+          }
+        },
+        "creationDateTime": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "documentTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "documentTypeName": {
+          "type": "string"
+        },
+        "privacyAccessLevel": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "watchers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Watcher"
+          }
+        },
+        "massCommunication": {
+          "type": "boolean"
+        },
+        "safeboxPackageId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sendToAssistAgents": {
+          "type": "boolean"
+        },
+        "channel": {
+          "enum": [
+            "None",
+            "Assist",
+            "Email",
+            "RequesterApplication"
+          ],
+          "type": "string"
+        },
+        "credential": {
+          "$ref": "#/definitions/SmtpCredential"
+        }
+      }
+    },
+    "ApiV2PoolsPoolNameExportPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameExportPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameExportPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameExportPost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsOptionGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsOptionGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsOptionGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchoptionsOptionGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsSearchPost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownloadGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownloadGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownloadGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownloadGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownload2Get200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownload2Get200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownload2Get200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2LegacyticketsTicketUidItemsItemIdDownload2Get200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNamePost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNamePost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNamePost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNamePost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameSortoptionsGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameSortoptionsGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameSortoptionsGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameSortoptionsGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "PoolGroupNodeArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PoolGroupNode"
+      }
+    },
+    "ApiV2PoolsPoolNameGroupoptionsGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameGroupoptionsGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameGroupoptionsGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameGroupoptionsGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFilteroptionsGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFilteroptionsGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFilteroptionsGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFilteroptionsGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFiltersFilterTypeNameValuesGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFiltersFilterTypeNameValuesGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFiltersFilterTypeNameValuesGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameFiltersFilterTypeNameValuesGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameCategoryoptionsGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameCategoryoptionsGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameCategoryoptionsGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolsPoolNameCategoryoptionsGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2PoolitemsSearchPost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsSearchGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsSearchGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsSearchGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsSearchGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TestHelloIdTextGet200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TestHelloIdTextGet200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TestHelloIdTextGet200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TestHelloIdTextGet200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TestDummiesPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TestDummiesPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TestDummiesPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TestDummiesPost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosePut200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosePut200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosePut200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosePut200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidPut200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidPut200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidPut200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidPut200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithemailPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithemailPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithemailPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithemailPost200TextXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithoutemailPost200ApplicationJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithoutemailPost200TextJsonResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithoutemailPost200ApplicationXmlResponse": {
+      "type": "object"
+    },
+    "ApiV2TicketsTicketUidClosewithoutemailPost200TextXmlResponse": {
+      "type": "object"
+    }
+  }
+}

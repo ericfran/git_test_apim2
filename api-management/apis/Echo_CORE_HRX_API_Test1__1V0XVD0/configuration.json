@@ -1,0 +1,105 @@
+{
+  "id": "/apis/echo-core-hrx-api-test1",
+  "name": "Echo CORE HRX API Test1",
+  "apiRevision": "1",
+  "$ref-description": null,
+  "subscriptionRequired": true,
+  "serviceUrl": "https://apim-nga-d-weu-papim-01.azure-api.net/echo-clone",
+  "path": "core",
+  "protocols": [
+    "https"
+  ],
+  "authenticationSettings": {
+    "oAuth2": null,
+    "openid": null
+  },
+  "subscriptionKeyParameterNames": {
+    "header": "Ocp-Apim-Subscription-Key",
+    "query": "subscription-key"
+  },
+  "isCurrent": true,
+  "operations": [
+    {
+      "id": "/apis/echo-core-hrx-api-test1/operations/60390b750a53c35889c160ed",
+      "name": "Retrieve resource only for HRX CORE",
+      "method": "GET",
+      "urlTemplate": "/resource?param1={param1}",
+      "templateParameters": [
+        {
+          "name": "param1",
+          "description": "Alight HRX CODE API. A sample parameter that is required and has a default value of \"sample\".",
+          "type": "string",
+          "defaultValue": "sample",
+          "required": true,
+          "values": [
+            "sample"
+          ]
+        }
+      ],
+      "$ref-description": "api-management/apis/Echo_CORE_HRX_API_Test1__1V0XVD0/operations/GET__resource_param1={par1ACB1QT.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "param2",
+            "description": "Another sample parameter, set to not required.",
+            "type": "number",
+            "values": []
+          }
+        ],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Echo_CORE_HRX_API_Test1__1V0XVD0/operations/GET__resource_param1={par1ACB1QT.response.200.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/echo-core-hrx-api-test1/operations/60390b7635d74175b374f020",
+      "name": "Retrieve resource (cached)",
+      "method": "GET",
+      "urlTemplate": "/resource-cached?param1={param1}",
+      "templateParameters": [
+        {
+          "name": "param1",
+          "description": "A sample parameter that is required and has a default value of \"sample\".",
+          "type": "string",
+          "defaultValue": "sample",
+          "required": true,
+          "values": [
+            "sample"
+          ]
+        }
+      ],
+      "$ref-description": "api-management/apis/Echo_CORE_HRX_API_Test1__1V0XVD0/operations/GET__resource-cached_paramWUPQVB.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "param2",
+            "description": "Another sample parameter, set to not required.",
+            "type": "string",
+            "values": []
+          }
+        ],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    }
+  ],
+  "apiSchemas": [],
+  "__GitModuleVersion": 15
+}

@@ -1,0 +1,14 @@
+{
+  "id": "/tags/Events",
+  "name": "Events",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-lists-events",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-lists-events",
+    "/apis/hrx-configuration-api-v1/operations/get-api-lists-events",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-lists-events"
+  ],
+  "__GitModuleVersion": 15
+}

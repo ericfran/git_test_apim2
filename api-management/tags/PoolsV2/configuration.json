@@ -1,0 +1,17 @@
+{
+  "id": "/tags/PoolsV2",
+  "name": "PoolsV2",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/PoolsV2_GetGroupingNodes",
+    "/apis/hrx-assist-core-api/operations/PoolsV2_GetPool",
+    "/apis/hrx-assist-core-api/operations/PoolsV2_GetPoolCategoryOptions",
+    "/apis/hrx-assist-core-api/operations/PoolsV2_GetPoolFilterOptions",
+    "/apis/hrx-assist-core-api/operations/PoolsV2_GetPoolFilterValues",
+    "/apis/hrx-assist-core-api/operations/PoolsV2_GetPoolGroupOptions",
+    "/apis/hrx-assist-core-api/operations/PoolsV2_GetPoolSortOptions"
+  ],
+  "__GitModuleVersion": 15
+}

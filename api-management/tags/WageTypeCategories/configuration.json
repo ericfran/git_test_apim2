@@ -1,0 +1,26 @@
+{
+  "id": "/tags/WageTypeCategories",
+  "name": "WageTypeCategories",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/put-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements",
+    "/apis/hrx-configuration-api/operations/post-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements",
+    "/apis/hrx-configuration-api/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api-v1/operations/post-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api-v1/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements",
+    "/apis/hrx-configuration-api-v1/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api-v1/operations/put-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements-file",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-wage-type-categories-gcc-lcc-lcc-catalog-catalog-pay-elements"
+  ],
+  "__GitModuleVersion": 15
+}

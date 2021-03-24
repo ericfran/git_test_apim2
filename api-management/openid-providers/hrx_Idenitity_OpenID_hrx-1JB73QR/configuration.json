@@ -1,0 +1,7 @@
+{
+  "id": "/openidConnectProviders/hrx-idenitity-openid",
+  "name": "hrx Idenitity OpenID",
+  "description": null,
+  "metadataEndpoint": "https://hrxidentity-dev.cloudapp.ngahr.com/.well-known/openid-configuration",
+  "__GitModuleVersion": 15
+}

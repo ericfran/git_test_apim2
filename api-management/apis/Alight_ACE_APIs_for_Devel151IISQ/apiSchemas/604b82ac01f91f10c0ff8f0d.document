@@ -1,0 +1,33 @@
+{
+  "components": {
+    "schemas": {
+      "ApiSessionStartSessionForPersonPostRequest": {
+        "required": [
+          "brokerUserId",
+          "clientId",
+          "subjectId",
+          "subjectType",
+          "testCfg"
+        ],
+        "type": "object",
+        "properties": {
+          "brokerUserId": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "subjectId": {
+            "type": "string"
+          },
+          "subjectType": {
+            "type": "string"
+          },
+          "testCfg": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

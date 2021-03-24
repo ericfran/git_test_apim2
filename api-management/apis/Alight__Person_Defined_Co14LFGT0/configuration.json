@@ -1,0 +1,268 @@
+{
+  "id": "/apis/alight-person-defined-contribution-api",
+  "name": "Alight  Person Defined Contribution API",
+  "apiRevision": "1",
+  "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/api.description.html",
+  "subscriptionRequired": true,
+  "serviceUrl": "https://api.qc.alight.com",
+  "path": "",
+  "protocols": [
+    "https"
+  ],
+  "authenticationSettings": {
+    "oAuth2": null,
+    "openid": null
+  },
+  "subscriptionKeyParameterNames": {
+    "header": "Ocp-Apim-Subscription-Key",
+    "query": "subscription-key"
+  },
+  "isCurrent": true,
+  "operations": [
+    {
+      "id": "/apis/alight-person-defined-contribution-api/operations/getPersonDefinedContribution",
+      "name": "Get Person Defined Contribution Current View.",
+      "method": "GET",
+      "urlTemplate": "/v2/persondefinedcontribution",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrOEGJTZ.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "suppressMatchAndRoRGraphData",
+            "description": "This optional query paramater when speicified with a value of true will omit particular data from being returned in the response.  The following array, objects and fields will be omitted - employerMatch, rateOfReturnYTDGraphTable and isPlanYTDRateOfReturnConvertedIn. If a consumer does not need information from any of these data elements, set the parameter to true. This query parameter is applicable to all versions of the API.",
+            "type": "boolean",
+            "values": []
+          }
+        ],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrOEGJTZ.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "6053af9b01f91f0e08f426ea",
+              "typeName": "DefinedContributionBenefits",
+              "generatedSample": "{\r\n  \"globalPersonIdentifier\": \"5bc84a324fd8b75004e92fea\",\r\n  \"testCfg\": \"Q600095B\",\r\n  \"normalizedClientId\": \"00095\",\r\n  \"sourceSchemaName\": \"Q600095B\",\r\n  \"platformInternalId\": \"451600093\",\r\n  \"personRecordKeepingRole\": \"EMPLOYEE\",\r\n  \"isEnrolledInManagedAccount\": true,\r\n  \"isLoanCouponEligible\": false,\r\n  \"ytd402gContributionAmount\": 12559.0,\r\n  \"limitAmount402g\": 19500.0,\r\n  \"hasReached402gLimitForCurrentYear\": false,\r\n  \"definedContributionPlans\": [\r\n    {\r\n      \"planId\": \"10\",\r\n      \"planDescription\": \"401(k) Savings Plan\",\r\n      \"planFullDescription\": \"401(k) Savings Plan for Premier Company\",\r\n      \"isQualifiedPlan\": true,\r\n      \"planYearBeginDate\": \"2017-01-01T00:00:00\",\r\n      \"lastProcessDate\": \"2017-12-05T00:00:00\",\r\n      \"totalDollarPlanBalanceDate\": \"2017-12-05T00:00:00\",\r\n      \"employeeYtdContributionBalance\": 6200.23,\r\n      \"employerYtdContributionBalance\": 3420.34,\r\n      \"rolling12MonthEmployeeContributionBalance\": 12444.12,\r\n      \"rolling12MonthEmployerContributionBalance\": 6222.06,\r\n      \"rolloverYtdContributionBalance\": 1500.0,\r\n      \"totalYtdContributionBalance\": 11120.57,\r\n      \"totalDollarPlanBalance\": 490238.47,\r\n      \"planYtdRateOfReturn\": 20.2,\r\n      \"isRateOfReturnValid\": true,\r\n      \"rateOfReturnCalcErrorMessage\": \"ROR cannot be calculated due to first day balance\",\r\n      \"isPlanYTDRateOfReturnConvertedIn\": false,\r\n      \"isPlanUSorPR\": \"U\",\r\n      \"isTBAMatchRequired\": true,\r\n      \"totalDollarPlanOpeningBalance\": 420010.9,\r\n      \"totalDollarPlanCumulativeActivityBalance\": 6855.13,\r\n      \"totalDollarPlanGainLossAmount\": 86203.77,\r\n      \"isEligibleToOpenBrokerageAccount\": true,\r\n      \"hasOpenBrokerageAccount\": false,\r\n      \"isLoanAdditionalOneTimeDirectDebitPaymentAllowed\": true,\r\n      \"isLoanPartialPaymentAllowed\": false,\r\n      \"isPlanEligibleForManagedAccount\": true,\r\n      \"totalDollarManagedAccountEligiblePlanBalance\": 380010.9,\r\n      \"vestedPlanBalance\": 420010.9,\r\n      \"isFullyVestedInPlan\": false,\r\n      \"isRateOfReturnValidForYTDGraphTable\": true,\r\n      \"planAccountFundTable\": [\r\n        {\r\n          \"lastUpdated\": \"2017-12-05T00:00:00\",\r\n          \"accountId\": \"120\",\r\n          \"accountSubTypeCode\": \"2017\",\r\n          \"fundId\": \"130\",\r\n          \"assetClassId\": \"140\",\r\n          \"subFundId\": \"150\",\r\n          \"priorPlanAccountFundBalanceUnits\": 12546712.23,\r\n          \"planAccountFundBalanceUnits\": 12547829.14,\r\n          \"planAccountFundBalanceDollars\": 28010.39,\r\n          \"accountGroupId\": \"150\",\r\n          \"fundYearToDateBeginBalance\": 24575.22,\r\n          \"yearToDateCumulativeActivityBalance:\": 450.0,\r\n          \"stockCost\": 420010.9\r\n        }\r\n      ],\r\n      \"planAccountBalances\": [\r\n        {\r\n          \"accountId\": \"120\",\r\n          \"accountBalance\": 420010.9,\r\n          \"vestedBalance\": 42000.9,\r\n          \"vestedPercent\": 10.0\r\n        }\r\n      ],\r\n      \"planAccountGroup\": [\r\n        {\r\n          \"accountGroupId\": \"10\",\r\n          \"planAssetFundTable\": [\r\n            {\r\n              \"assetClassId\": \"10\",\r\n              \"assetClassBalance\": 1000.0,\r\n              \"percentOfPlanBalance\": 25.0,\r\n              \"futureInvestmentElectionInPercent\": 25.0,\r\n              \"planFundTable\": [\r\n                {\r\n                  \"fundId\": \"10\",\r\n                  \"fundBalanceUnits\": 11234454.0,\r\n                  \"equivalentShares\": 1000212.0,\r\n                  \"stockCost\": 600.0,\r\n                  \"fundBalance\": 500.0,\r\n                  \"FundBeginBalanceAmount\": 1000.0,\r\n                  \"percentOfPlanBalance\": 50.0,\r\n                  \"futureInvestmentElectionInPercent\": 25.0,\r\n                  \"cumulativeFundBalance\": 1000.0,\r\n                  \"gainLossAmount\": 1000.0\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"planAssetFundTable\": [\r\n        {\r\n          \"assetClassId\": \"10\",\r\n          \"assetClassBalance\": 1000.0,\r\n          \"percentOfPlanBalance\": 25.0,\r\n          \"futureInvestmentElectionInPercent\": 25.0,\r\n          \"planFundTable\": [\r\n            {\r\n              \"fundId\": \"10\",\r\n              \"fundBalanceUnits\": 11234454.0,\r\n              \"equivalentShares\": 1000212.0,\r\n              \"stockCost\": 600.0,\r\n              \"fundBalance\": 500.0,\r\n              \"FundBeginBalanceAmount\": 1000.0,\r\n              \"percentOfPlanBalance\": 50.0,\r\n              \"futureInvestmentElectionInPercent\": 25.0,\r\n              \"cumulativeFundBalance\": 1000.0,\r\n              \"gainLossAmount\": 1000.0\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"accounts\": [\r\n        {\r\n          \"accountId\": \"110\",\r\n          \"accountDescription\": \"Before tax\",\r\n          \"accountFullDescription\": \"Before tax account for Premier Company\"\r\n        }\r\n      ],\r\n      \"accountGroups\": [\r\n        {\r\n          \"accountGroupId\": \"110\",\r\n          \"accountGroupDescription\": \"Employee account\",\r\n          \"futureInvestmentGroupId\": \"110\",\r\n          \"defaultFutureInvestmentGroupId\": \"110\"\r\n        }\r\n      ],\r\n      \"investmentGroups\": [\r\n        {\r\n          \"investmentGroupId\": \"110\",\r\n          \"isAllInvestmentGroupCategoryType\": true,\r\n          \"accountGroupId\": \"110\",\r\n          \"investmentGroupDescription\": \"Before tax account for Premier Company\",\r\n          \"investmentGroupShortDescription\": \"Before tax\",\r\n          \"isAutoRebalanceSupported\": true\r\n        }\r\n      ],\r\n      \"funds\": [\r\n        {\r\n          \"fundId\": \"130\",\r\n          \"fundDescription\": \"US Bond Index\",\r\n          \"fundFullDescription\": \"US Bond Index Fund\",\r\n          \"fundTypeCode\": \"UNIT\"\r\n        }\r\n      ],\r\n      \"assetClasses\": [\r\n        {\r\n          \"assetClassId\": \"140\",\r\n          \"assetClassDescription\": \"Lifestyle/Pre\",\r\n          \"assetClassFullDescription\": \"Lifestyle Premix\"\r\n        }\r\n      ],\r\n      \"planYtdCashFlows\": [\r\n        {\r\n          \"date\": \"2017-01-01T00:00:00\",\r\n          \"cashFlowType\": \"string\",\r\n          \"cashFlowDollars\": \"string\",\r\n          \"isBalanceZero\": false\r\n        }\r\n      ],\r\n      \"definedContributionPayments\": [\r\n        {\r\n          \"paymentId\": \"2140\",\r\n          \"paymentEffectiveDate\": \"2017-01-01T00:00:00\",\r\n          \"paymentAmount\": 25000.0,\r\n          \"isManagedAccountPayment\": true,\r\n          \"isPaymentActive\": \"A\",\r\n          \"isPaymentSuspended\": false\r\n        }\r\n      ],\r\n      \"currentContribution\": {\r\n        \"isRothContributionSupported\": true,\r\n        \"isCatchUpContributionSupported\": true,\r\n        \"isPlanEscalationSupported\": true,\r\n        \"isCustomEscalationSupported\": true,\r\n        \"annualContributionAmount\": 8112.0,\r\n        \"totalContributionAmountPerPayCheck\": 338.0,\r\n        \"totalContributionInPercent\": 10.0,\r\n        \"nextEscalationDate\": \"2020-01-01T00:00:00\",\r\n        \"spilloverStatusCode\": \"Y\",\r\n        \"payLabelCode\": \"BASE-SLRY-DFLT\",\r\n        \"payLabelType\": \"PAYDFN\",\r\n        \"contributionRates\": [\r\n          {\r\n            \"contributionRateId\": \"10\",\r\n            \"escalationSupportCode\": true,\r\n            \"contributionBeginDate\": \"2017-03-24T00:00:00\",\r\n            \"contributionEndDate\": \"2017-03-24T00:00:00\",\r\n            \"electedContributionPercent\": 4.0,\r\n            \"electedContributionAmount\": 0.0,\r\n            \"actualContributionPercent\": 4.0,\r\n            \"actualContributionAmount\": 0.0,\r\n            \"escalationPercent\": 2.0,\r\n            \"targetPercent\": 10.0,\r\n            \"isNonQualifiedContributionForEver\": true,\r\n            \"isFutureContribution\": \"true\",\r\n            \"isSeparateCatchUpElectionIndicatorSupported\": true,\r\n            \"separateCatchUpElectionIndicator\": true,\r\n            \"payCheckDeductionAmount\": 143.21\r\n          }\r\n        ]\r\n      },\r\n      \"contributionRatesTable\": [\r\n        {\r\n          \"contributionRateId\": \"10\",\r\n          \"contributionRateDescription\": \"Before-Tax Contribution Rate\",\r\n          \"contributionRateType\": \"BT\",\r\n          \"contributionRateDisplaySequence\": 20,\r\n          \"planId\": \"10\"\r\n        }\r\n      ],\r\n      \"employerMatch\": {\r\n        \"maximumEmployerMatchPercentage\": 10.0,\r\n        \"maximumEmployerMatchAmount\": 1000.0,\r\n        \"receivingEmployerMatchAmount\": 1000.0,\r\n        \"missingEmployerMatchAmount\": 100.0,\r\n        \"employerMatchPayoutDate\": \"2017-12-05T00:00:00\",\r\n        \"employerMatchPayoutFrequency\": \"Annual\",\r\n        \"matchTiers\": [\r\n          {\r\n            \"matchSequence\": 10,\r\n            \"matchRate\": 100.0,\r\n            \"isMatchInPercent\": true,\r\n            \"maximumMatchPercent\": 6.0,\r\n            \"maximumMatchAmount\": 500.0\r\n          }\r\n        ],\r\n        \"contributionRatesMatch\": [\r\n          {\r\n            \"contributionRateId\": \"10\"\r\n          }\r\n        ]\r\n      },\r\n      \"rateOfReturnYTDGraphTable\": [\r\n        {\r\n          \"rateOfReturnPercent\": 4.0,\r\n          \"effectiveEndDate\": \"2018-03-24T00:00:00\",\r\n          \"isRateOfReturnValid\": true\r\n        }\r\n      ],\r\n      \"planFutureInvestmentElections\": [\r\n        {\r\n          \"futureInvestmentGroupId\": \"120\",\r\n          \"planInvestmentElectionFundTable\": [\r\n            {\r\n              \"fundId\": \"120\",\r\n              \"assetClassId\": \"140\",\r\n              \"electionPercent\": 25.0\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"planAutoRebalanceElections\": [\r\n        {\r\n          \"investmentGroupId\": \"120\",\r\n          \"isAutoRebalanceElected\": true,\r\n          \"nextAutoRebalanceDate\": \"2017-12-05T00:00:00\",\r\n          \"autoRebalanceFrequency\": \"A\",\r\n          \"autoRebalanceFrequencyDescription\": \"Annually\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"outstandingLoans\": [\r\n    {\r\n      \"loanId\": \"10\",\r\n      \"loanDescription\": \"Loan 1\",\r\n      \"loanCategoryId\": \"20\",\r\n      \"loanCategoryDescription\": \"Genral Purpose Loan\",\r\n      \"loanPlanId\": \"10\",\r\n      \"loanPlanDescription\": \"401k Savings Plan\",\r\n      \"loanEffectiveDate\": \"2018-10-21\",\r\n      \"finalAmortizationScheduleDate\": \"2019-12-21\",\r\n      \"requestedLoanAmount\": 100000.0,\r\n      \"interestRate\": 2.44,\r\n      \"amortizationRepaymentAmount\": 232.34,\r\n      \"remainingPrincipalAmount\": 21000.0,\r\n      \"lastPaymentDate\": \"2017-12-01\",\r\n      \"loanStatusLabel\": \"A\",\r\n      \"loanStatusDescription\": \"Active\",\r\n      \"isLoanDelinquent\": false,\r\n      \"delinquentLoanBalanceAmount\": 0.0,\r\n      \"delinquentLoanTaxDate\": \"2018-03-31\",\r\n      \"isEnrolledInDirectDebit\": true,\r\n      \"isEligibleToEnrollInDirectDebit\": true,\r\n      \"amortizationFrequencyLabel\": \"M\",\r\n      \"amortizationFrequencyDescription\": \"Monthly\",\r\n      \"loanDirectDebitAddress\": {\r\n        \"directDebitAddressId\": \"690\",\r\n        \"directDebitAddressDescription\": \"Loan Direct Debit Address\",\r\n        \"directDebitFinancialInstitutionName\": \"JP Morgan Chase\",\r\n        \"directDebitAccountType\": \"S\",\r\n        \"directDebitAccountNumber\": \"123456\",\r\n        \"directDebitRoutingNumber\": \"14942219\"\r\n      },\r\n      \"additionalOneTimeDirectDebitPayments\": [\r\n        {\r\n          \"isAdditionalDirectDebitPaymentPending\": true,\r\n          \"isAdditionalDirectDebitPaymentInProcess\": true,\r\n          \"directDebitRepaymentAmount\": 1200.0,\r\n          \"directDebitPostDate\": \"2017-12-05\",\r\n          \"directDebitDrawDate\": \"2017-12-02\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"thirdPartyAccount\": [\r\n    {\r\n      \"thirdPartyCode\": \"AON\",\r\n      \"thirdPartyName\": \"Aon Executive Benefits\"\r\n    }\r\n  ],\r\n  \"planParticipationStatuses\": [\r\n    {\r\n      \"planId\": \"10\",\r\n      \"planDescription\": \"401(k) Savings Plan\",\r\n      \"planFullDescription\": \"401(k) Savings Plan for Premier Company\",\r\n      \"isActive\": true,\r\n      \"isEligibleToParticipate\": false\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": []
+        },
+        {
+          "statusCode": 204,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrOEGJTZ.response.204.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrOEGJTZ.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrOEGJTZ.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/alight-person-defined-contribution-api/operations/getThirdPartyDefinedContributionBenefits",
+      "name": "Defined Contribution plans which are administrated by a third party.",
+      "method": "GET",
+      "urlTemplate": "/v2/persondefinedcontribution/thirdPartyPlans/{thirdPartyCode}",
+      "templateParameters": [
+        {
+          "name": "thirdPartyCode",
+          "description": "This is the code assigned to the third party that administers the plan information.",
+          "type": "string",
+          "required": true,
+          "values": []
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrZVVXSH.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrZVVXSH.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "6053af9b01f91f0e08f426ea",
+              "typeName": "ThirdPartyAccountBenefits",
+              "generatedSample": "{\r\n  \"thirdPartyCode\": \"MULLIN\",\r\n  \"thirdPartyName\": \"Mullin TBG\",\r\n  \"definedContributionPlans\": [\r\n    {\r\n      \"planId\": \"10\",\r\n      \"isQualifiedPlan\": true,\r\n      \"planDescription\": \"Non Qualified Plan\",\r\n      \"totalDollarPlanBalanceDate\": \"2017-12-05T00:00:00\",\r\n      \"totalDollarPlanBalance\": 420010.9\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": [
+            {
+              "name": "alightPersonSessionToken",
+              "description": "Person Session Token.",
+              "type": "string",
+              "values": []
+            },
+            {
+              "name": "alightResponseHeader",
+              "description": "Request Header.",
+              "type": "object",
+              "values": []
+            }
+          ]
+        },
+        {
+          "statusCode": 204,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrZVVXSH.response.204.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrZVVXSH.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcontrZVVXSH.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/alight-person-defined-contribution-api/operations/getPersonBrokerageAccountIdentifiers",
+      "name": "Gets brokerage account data for a person enrolled in a brokerage partner.",
+      "method": "GET",
+      "urlTemplate": "/v2/persondefinedcontribution/partners/{partnerName}/personBrokerageAccountIdentifiers",
+      "templateParameters": [
+        {
+          "name": "partnerName",
+          "description": "Partner name assocated with the brokerage account firm.",
+          "type": "string",
+          "required": true,
+          "values": [
+            "pershing"
+          ]
+        }
+      ],
+      "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcont1J4VJVL.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [
+          {
+            "name": "alightPersonSessionToken",
+            "description": "Person Session Token",
+            "type": "string",
+            "required": true,
+            "values": []
+          },
+          {
+            "name": "alightRequestHeader",
+            "description": "Request Header",
+            "type": "string",
+            "required": true,
+            "values": []
+          }
+        ],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcont1J4VJVL.response.200.description.html",
+          "representations": [
+            {
+              "contentType": "application/json",
+              "schemaId": "6053af9b01f91f0e08f426ea",
+              "typeName": "BrokerageAccounts",
+              "generatedSample": "{\r\n  \"brokerageAccounts\": [\r\n    {\r\n      \"alightPlanId\": \"10\",\r\n      \"userId\": \"MyUserId\",\r\n      \"accountNumber\": \"126534567\",\r\n      \"personRecordKeepingRole\": \"EMPLOYEE\"\r\n    }\r\n  ]\r\n}"
+            }
+          ],
+          "headers": [
+            {
+              "name": "alightPersonSessionToken",
+              "description": "Person Session Token.",
+              "type": "string",
+              "values": []
+            },
+            {
+              "name": "alightResponseHeader",
+              "description": "Request Header.",
+              "type": "object",
+              "values": []
+            }
+          ]
+        },
+        {
+          "statusCode": 204,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcont1J4VJVL.response.204.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 400,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcont1J4VJVL.response.400.description.html",
+          "representations": [],
+          "headers": []
+        },
+        {
+          "statusCode": 500,
+          "$ref-description": "api-management/apis/Alight__Person_Defined_Co14LFGT0/operations/GET__v2_persondefinedcont1J4VJVL.response.500.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    }
+  ],
+  "apiSchemas": [
+    {
+      "id": "/apis/alight-person-defined-contribution-api/schemas/6053af9b01f91f0e08f426ea",
+      "contentType": "application/vnd.oai.openapi.components+json",
+      "$ref-documentValue": "api-management/apis/Alight__Person_Defined_Co14LFGT0/apiSchemas/6053af9b01f91f0e08f426ea.document"
+    }
+  ],
+  "__GitModuleVersion": 15
+}

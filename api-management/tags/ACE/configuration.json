@@ -1,0 +1,14 @@
+{
+  "id": "/tags/ace",
+  "name": "ACE",
+  "apiIds": [
+    "/apis/ace-apis-for-developer-portal;rev=1"
+  ],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/ace-apis-for-developer-portal/operations/ApiOauthTokenPost",
+    "/apis/ace-apis-for-developer-portal/operations/ApiSessionStartsessionforpersonPost"
+  ],
+  "__GitModuleVersion": 15
+}

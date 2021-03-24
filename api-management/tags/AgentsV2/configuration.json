@@ -1,0 +1,11 @@
+{
+  "id": "/tags/AgentsV2",
+  "name": "AgentsV2",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/AgentsV2_GetTicketingProfile"
+  ],
+  "__GitModuleVersion": 15
+}

@@ -1,0 +1,18 @@
+{
+  "id": "/tags/CustomerAnalyseEvent",
+  "name": "CustomerAnalyseEvent",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-customer-analyse-events-gcc",
+    "/apis/hrx-configuration-api/operations/get-api-customer-analyse-events-gcc-id-file",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-customer-analyse-events-gcc",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-customer-analyse-events-gcc-id-file",
+    "/apis/hrx-configuration-api-v1/operations/get-api-customer-analyse-events-gcc",
+    "/apis/hrx-configuration-api-v1/operations/get-api-customer-analyse-events-gcc-id-file",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-customer-analyse-events-gcc",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-customer-analyse-events-gcc-id-file"
+  ],
+  "__GitModuleVersion": 15
+}

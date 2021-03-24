@@ -1,0 +1,30 @@
+{
+  "id": "/tags/IntentExternalCallEntities",
+  "name": "IntentExternalCallEntities",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/delete-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api/operations/get-api-intent-external-call-entities",
+    "/apis/hrx-configuration-api/operations/get-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api/operations/put-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api/operations/post-api-intent-external-call-entities",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api-v1/operations/get-api-intent-external-call-entities",
+    "/apis/hrx-configuration-api-v1/operations/get-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-intent-external-call-entities",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-intent-external-call-entities",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-intent-external-call-entities",
+    "/apis/hrx-configuration-api-v1/operations/put-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-intent-external-call-entities",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-intent-external-call-entities-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-intent-external-call-entities"
+  ],
+  "__GitModuleVersion": 15
+}

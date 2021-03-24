@@ -1,0 +1,22 @@
+{
+  "id": "/tags/Gccs",
+  "name": "Gccs",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-lists-gccs",
+    "/apis/hrx-configuration-api/operations/post-api-lists-gccs",
+    "/apis/hrx-configuration-api/operations/put-api-lists-gccs-code",
+    "/apis/hrx-configuration-api-v1/operations/post-api-lists-gccs",
+    "/apis/hrx-configuration-api-v1/operations/get-api-lists-gccs",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-lists-gccs",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-lists-gccs-code",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-lists-gccs",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-lists-gccs",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-lists-gccs-code",
+    "/apis/hrx-configuration-api-v1/operations/put-api-lists-gccs-code",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-lists-gccs"
+  ],
+  "__GitModuleVersion": 15
+}

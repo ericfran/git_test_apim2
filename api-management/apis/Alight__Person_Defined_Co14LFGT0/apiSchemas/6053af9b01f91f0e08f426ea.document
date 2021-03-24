@@ -1,0 +1,1636 @@
+{
+  "components": {
+    "schemas": {
+      "DefinedContributionBenefits": {
+        "type": "object",
+        "properties": {
+          "globalPersonIdentifier": {
+            "type": "string",
+            "description": "This is a unique person identifier derived by a host system internal to Alights uniform data platform. The person is hosted in a different repository tham the person identifier returned as the \"platformInternalId\" element so the values will be different.  In the end, both represent an identifier for the same person.",
+            "example": "5bc84a324fd8b75004e92fea"
+          },
+          "testCfg": {
+            "type": "string",
+            "description": "This field only returns a value in the test enivornment.  It is used to identify the name of the Alight internal test host sub system the data is coming from.",
+            "example": "Q600095B"
+          },
+          "normalizedClientId": {
+            "pattern": "[0-9]+",
+            "type": "string",
+            "description": "Normalized client ID. This is the 5 digit identifier (with leading zeroes) associated with the client sponsor of the plans returned in the response.",
+            "example": "00095"
+          },
+          "sourceSchemaName": {
+            "type": "string",
+            "description": "This identifies the source database schema name that stores person data for the client sponsor.",
+            "example": "Q600095B"
+          },
+          "platformInternalId": {
+            "pattern": "[0-9]+",
+            "type": "string",
+            "description": "Platform Internal Id. This is the source system derived identifier for the person, passed as string of numbers.",
+            "example": "451600093"
+          },
+          "personRecordKeepingRole": {
+            "enum": [
+              "EMPLOYEE",
+              "BENEFICIARY",
+              "QDRO"
+            ],
+            "type": "string",
+            "description": "This represents the person recordkeeping role on the source system associated with the brokerage account.",
+            "example": "EMPLOYEE"
+          },
+          "isEnrolledInManagedAccount": {
+            "type": "boolean",
+            "description": "Determines if the person is enrolled in Managed Accounts. This field will display for a person if the value is true (ie, they are enrolled).  Otherwise, the value will not appear and you can imply they are not enrolled.",
+            "example": true
+          },
+          "isLoanCouponEligible": {
+            "type": "boolean",
+            "description": "Participant is eligible to receive loan coupons in the mail. Loan coupons are a book of preprinted payment stubs that include loan repayment information such as payment due date and amount due. ",
+            "example": false
+          },
+          "ytd402gContributionAmount": {
+            "type": "number",
+            "description": "The total employee contributions made across 401k plans that qualify as 402g contributions.",
+            "format": "double",
+            "example": 12559.0
+          },
+          "limitAmount402g": {
+            "type": "number",
+            "description": "The person 402g limit for the current year. IRS sets a limit for the amount of before tax and roth contributions a person can contribute from their income across all 401k plans for a given year. A person who is 50 years or older at the end of the calendar year in which the plan year ends will have a higher limit than those who are otherwise.",
+            "format": "double",
+            "example": 19500.0
+          },
+          "hasReached402gLimitForCurrentYear": {
+            "type": "boolean",
+            "description": "Determines if the participant has reached the 402g limit contribution amount for the current year.",
+            "example": false
+          },
+          "definedContributionPlans": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefinedContributionPlans"
+            },
+            "description": "This array of objects pulls current and year to date person plan results."
+          },
+          "outstandingLoans": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OutstandingLoans"
+            },
+            "description": "This array of objects provides information about the person's outstanding loan(s) borrowed out of a plan."
+          },
+          "thirdPartyAccount": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThirdPartyAccount"
+            },
+            "description": "This array of objects provides information about the any plans being administered by a vendor outside the Alight source system for the person."
+          },
+          "planParticipationStatuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanParticipationStatus"
+            },
+            "description": "This array of objects provides plan participation status information stored for the person on the Alight source system. If the plan status is not found in the system, it will not be included in the array."
+          }
+        }
+      },
+      "DefinedContributionPlans": {
+        "required": [
+          "planId"
+        ],
+        "type": "object",
+        "properties": {
+          "planId": {
+            "type": "string",
+            "description": "Defined Contribution Plan Id.",
+            "example": "10"
+          },
+          "planDescription": {
+            "type": "string",
+            "description": "Short description for the plan.",
+            "example": "401(k) Savings Plan"
+          },
+          "planFullDescription": {
+            "type": "string",
+            "description": "Long description for the plan.",
+            "example": "401(k) Savings Plan for Premier Company"
+          },
+          "isQualifiedPlan": {
+            "type": "boolean",
+            "description": "Determines if the plan is a qualified defined contribution plan.",
+            "example": true
+          },
+          "planYearBeginDate": {
+            "type": "string",
+            "description": "This is the begin date used in calculating year to date balances in the API (eg., employeeYtdContributionBalance). This date is always first day of the current year. Format is CCYY-MM-DD.          ",
+            "format": "date",
+            "example": "2017-01-01T00:00:00"
+          },
+          "lastProcessDate": {
+            "type": "string",
+            "description": "Lastest market date used to calculate personal rate of return information and other details.",
+            "format": "date",
+            "example": "2017-12-05T00:00:00"
+          },
+          "totalDollarPlanBalanceDate": {
+            "type": "string",
+            "description": "Lastest market date used in which balances were calculated. Format is CCYY-MM-DD.",
+            "format": "date",
+            "example": "2017-12-05T00:00:00"
+          },
+          "employeeYtdContributionBalance": {
+            "type": "number",
+            "description": "Total year to date contribution amount in the plan made by the employee.",
+            "format": "double",
+            "example": 6200.23
+          },
+          "employerYtdContributionBalance": {
+            "type": "number",
+            "description": "Total year to date contribution amount in the plan made by the employer.",
+            "format": "double",
+            "example": 3420.34
+          },
+          "rolling12MonthEmployeeContributionBalance": {
+            "type": "number",
+            "description": "Total contribution amount in the plan made by the employee over the last 12 months.",
+            "format": "double",
+            "example": 12444.12
+          },
+          "rolling12MonthEmployerContributionBalance": {
+            "type": "number",
+            "description": "Total contribution amount in the plan made by the employer over the last 12 months.",
+            "format": "double",
+            "example": 6222.06
+          },
+          "rolloverYtdContributionBalance": {
+            "type": "number",
+            "description": "Total year to date contribution amount in the plan that was rolled over from another plan.  As of now this field is not in use and will always return zero.",
+            "format": "double",
+            "example": 1500.0
+          },
+          "totalYtdContributionBalance": {
+            "type": "number",
+            "description": "Total year to date plan contribution amount. This will not contain rollover contributions from a prior plan.",
+            "format": "double",
+            "example": 11120.57
+          },
+          "totalDollarPlanBalance": {
+            "type": "number",
+            "description": "Latest plan balance.",
+            "format": "double",
+            "example": 490238.47
+          },
+          "planYtdRateOfReturn": {
+            "type": "number",
+            "description": "Year to date calculated rate of return for the plan.",
+            "format": "double",
+            "example": 20.2
+          },
+          "isRateOfReturnValid": {
+            "type": "boolean",
+            "description": "Returns false if the planYtdRateOfReturn could not be calculated.  When it returns false, planYtdRateOfReturn may still return a value but it should not be used. Otherwise, when this will return true, the rate of return can be used for consumption.",
+            "example": true
+          },
+          "rateOfReturnCalcErrorMessage": {
+            "type": "string",
+            "description": "This value will only appear when \"isRateOfReturnValid\" element has a value of false.  It provides additional details about why personal the rate of return is not valid.",
+            "example": "ROR cannot be calculated due to first day balance"
+          },
+          "isPlanYTDRateOfReturnConvertedIn": {
+            "type": "boolean",
+            "description": "Indicates whether the person's balances were converted into the source system at mid year of the current year. If so, year to date (YTD) RoR will have used a different beginning date than first of the year and the value would resolve to \"true\" for this element.",
+            "example": false
+          },
+          "isPlanUSorPR": {
+            "type": "string",
+            "description": "Determines whether the plan is subject to US rules (\"U\"), Puerto Rico rules (\"P\") or a combination of both (\"B\") with respect to withholding.",
+            "example": "U"
+          },
+          "isTBAMatchRequired": {
+            "type": "boolean",
+            "description": "Internally used to specify whether a source system call is always needed to dynamically calculate match data for the person (\"true\") or whether the data can be pulled from their Mongo document directly (\"false\"). ",
+            "example": true
+          },
+          "totalDollarPlanOpeningBalance": {
+            "type": "number",
+            "description": "The plan balance as of 1st day of the current year.",
+            "format": "double",
+            "example": 420010.9
+          },
+          "totalDollarPlanCumulativeActivityBalance": {
+            "type": "number",
+            "description": "The year to date amount in the plan associated with contributions, transfers, and fee transactions.",
+            "format": "double",
+            "example": 6855.13
+          },
+          "totalDollarPlanGainLossAmount": {
+            "type": "number",
+            "description": "This is the current year to date amount in dollars your investment gained or lost in the plan. Loss is referenced by a negative amount. ",
+            "format": "double",
+            "example": 86203.77
+          },
+          "isEligibleToOpenBrokerageAccount": {
+            "type": "boolean",
+            "description": "Determines if the person is eligible to open a brokerage account for the plan. This value can return false if they are already enrolled in a brokerage account or if they are enrolled in a financial investment program such as Managed Account.",
+            "example": true
+          },
+          "hasOpenBrokerageAccount": {
+            "type": "boolean",
+            "description": "Determines if the person has an open brokerage account for the plan.  ",
+            "example": false
+          },
+          "isLoanAdditionalOneTimeDirectDebitPaymentAllowed": {
+            "type": "boolean",
+            "description": "Boolean value to determine if the plan supports additional one time direct debit payments",
+            "example": true
+          },
+          "isLoanPartialPaymentAllowed": {
+            "type": "boolean",
+            "description": "Boolean value to determine if the plan supports partial payments on loans.",
+            "example": false
+          },
+          "isPlanEligibleForManagedAccount": {
+            "type": "boolean",
+            "description": "Determines if the plan is eligible to receive Profressional Management Managed Accounts services.",
+            "example": true
+          },
+          "totalDollarManagedAccountEligiblePlanBalance": {
+            "type": "number",
+            "description": "This amount reflects the total plan balance that is eligible for Professional Management Managed Accounts services.",
+            "format": "double",
+            "example": 380010.9
+          },
+          "vestedPlanBalance": {
+            "type": "number",
+            "description": "This amount reflects the person's vested balance in the plan.",
+            "format": "double",
+            "example": 420010.9
+          },
+          "isFullyVestedInPlan": {
+            "type": "boolean",
+            "description": "This determines if the person is fully vested in the plan. If returns true if vestedPlanBalance is equivalent to the plan balance.",
+            "example": false
+          },
+          "isRateOfReturnValidForYTDGraphTable": {
+            "type": "boolean",
+            "description": "This determines if the \"ratesOfReturnPercent\" data points returned in the \"rateOfReturnYTDGraphTable\" array can be used for consumption. It will return false if the array as an entity should not be used at all by the consumer. Note that under a scenario where a newly hired employee starts contributing to the plan mid-year, some rates of return percentages in the array will not be calculated since no balance existed in the beginning portion of the year.  The information in the array is still valid and so \"isRateOfReturnValidForYTDGraphTable\" will return a value of true. It will be up to the consumer to determine how they want to use the data points when there's a mix of valid and invalid rate of return percentages included in the array.",
+            "example": true
+          },
+          "planAccountFundTable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanAccountFundTable"
+            },
+            "description": "Plan Account Fund Table"
+          },
+          "planAccountBalances": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanAccountBalances"
+            },
+            "description": "Plan Account Fund Table"
+          },
+          "planAccountGroup": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanAccountGroupTable"
+            },
+            "description": "Plan Account Group Information. It will return plan balance information associated with a group of accounts. This may also include future invesment elections associated with the account group."
+          },
+          "planAssetFundTable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanAssetFundTable"
+            },
+            "description": "Plan Asset Fund Information"
+          },
+          "accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Accounts"
+            },
+            "description": "Account definition information."
+          },
+          "accountGroups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccountGroups"
+            },
+            "description": "Account group definition information."
+          },
+          "investmentGroups": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvestmentGroups"
+            },
+            "description": "Investment election group definition information."
+          },
+          "funds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Funds"
+            },
+            "description": "Fund definition information."
+          },
+          "assetClasses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AssetClasses"
+            },
+            "description": "Asset class definition information."
+          },
+          "planYtdCashFlows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanYtdCashFlows"
+            },
+            "description": "Year to date cash flow"
+          },
+          "definedContributionPayments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DefinedContributionPayments"
+            },
+            "description": "Payment Information"
+          },
+          "currentContribution": {
+            "$ref": "#/components/schemas/CurrentContribution"
+          },
+          "contributionRatesTable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContributionRatesTable"
+            },
+            "description": "contribution Rate Rules information"
+          },
+          "employerMatch": {
+            "$ref": "#/components/schemas/EmployerMatch"
+          },
+          "rateOfReturnYTDGraphTable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RateOfReturnYTDGraphTable"
+            },
+            "description": "Employer match information"
+          },
+          "planFutureInvestmentElections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanFutureInvestmentElection"
+            },
+            "description": "An array of future investment elections made by the person in the plan."
+          },
+          "planAutoRebalanceElections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanAutoRebalanceElection"
+            },
+            "description": "This array will return the auto rebalance elections for investment groups that support auto rebalance."
+          }
+        }
+      },
+      "PlanFutureInvestmentElection": {
+        "required": [
+          "futureInvestmentGroupId"
+        ],
+        "type": "object",
+        "properties": {
+          "futureInvestmentGroupId": {
+            "type": "string",
+            "description": "Source system derived identifier for the investment election. The description for the identifier can be found in the \"investmentGroups\" array.",
+            "example": "120"
+          },
+          "planInvestmentElectionFundTable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanInvestmentElectionFundTable"
+            },
+            "description": "Array of future investment elections by fund associated with the investment group."
+          }
+        },
+        "description": "This object stores plan investment election information."
+      },
+      "ThirdPartyAccount": {
+        "required": [
+          "thirdPartyCode"
+        ],
+        "type": "object",
+        "properties": {
+          "thirdPartyCode": {
+            "type": "string",
+            "description": "This is the code assigned to the third party that administers the plan information.",
+            "example": "AON"
+          },
+          "thirdPartyName": {
+            "type": "string",
+            "description": "Description or name of the third party.",
+            "example": "Aon Executive Benefits"
+          }
+        },
+        "description": "This object stores vendor code and name of the third party that is administering any plan information that appears in this API."
+      },
+      "PlanAutoRebalanceElection": {
+        "required": [
+          "investmentGroupId"
+        ],
+        "type": "object",
+        "properties": {
+          "investmentGroupId": {
+            "type": "string",
+            "description": "Source system derived identifier for the investment election group id .",
+            "example": "120"
+          },
+          "isAutoRebalanceElected": {
+            "type": "boolean",
+            "description": "Determines whether an auto rebalance election was made for investment groups that supports auto rebalance.",
+            "example": true
+          },
+          "nextAutoRebalanceDate": {
+            "type": "string",
+            "description": "The next date in which plan balance will be automatically rebalanced if the person has made an auto rebalance frequency election.",
+            "format": "date",
+            "example": "2017-12-05T00:00:00"
+          },
+          "autoRebalanceFrequency": {
+            "type": "string",
+            "description": "The auto rebalance frequency elected by the person.  The source system uses a one character value to represent a particular frequency.  Reference the \"autoRebalanceFrequencyDescription\" for a description of the frequency value.",
+            "example": "A"
+          },
+          "autoRebalanceFrequencyDescription": {
+            "type": "string",
+            "description": "The description of the auto rebalance frequency stored on the source system for the person.",
+            "example": "Annually"
+          }
+        },
+        "description": "This object will contain auto rebalance election information"
+      },
+      "PlanInvestmentElectionFundTable": {
+        "required": [
+          "assetClassId",
+          "electionPercent",
+          "fundId"
+        ],
+        "type": "object",
+        "properties": {
+          "fundId": {
+            "type": "string",
+            "description": "Source system derived identifier for the fund.",
+            "example": "120"
+          },
+          "assetClassId": {
+            "type": "string",
+            "description": "Source system identifier for the asset class associated with the fund.",
+            "example": "140"
+          },
+          "electionPercent": {
+            "type": "number",
+            "description": "Investment election percent a person had made for the fund.",
+            "format": "double",
+            "example": 25.0
+          }
+        },
+        "description": "This object stores the persons investment elections associated to a fund within an investment group."
+      },
+      "PlanAccountFundTable": {
+        "required": [
+          "accountId"
+        ],
+        "type": "object",
+        "properties": {
+          "lastUpdated": {
+            "type": "string",
+            "description": "Last date in which accounting information displayed in this object was updated. Format is CCYY-MM-DD.",
+            "format": "date",
+            "example": "2017-12-05T00:00:00"
+          },
+          "accountId": {
+            "type": "string",
+            "description": "Source system derived identifier for the account.",
+            "example": "120"
+          },
+          "accountSubTypeCode": {
+            "type": "string",
+            "description": "Client sponsored custom indicator expressed as a string that assigns a category to a pool of money invested in the account. It's often associated with non-qualified plans to assign pools of money to a specific plan year in order to track the distribution of that money in a future year. Example - $500K of before tax money was contributed into the non qualified plan in year 2017.  To which the person made an election to receive a payment in 2022 for that contributed money. This element allows the system to track the 2017 money associated with the before tax account by assigning an account sub type of \"2017\".",
+            "example": "2017"
+          },
+          "fundId": {
+            "type": "string",
+            "description": "Source system generated identifier for a fund.",
+            "example": "130"
+          },
+          "assetClassId": {
+            "type": "string",
+            "description": "Source system identifier for the asset class associated with the fund.",
+            "example": "140"
+          },
+          "subFundId": {
+            "type": "string",
+            "description": "Source system identifier for a sub fund.  Sub fund identifier typically has a one to one relationship with a fund identifier.  However, fund identifiers belonging to a company stock fund, loan fund and brokerage account fund may have more than one sub fund identifier associated with it.  The sub fund allows the fund to define and store pools of money into different buckets based on rules defined on the sub fund level. This is done for various account tracking purposes.  Example - suppose a person can have as many as 2 loans out of the same plan.  One loan fund would be defined on the system to track loan information on the plan level. However, the fund will have two sub funds which can then track each loan in the plan on an individual basis.   ",
+            "example": "150"
+          },
+          "priorPlanAccountFundBalanceUnits": {
+            "type": "number",
+            "description": "Previously stored units for the account/fund/subFund combonation. This field is used internally.",
+            "format": "double",
+            "example": 12546712.23
+          },
+          "planAccountFundBalanceUnits": {
+            "type": "number",
+            "description": "Current units for the account/fund/subFund combonation.",
+            "format": "double",
+            "example": 12547829.14
+          },
+          "planAccountFundBalanceDollars": {
+            "type": "number",
+            "description": "Current balance amount in dollars for the account/fund/subFund combonation.",
+            "format": "double",
+            "example": 28010.39
+          },
+          "accountGroupId": {
+            "type": "string",
+            "description": "Source system derived group identifier which, if applicable, associates the account to a specific group of accounts.",
+            "example": "150"
+          },
+          "fundYearToDateBeginBalance": {
+            "type": "number",
+            "description": "Balance amount in dollars as of the first of the current year for the account/fund/subFund combonation.",
+            "format": "double",
+            "example": 24575.22
+          },
+          "yearToDateCumulativeActivityBalance:": {
+            "type": "number",
+            "description": "The year to date balance in the account/fund/subFund combonation associated with accounting activity such as deposits, withdrawals, and fees.",
+            "format": "double",
+            "example": 450.0
+          },
+          "stockCost": {
+            "type": "number",
+            "description": "stock cost",
+            "format": "double",
+            "example": 420010.9
+          }
+        },
+        "description": "This object stores plan balances at the source system's lowest elemental level - by account, fund and sub fund. The cumulative balances of all objects in the planAccountFundTable array for the plan will total the plan balance.  The array of objects will NOT include loan fund balances. To get the current outstanding principle loan balances, you will need to refer to \"outstandingLoans\" in this API."
+      },
+      "PlanAccountBalances": {
+        "required": [
+          "accountId"
+        ],
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Source system derived identifier for the account.",
+            "example": "120"
+          },
+          "accountBalance": {
+            "type": "number",
+            "description": "Current account balance in dollars.",
+            "format": "double",
+            "example": 420010.9
+          },
+          "vestedBalance": {
+            "type": "number",
+            "description": "Current account vested balance in dollars.",
+            "format": "double",
+            "example": 42000.9
+          },
+          "vestedPercent": {
+            "type": "number",
+            "description": "Current vested percent associated with the account.",
+            "format": "double",
+            "example": 10.0
+          }
+        }
+      },
+      "Accounts": {
+        "required": [
+          "accountId"
+        ],
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Source system derived identifier for the account.",
+            "example": "110"
+          },
+          "accountDescription": {
+            "type": "string",
+            "description": "Short description of the account.",
+            "example": "Before tax"
+          },
+          "accountFullDescription": {
+            "type": "string",
+            "description": "Long description of the account.",
+            "example": "Before tax account for Premier Company"
+          }
+        }
+      },
+      "AccountGroups": {
+        "required": [
+          "accountGroupId"
+        ],
+        "type": "object",
+        "properties": {
+          "accountGroupId": {
+            "type": "string",
+            "description": "Source system derived identifier for the account group.",
+            "example": "110"
+          },
+          "accountGroupDescription": {
+            "type": "string",
+            "description": "The description of the account group.",
+            "example": "Employee account"
+          },
+          "futureInvestmentGroupId": {
+            "type": "string",
+            "description": "Source system derived identifier for future Investment group Id which is mapped with accountGroupId.",
+            "example": "110"
+          },
+          "defaultFutureInvestmentGroupId": {
+            "type": "string",
+            "description": "Source system derived identifier for the default future investment group Id associated with the futureInvestmentGroupId element in the same object.",
+            "example": "110"
+          }
+        }
+      },
+      "InvestmentGroups": {
+        "required": [
+          "investmentGroupId"
+        ],
+        "type": "object",
+        "properties": {
+          "investmentGroupId": {
+            "type": "string",
+            "description": "Source system derived identifier for the investment group.",
+            "example": "110"
+          },
+          "isAllInvestmentGroupCategoryType": {
+            "type": "boolean",
+            "description": "Detemines if the investment group is not associated with a specific account type or subset of account types (eg, before tax, after tax, etc). If it's not, it will return true, meaning the investment group is configured to accept all categories of account types.",
+            "example": true
+          },
+          "accountGroupId": {
+            "type": "string",
+            "description": "Source system derived identifier for the account group.",
+            "example": "110"
+          },
+          "investmentGroupDescription": {
+            "type": "string",
+            "description": "Long description of the account.",
+            "example": "Before tax account for Premier Company"
+          },
+          "investmentGroupShortDescription": {
+            "type": "string",
+            "description": "Short description of the account.",
+            "example": "Before tax"
+          },
+          "isAutoRebalanceSupported": {
+            "type": "boolean",
+            "description": "This will return true if this investment election group supports auto rebalance. Otherwise, it will return false.",
+            "example": true
+          }
+        }
+      },
+      "Funds": {
+        "required": [
+          "fundId"
+        ],
+        "type": "object",
+        "properties": {
+          "fundId": {
+            "type": "string",
+            "description": "Source system derived identifier for the fund.",
+            "example": "130"
+          },
+          "fundDescription": {
+            "type": "string",
+            "description": "Short description for the fund.",
+            "example": "US Bond Index"
+          },
+          "fundFullDescription": {
+            "type": "string",
+            "description": "Long description for the fund.",
+            "example": "US Bond Index Fund"
+          },
+          "fundTypeCode": {
+            "type": "string",
+            "description": "Source system defined fund type.",
+            "example": "UNIT"
+          }
+        }
+      },
+      "AssetClasses": {
+        "required": [
+          "assetClassId"
+        ],
+        "type": "object",
+        "properties": {
+          "assetClassId": {
+            "type": "string",
+            "description": "Source system derived identifier for the asset class.",
+            "example": "140"
+          },
+          "assetClassDescription": {
+            "type": "string",
+            "description": "Short description for the asset class.",
+            "example": "Lifestyle/Pre"
+          },
+          "assetClassFullDescription": {
+            "type": "string",
+            "description": "Long description for the asset class.",
+            "example": "Lifestyle Premix"
+          }
+        }
+      },
+      "PlanYtdCashFlows": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "description": "The date the cash flow took effect on the source system. Format is CCYY-MM-DD.",
+            "format": "date",
+            "example": "2017-01-01T00:00:00"
+          },
+          "cashFlowType": {
+            "type": "string",
+            "description": "Cash Flow Type"
+          },
+          "cashFlowDollars": {
+            "type": "string",
+            "description": "Cash flow amount in dollars."
+          },
+          "isBalanceZero": {
+            "type": "boolean",
+            "description": "Returns a value of true if the balance was completely depleted for the given cashflow. Otherwise, the value is false.",
+            "example": false
+          }
+        },
+        "description": "This is an output of the person's year to date cash flow (money in and out of the plan). This is data used internally to calculate rate of return."
+      },
+      "DefinedContributionPayments": {
+        "required": [
+          "paymentId",
+          "paymentReferenceId"
+        ],
+        "type": "object",
+        "properties": {
+          "paymentId": {
+            "type": "string",
+            "description": "Source system identifier for the payment.",
+            "example": "2140"
+          },
+          "paymentEffectiveDate": {
+            "type": "string",
+            "description": "The date in which the payment was made. Format is CCYY-MM-DD.",
+            "format": "date",
+            "example": "2017-01-01T00:00:00"
+          },
+          "paymentAmount": {
+            "type": "number",
+            "description": "The payment amount in dollars.",
+            "format": "double",
+            "example": 25000.0
+          },
+          "isManagedAccountPayment": {
+            "type": "boolean",
+            "description": "Determines whether the payment was generated out of a program referred to as Managed Account Income Plus. This program manages a person's investment account while also providing periodic payments out of the plan for those who choose to enroll and are eligible to receive payments. ",
+            "example": true
+          },
+          "isPaymentActive": {
+            "type": "string",
+            "description": "This applies to Managed Account payments. It determines whether the payment is in an active status on the source system. 'A' indicates the payment is in an active status while 'N' means they are not.  ",
+            "example": "A"
+          },
+          "isPaymentSuspended": {
+            "type": "boolean",
+            "description": "This applies to Managed Account payments. A Y/N indicator determines whether the payment is in a suspended status on the source system. Y indicates the payment is in a suspended status. N indicates the opposite.",
+            "example": false
+          }
+        }
+      },
+      "CurrentContribution": {
+        "type": "object",
+        "properties": {
+          "isRothContributionSupported": {
+            "type": "boolean",
+            "description": "Determines whether the plan offers roth type contributions.",
+            "example": true
+          },
+          "isCatchUpContributionSupported": {
+            "type": "boolean",
+            "description": "Determines whether the plan supports catchup contributions.",
+            "example": true
+          },
+          "isPlanEscalationSupported": {
+            "type": "boolean",
+            "description": "Determines whether the plan allows for a person to chose to automatically increase their contribution on a yearly basis.",
+            "example": true
+          },
+          "isCustomEscalationSupported": {
+            "type": "boolean",
+            "description": "Determines whether the plan supports custom escalation or not. Custom escalation allows the user to choose the specific date they wish to apply contribution escalation.",
+            "example": true
+          },
+          "annualContributionAmount": {
+            "type": "number",
+            "description": "Estimated annual contribution in dollars for the current year based on their current contribution elections.",
+            "format": "double",
+            "example": 8112.0
+          },
+          "totalContributionAmountPerPayCheck": {
+            "type": "number",
+            "description": "Total estimated dollar amount contributed to the plan per paycheck based on their current contribution elections.",
+            "format": "double",
+            "example": 338.0
+          },
+          "totalContributionInPercent": {
+            "type": "number",
+            "description": "Total contribution percent a person is currently contributing into the plan. This spans across all contribution rate types (eg, before tax, after tax, roth)",
+            "format": "double",
+            "example": 10.0
+          },
+          "nextEscalationDate": {
+            "type": "string",
+            "description": "The next date in which a person's elected contribution escalation will take effect.",
+            "format": "date",
+            "example": "2020-01-01T00:00:00"
+          },
+          "spilloverStatusCode": {
+            "type": "string",
+            "description": "A Y/N string that determines if a person has elected to spill over any additional before tax and roth contributions over the maximum allowable amount to their after tax account. Y indicates the person has elected to use spill over.",
+            "example": "Y"
+          },
+          "payLabelCode": {
+            "type": "string",
+            "description": "The source system label that identifies the brand used in the system to retrieve pay in order to calculate contribution information in the response.",
+            "example": "BASE-SLRY-DFLT"
+          },
+          "payLabelType": {
+            "type": "string",
+            "description": "A label that identifies the pay source system model associated with the payLabelCode.",
+            "example": "PAYDFN"
+          },
+          "contributionRates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContributionRates"
+            },
+            "description": "Array of contribution rates eligible to the person."
+          }
+        }
+      },
+      "ContributionRates": {
+        "required": [
+          "contributionRateId"
+        ],
+        "type": "object",
+        "properties": {
+          "contributionRateId": {
+            "type": "string",
+            "description": "Source system derived identifier for the contribution rate.",
+            "example": "10"
+          },
+          "escalationSupportCode": {
+            "type": "boolean",
+            "description": "Determines whether this contribution rate supports escalation. Escalation is a feature that allows the person to automatically increase their contribution in the future using a specific incremental percent.",
+            "example": true
+          },
+          "contributionBeginDate": {
+            "type": "string",
+            "description": "The date from which the actual contribution election takes effect. Format is CCYY-MM-DD",
+            "format": "date",
+            "example": "2017-03-24T00:00:00"
+          },
+          "contributionEndDate": {
+            "type": "string",
+            "description": "The date from which the actual contribution election will end.  Format is CCYY-MM-DD.  A date of '2299-12-31' signifies there is no ending date.",
+            "format": "date",
+            "example": "2017-03-24T00:00:00"
+          },
+          "electedContributionPercent": {
+            "type": "number",
+            "description": "The elected contribution percent associated with the contribution rate.  A person can choose an elected percent or amount but not both.",
+            "format": "double",
+            "example": 4.0
+          },
+          "electedContributionAmount": {
+            "type": "number",
+            "description": "The elected contribution amount associated with the contribution rate. A person can choose an elected percent or amount but not both.",
+            "format": "double",
+            "example": 0.0
+          },
+          "actualContributionPercent": {
+            "type": "number",
+            "description": "The actual contribution percent that is applied. The applied contribution can either be a percent or amount but not both.",
+            "format": "double",
+            "example": 4.0
+          },
+          "actualContributionAmount": {
+            "type": "number",
+            "description": "The acctual contribution amount that is applied. The applied contribution can either be a percent or amount but not both.",
+            "format": "double",
+            "example": 0.0
+          },
+          "escalationPercent": {
+            "type": "number",
+            "description": "If escalation is supported, this is the escalation percent that will be applied to the contribution rate.",
+            "format": "double",
+            "example": 2.0
+          },
+          "targetPercent": {
+            "type": "number",
+            "description": "If escalation is supported, this is rate at which escalation will stop once the actual contribution percent reaches this percentage value.",
+            "format": "double",
+            "example": 10.0
+          },
+          "isNonQualifiedContributionForEver": {
+            "type": "boolean",
+            "description": "This is only applicable to non qualified plans. It indicates whether the contribution rate elected is applicable for a particular class year or it does not have an ending time.",
+            "example": true
+          },
+          "isFutureContribution": {
+            "enum": [
+              "F",
+              "C"
+            ],
+            "type": "string",
+            "description": "This determines whether the contribution election is being applied in the future.  'F' indicates future. 'C' indicates current.",
+            "example": "true"
+          },
+          "isSeparateCatchUpElectionIndicatorSupported": {
+            "type": "boolean",
+            "description": "This will tell whether there is separate catchup election indicator supported along with  catchup amount/rate in same bucket as non catchup election.",
+            "example": true
+          },
+          "separateCatchUpElectionIndicator": {
+            "type": "boolean",
+            "description": "This will tell value of separate catchup election indicator along with catchup amount/rate in same bucket as non catchup election.",
+            "example": true
+          },
+          "payCheckDeductionAmount": {
+            "type": "number",
+            "description": "Per Pay check deduction amount associated with the contribution election.",
+            "format": "double",
+            "example": 143.21
+          }
+        }
+      },
+      "ContributionRatesTable": {
+        "required": [
+          "contributionRateId"
+        ],
+        "type": "object",
+        "properties": {
+          "contributionRateId": {
+            "type": "string",
+            "description": "Source system derived identifier for the contribution rate.",
+            "example": "10"
+          },
+          "contributionRateDescription": {
+            "type": "string",
+            "description": "Description associated with the source system derived contribution rate identifier.",
+            "example": "Before-Tax Contribution Rate"
+          },
+          "contributionRateType": {
+            "type": "string",
+            "description": "Source system derived value for the contribution type.  BT - Before tax, AT - After Tax, RT - Roth, CU - Catchup Before Tax, CR - Catchup Roth.",
+            "example": "BT"
+          },
+          "contributionRateDisplaySequence": {
+            "type": "integer",
+            "description": "Client defined display sequence associated with the contribution rate.  It determines the recommended order in which the contribution rates should display if there was a need to view multiple entries as an ordered list on an user interface.  The ordered list should show in ascending order (lowest number first, highest number last).",
+            "format": "int32",
+            "example": 20
+          },
+          "planId": {
+            "type": "string",
+            "description": "Source system plan identifier in which the contribution rate is associated with.",
+            "example": "10"
+          }
+        }
+      },
+      "EmployerMatch": {
+        "type": "object",
+        "properties": {
+          "maximumEmployerMatchPercentage": {
+            "type": "number",
+            "description": "Maximum contribution percent that will be matched by the employer.",
+            "format": "double",
+            "example": 10.0
+          },
+          "maximumEmployerMatchAmount": {
+            "type": "number",
+            "description": "Maximum contribution amount that will be matched by the employer.",
+            "format": "double",
+            "example": 1000.0
+          },
+          "receivingEmployerMatchAmount": {
+            "type": "number",
+            "description": "Projection of total match dollars a person will receive by end of year based on their current contribution. This rule applies if the match is setup to use percents (see matchTiers). If match is setup to use dollars, then it can represent a total monthly amount. ",
+            "format": "double",
+            "example": 1000.0
+          },
+          "missingEmployerMatchAmount": {
+            "type": "number",
+            "description": "Dollars that a person is missing in employer match. It may be zero indicating that person is receiving full match.",
+            "format": "double",
+            "example": 100.0
+          },
+          "employerMatchPayoutDate": {
+            "type": "string",
+            "description": "Date on which the employer match is paid out. Format is CCYY-MM-DD.",
+            "format": "date",
+            "example": "2017-12-05T00:00:00"
+          },
+          "employerMatchPayoutFrequency": {
+            "type": "string",
+            "description": "Frequency of employer match pay out.",
+            "example": "Annual"
+          },
+          "matchTiers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MatchTiers"
+            },
+            "description": "Match Tier Information."
+          },
+          "contributionRatesMatch": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MatchContributionRates"
+            },
+            "description": "Contribution Rates Match Information"
+          }
+        },
+        "description": "This object contains information associated with the employer match provisions for the plan."
+      },
+      "MatchContributionRates": {
+        "required": [
+          "contributionRateId"
+        ],
+        "type": "object",
+        "properties": {
+          "contributionRateId": {
+            "type": "string",
+            "description": "Contribution Rate Id for which employer match supported",
+            "example": "10"
+          }
+        }
+      },
+      "MatchTiers": {
+        "type": "object",
+        "properties": {
+          "matchSequence": {
+            "type": "integer",
+            "description": "Source system sequence number assigned to the tier.  Lowest numbered sequence refers to the first tier while the highest refers to the last tier. ",
+            "format": "int32",
+            "example": 10
+          },
+          "matchRate": {
+            "type": "number",
+            "description": "Rate at which the employer matches the person's contribution. If it is 100 then employer matches one dollar per dollar of employee contribtion.",
+            "format": "double",
+            "example": 100.0
+          },
+          "isMatchInPercent": {
+            "type": "boolean",
+            "description": "Determins if the match is offered as a percentage.",
+            "example": true
+          },
+          "maximumMatchPercent": {
+            "type": "number",
+            "description": "Maximum match percent for this tier. This only applies if the match is offered as a percentage.",
+            "format": "double",
+            "example": 6.0
+          },
+          "maximumMatchAmount": {
+            "type": "number",
+            "description": "Maximum match amount for this match tier if match is offered in dollars.",
+            "format": "double",
+            "example": 500.0
+          }
+        }
+      },
+      "PlanAccountGroupTable": {
+        "required": [
+          "accountGroupId"
+        ],
+        "type": "object",
+        "properties": {
+          "accountGroupId": {
+            "type": "string",
+            "description": "Source system derived account Group Id.",
+            "example": "10"
+          },
+          "planAssetFundTable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanAssetFundTable"
+            },
+            "description": "Array of objects which contains balances by asset class. It includes an array individual fund balances for funds that fall in the asset class."
+          }
+        }
+      },
+      "PlanAssetFundTable": {
+        "required": [
+          "assetClassId"
+        ],
+        "type": "object",
+        "properties": {
+          "assetClassId": {
+            "type": "string",
+            "description": "Source system derived asset class identifier.",
+            "example": "10"
+          },
+          "assetClassBalance": {
+            "type": "number",
+            "description": "Current total balance of the asset class.",
+            "format": "double",
+            "example": 1000.0
+          },
+          "percentOfPlanBalance": {
+            "type": "number",
+            "description": "Percent of Total Plan balance for a given asset class.",
+            "format": "double",
+            "example": 25.0
+          },
+          "futureInvestmentElectionInPercent": {
+            "type": "number",
+            "description": "Percent of future investment election for a given asset class. This element will not come when PlanAssetFundTable is directly coming for overall plan instead of in planAccountGroup and client support account group. If no investment election found at account group level then overall plan level PlanAssetFundTable will display investment election percent.",
+            "format": "double",
+            "example": 25.0
+          },
+          "planFundTable": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlanFundTable"
+            },
+            "description": "Array of fund balances associated with the asset class."
+          }
+        },
+        "description": "This object contains balances by asset class. It includes an array of funds associated with the asset. The cumulative balance of funds in the array will equal the asset class balances."
+      },
+      "PlanFundTable": {
+        "required": [
+          "fundId"
+        ],
+        "type": "object",
+        "properties": {
+          "fundId": {
+            "type": "string",
+            "description": "Fund Id",
+            "example": "10"
+          },
+          "fundBalanceUnits": {
+            "type": "number",
+            "description": "Fund Balance in Units",
+            "format": "double",
+            "example": 11234454.0
+          },
+          "equivalentShares": {
+            "type": "number",
+            "description": "This is applies to stock funds. It is the number of shares the person would receive if they took a share payment from the plan. Equivalent shares x stock price = fund balance.",
+            "format": "double",
+            "example": 1000212.0
+          },
+          "stockCost": {
+            "type": "number",
+            "description": "This applies to stock funds.  It represents the amount a person paid for any shares purchased.",
+            "format": "double",
+            "example": 600.0
+          },
+          "fundBalance": {
+            "type": "number",
+            "description": "Current fund balance amount. Fund balance is derived by taking the fund balance units and multiplying it by the fund price (sometime referred to as the net asset value or NAV).",
+            "format": "double",
+            "example": 500.0
+          },
+          "FundBeginBalanceAmount": {
+            "type": "number",
+            "description": "First of the current year opening balance amount in dollars for the fund.",
+            "format": "double",
+            "example": 1000.0
+          },
+          "percentOfPlanBalance": {
+            "type": "number",
+            "description": "Percentage derived from taking the current fund balance amount and dividing it by the current plan balance amount.",
+            "format": "double",
+            "example": 50.0
+          },
+          "futureInvestmentElectionInPercent": {
+            "type": "number",
+            "description": "Percent of future investment election for a given asset class. This element will not come when PlanAssetFundTable is directly coming for overall plan instead of in planAccountGroup array. If no investment election found at account group level then overall plan level PlanAssetFundTable will display investment election percent for each fund.",
+            "format": "double",
+            "example": 25.0
+          },
+          "cumulativeFundBalance": {
+            "type": "number",
+            "description": "The year to date amount associated in the fund with contribution, (employee and employer), transfers, and fee transactions.",
+            "format": "double",
+            "example": 1000.0
+          },
+          "gainLossAmount": {
+            "type": "number",
+            "description": "This is the current year to date amount in dollars your investment gained or lost in the fund. Loss is referenced by a negative amount.",
+            "format": "double",
+            "example": 1000.0
+          }
+        },
+        "description": "This object contains fund balances across all accounts and sub funds for a given plan."
+      },
+      "RateOfReturnYTDGraphTable": {
+        "required": [
+          "rateOfReturnPercent"
+        ],
+        "type": "object",
+        "properties": {
+          "rateOfReturnPercent": {
+            "type": "number",
+            "description": "Rate of return expressed as a percentage.",
+            "format": "double",
+            "example": 4.0
+          },
+          "effectiveEndDate": {
+            "type": "string",
+            "description": "Date on which rate of return was calculated.Format is CCYY-MM-DD",
+            "format": "date",
+            "example": "2018-03-24T00:00:00"
+          },
+          "isRateOfReturnValid": {
+            "type": "boolean",
+            "description": "Returns false if the rateOfReturnPercent could not be calculated.  When it returns false, rateOfReturnPercent may still return a value but it should not be used. Otherwise, when this will return true, the rate of return can be used for consumption.",
+            "example": true
+          }
+        },
+        "description": "This object returns data points that can be plotted on a visual graph to display rate of return trends for the current year."
+      },
+      "OutstandingLoans": {
+        "required": [
+          "amortizationFrequencyDescription",
+          "amortizationFrequencyLabel",
+          "amortizationRepaymentAmount",
+          "interestRate",
+          "isLoanDelinquent",
+          "loanCategoryDescription",
+          "loanCategoryId",
+          "loanDescription",
+          "loanEffectiveDate",
+          "loanId",
+          "loanPlanDescription",
+          "loanPlanId",
+          "loanStatusDescription",
+          "loanStatusLabel",
+          "requestedLoanAmount"
+        ],
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string",
+            "description": "Identifier loan information",
+            "example": "10"
+          },
+          "loanDescription": {
+            "type": "string",
+            "description": "Description for loan identifier",
+            "example": "Loan 1"
+          },
+          "loanCategoryId": {
+            "type": "string",
+            "description": "Identifier for category loan type",
+            "example": "20"
+          },
+          "loanCategoryDescription": {
+            "type": "string",
+            "description": "Loan category ID description",
+            "example": "Genral Purpose Loan"
+          },
+          "loanPlanId": {
+            "type": "string",
+            "description": "Loan plan identifier",
+            "example": "10"
+          },
+          "loanPlanDescription": {
+            "type": "string",
+            "description": "Loan plan description",
+            "example": "401k Savings Plan"
+          },
+          "loanEffectiveDate": {
+            "type": "string",
+            "description": "The date the loan was initiated",
+            "example": "2018-10-21"
+          },
+          "finalAmortizationScheduleDate": {
+            "type": "string",
+            "description": "Final amortization schedule date",
+            "example": "2019-12-21"
+          },
+          "requestedLoanAmount": {
+            "type": "number",
+            "description": "The original loan amount requested by the participant",
+            "format": "double",
+            "example": 100000.0
+          },
+          "interestRate": {
+            "type": "number",
+            "description": "The loan interest rate",
+            "format": "double",
+            "example": 2.44
+          },
+          "amortizationRepaymentAmount": {
+            "type": "number",
+            "description": "Amortization repayment amount of the loan",
+            "format": "double",
+            "example": 232.34
+          },
+          "remainingPrincipalAmount": {
+            "type": "number",
+            "description": "Remaining principle amount of the loan",
+            "format": "double",
+            "example": 21000.0
+          },
+          "lastPaymentDate": {
+            "type": "string",
+            "description": "Last payment date of the loan",
+            "format": "Date",
+            "example": "2017-12-01"
+          },
+          "loanStatusLabel": {
+            "type": "string",
+            "description": "Source system derived loan status label.",
+            "example": "A"
+          },
+          "loanStatusDescription": {
+            "type": "string",
+            "description": "Readable description of the loanStatusLabel. For instance, loanStatusLabel  is A and the corresponding description is Active.",
+            "example": "Active"
+          },
+          "isLoanDelinquent": {
+            "type": "boolean",
+            "description": "Determines if the person is currently considered delinquent on their loan payments. True means they are delinquent.",
+            "example": false
+          },
+          "delinquentLoanBalanceAmount": {
+            "type": "number",
+            "description": "For delinquent loans, this is the past due loan amount.",
+            "format": "double"
+          },
+          "delinquentLoanTaxDate": {
+            "type": "string",
+            "description": "For delinquent loans, this will be the date the loan is taxed if no effort to catch the loan up during the cure period is met",
+            "format": "Date",
+            "example": "2018-03-31"
+          },
+          "isEnrolledInDirectDebit": {
+            "type": "boolean",
+            "description": "Boolean value determines if the participant is enrolled in direct debit for their scheduled loan repayments.     ",
+            "example": true
+          },
+          "isEligibleToEnrollInDirectDebit": {
+            "type": "boolean",
+            "description": "Boolean value determines if the participant is eligible to enroll in direct debit for their scheduled loan repayments.     ",
+            "example": true
+          },
+          "amortizationFrequencyLabel": {
+            "type": "string",
+            "description": "Source system label for the frequency of repayments defined in the amortization schedule. ",
+            "example": "M"
+          },
+          "amortizationFrequencyDescription": {
+            "type": "string",
+            "description": "The frequency of repayments defined in the amortization schedule. Values can equate to weekly, bi-weekly, monthly, semi-montly, quarterly",
+            "example": "Monthly"
+          },
+          "loanDirectDebitAddress": {
+            "$ref": "#/components/schemas/LoanDirectDebitAddress"
+          },
+          "additionalOneTimeDirectDebitPayments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdditionalOneTimeDirectDebitPayments"
+            },
+            "description": "Additional Direct Debit Payment Information"
+          }
+        },
+        "description": "This object contains information related to a person's outstanding loan."
+      },
+      "LoanDirectDebitAddress": {
+        "required": [
+          "directDebitAddressDescription",
+          "directDebitAddressId"
+        ],
+        "type": "object",
+        "properties": {
+          "directDebitAddressId": {
+            "type": "string",
+            "description": "Direct Debit Address Id",
+            "example": "690"
+          },
+          "directDebitAddressDescription": {
+            "type": "string",
+            "description": "Readable decription for direct debit address",
+            "example": "Loan Direct Debit Address"
+          },
+          "directDebitFinancialInstitutionName": {
+            "type": "string",
+            "description": "Direct Debit Financial Institution Name",
+            "example": "JP Morgan Chase"
+          },
+          "directDebitAccountType": {
+            "type": "string",
+            "description": "Determines the type of financial account, typically checking or savings. For example, 'S' represents savings, 'C' represents checking, 'O' represents 'Other'.",
+            "example": "S"
+          },
+          "directDebitAccountNumber": {
+            "type": "string",
+            "description": "Direct Debit Account Number",
+            "example": "123456"
+          },
+          "directDebitRoutingNumber": {
+            "type": "string",
+            "description": "Direct Debit Routing Number",
+            "example": "14942219"
+          }
+        }
+      },
+      "AdditionalOneTimeDirectDebitPayments": {
+        "required": [
+          "directDebitDrawDate",
+          "directDebitPostDate",
+          "directDebitRepaymentAmount",
+          "isAdditionalDirectDebitPaymentInProcess",
+          "isAdditionalDirectDebitPaymentPending"
+        ],
+        "type": "object",
+        "properties": {
+          "isAdditionalDirectDebitPaymentPending": {
+            "type": "boolean",
+            "description": "Boolean value determines if the additional one time direct debit  payment is pending meaning the request can still be cancelled on the system.."
+          },
+          "isAdditionalDirectDebitPaymentInProcess": {
+            "type": "boolean",
+            "description": "Boolean value determines if the additional one time direct debit  payment is in process meaning the request can no longer be cancelled on the  system but has yet to post.            "
+          },
+          "directDebitRepaymentAmount": {
+            "type": "number",
+            "description": "For any one time direct debit payments, this will be the repayment amount",
+            "format": "double",
+            "example": 1200.0
+          },
+          "directDebitPostDate": {
+            "type": "string",
+            "description": "For any one time direct debit payments, this will be the date the payment will post",
+            "example": "2017-12-05"
+          },
+          "directDebitDrawDate": {
+            "type": "string",
+            "description": "For any one time direct debit payments, this will be the date the payment will draw from the participants financial institution account",
+            "example": "2017-12-02"
+          }
+        }
+      },
+      "ThirdPartyAccountBenefits": {
+        "required": [
+          "thirdPartyCode"
+        ],
+        "type": "object",
+        "properties": {
+          "thirdPartyCode": {
+            "type": "string",
+            "description": "This is the code assigned to the third party that administers the plan information.",
+            "example": "MULLIN"
+          },
+          "thirdPartyName": {
+            "type": "string",
+            "description": "Description of the third party.",
+            "example": "Mullin TBG"
+          },
+          "definedContributionPlans": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThirdPartyDefinedContributionPlan"
+            },
+            "description": "Contains data for plans"
+          }
+        }
+      },
+      "ThirdPartyDefinedContributionPlan": {
+        "required": [
+          "planId"
+        ],
+        "type": "object",
+        "properties": {
+          "planId": {
+            "type": "string",
+            "description": "Defined Contribution Plan Id.",
+            "example": "10"
+          },
+          "isQualifiedPlan": {
+            "type": "boolean",
+            "description": "Determines if the plan is a qualified defined contribution plan.",
+            "example": true
+          },
+          "planDescription": {
+            "type": "string",
+            "description": "Readable short description for plan.",
+            "example": "Non Qualified Plan"
+          },
+          "totalDollarPlanBalanceDate": {
+            "type": "string",
+            "description": "Market date for which prices are used to calculate balance.  Format is CCYY-MM-DD.",
+            "format": "date",
+            "example": "2017-12-05T00:00:00"
+          },
+          "totalDollarPlanBalance": {
+            "type": "number",
+            "description": "Total Plan Balance in dollars.",
+            "format": "decimal",
+            "example": 420010.9
+          }
+        }
+      },
+      "PlanParticipationStatus": {
+        "required": [
+          "planDescription",
+          "planFullDescription",
+          "planId"
+        ],
+        "type": "object",
+        "properties": {
+          "planId": {
+            "type": "string",
+            "description": "Source system derived plan identifier.",
+            "example": "10"
+          },
+          "planDescription": {
+            "type": "string",
+            "description": "Short description for the plan.",
+            "example": "401(k) Savings Plan"
+          },
+          "planFullDescription": {
+            "type": "string",
+            "description": "Long description for the plan.",
+            "example": "401(k) Savings Plan for Premier Company"
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Determines if the person is actively participating in the plan.  Participation means a person has enrolled in the plan, has made investment choices, and can manage their plan investments ongoing (eg, choose how much to contribute to the plan from their income, which funds will contribution money be allocated to, move money between funds, etc). If this is false, it means a person is inactive meaning they are no longer able to actively participate (ie, likely due to being separated from employer or the plan no longer being active). Alight internal consumers can equate a true value to having a status on file of 'ACTIVE' and false value to a status of 'INACT'. This element is mutually exclusive from \"isEligibleToParticipate\". One or the other will appear.",
+            "example": true
+          },
+          "isEligibleToParticipate": {
+            "type": "boolean",
+            "description": "Determines if the person is eligible to participate in the plan. A value of \"true\" for thie element represents a person who is currently not participating (not active) but is eligible to enroll in the plan do so. If the value is \"false\", they are not eligible to participate (eg, plan only allows for a specific union population to participate, participant is terminated, etc.). Participation means a person has enrolled in the plan, has made investment choices, and can manage their investments ongoing (eg, choose how much to contribute to the plan from their income, which funds will contribution money be allocated to, move money between funds, etc). Alight internal consumers can equate a true value to having a status on file of 'ELIG' or 'RHELIG' and false value to a status of 'INELIG'. This element is mutually exclusive from \"isActive\". One or the other will appear.",
+            "example": false
+          }
+        }
+      },
+      "BrokerageAccounts": {
+        "type": "object",
+        "properties": {
+          "brokerageAccounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BrokerageAccount"
+            },
+            "description": "Contains data required for the business plans"
+          }
+        }
+      },
+      "BrokerageAccount": {
+        "type": "object",
+        "properties": {
+          "alightPlanId": {
+            "type": "string",
+            "description": "This is source system plan Id associated with a brokerage account.",
+            "example": "10"
+          },
+          "userId": {
+            "type": "string",
+            "description": "This is the user id associated with the brokerage account.",
+            "example": "MyUserId"
+          },
+          "accountNumber": {
+            "type": "string",
+            "description": "This is the account number associated to the persons brokerage account.",
+            "format": "number",
+            "example": "126534567"
+          },
+          "personRecordKeepingRole": {
+            "enum": [
+              "EMPLOYEE",
+              "BENEFICIARY",
+              "QDRO"
+            ],
+            "type": "string",
+            "description": "This represents the person recordkeeping role on the source system associated with the brokerage account.",
+            "example": "EMPLOYEE"
+          }
+        }
+      }
+    }
+  }
+}

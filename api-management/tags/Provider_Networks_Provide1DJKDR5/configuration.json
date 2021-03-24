@@ -1,0 +1,11 @@
+{
+  "id": "/tags/Provider-Networks",
+  "name": "Provider Networks",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/Enrollment/operations/getAvailableProviderNetworks"
+  ],
+  "__GitModuleVersion": 15
+}

@@ -1,0 +1,11 @@
+{
+  "id": "/tags/assists",
+  "name": "Assists",
+  "apiIds": [
+    "/apis/hrx-assist-core-api;rev=1"
+  ],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [],
+  "__GitModuleVersion": 15
+}

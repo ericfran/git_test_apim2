@@ -1,0 +1,22 @@
+{
+  "id": "/tags/Countries",
+  "name": "Countries",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-lists-countries",
+    "/apis/hrx-configuration-api/operations/get-api-lists-countries-countrycode",
+    "/apis/hrx-configuration-api/operations/get-api-lists-countries-countrycode-languages",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-lists-countries",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-lists-countries-countrycode",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-lists-countries-countrycode-languages",
+    "/apis/hrx-configuration-api-v1/operations/get-api-lists-countries",
+    "/apis/hrx-configuration-api-v1/operations/get-api-lists-countries-countrycode",
+    "/apis/hrx-configuration-api-v1/operations/get-api-lists-countries-countrycode-languages",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-lists-countries",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-lists-countries-countrycode",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-lists-countries-countrycode-languages"
+  ],
+  "__GitModuleVersion": 15
+}

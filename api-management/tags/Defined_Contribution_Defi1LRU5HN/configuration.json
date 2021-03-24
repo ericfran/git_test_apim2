@@ -1,0 +1,20 @@
+{
+  "id": "/tags/Defined-Contribution",
+  "name": "Defined Contribution",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [
+    {
+      "apiId": "/apis/alight-person-defined-contribution-api;rev=1",
+      "description": "<h2>Context Glossary</h2> <ul> <li><strong>Account</strong> refers to a category of money allocated in a plan, typically to signify tax or vesting rules associated with it. A plan balance can have one to many accounts. Examples include before tax, after tax and Roth accounts.</li> <p><li><strong>Automatic Rebalance</strong> is a feature that when supported for the plan, allows a participant to reallocate plan dollars at a periodic frequency of their choice using specific fund allocation elections. Example, a person automatically rebalances money in Plan A every 90 days so that 20% of the plan balance goes to Fund A, 30% to Fund B, 35% to Fund C and 15% to Fund D.</li> <p><li><strong>Future Investment Elections</strong> refers to elections made by an employee that determine how future dollars are contributed into the plan. Percentages are used to assign how contribution money is allocated to specific funds.</li></p> <p><li><strong>Loan Direct Debit</strong> provides the ability for a person who has an outstanding loan associated with their retirement plan to make ongoing or additional one-time repayments through a financial institution of their choice.</li></p> <p><li><strong>Managed Account</strong> is a service offering by Alight Financial Advisors that provides knowledge, tools, support and management of your retirement plans to help individuals meet their retirement goals. Participants who elect to have their investments fully mananged by the service are restricted from processing certain investment transactions while they are enrolled.</li></p> <p><li><strong>Plan balances</strong> are broken down in different levels.</p>\n       <ul>\n       <p><li><strong>PlanAccountFundTable</strong> object breaks down a balance at the source system’s lowest elemental level (account, fund and sub fund).</li></p>\n       <p><li><strong>PlanAccountGroupTable</strong> object contains plan balance data broken down by a group of accounts. These account groups are predefined by the plan sponsor and contains an array of asset level information.  See context glossry \"PlanAssetFundTable\" for a description of the information stored on the asset level.</li></p>\n       <p><li><strong>PlanAssetFundTable</strong> object contains plan balance data broken down by asset class as well as the sum of future investment election choices a person has made for any funds in the asset class.  It contains an array of \"PlanFundTable\" objects which contain funds in the plan that are associated with the asset class.</li></p>\n       <p><li><strong>PlanFundTable</strong> object contains a fund balance data across all accounts and sub funds as well as the future investment election a person may have made for the fund.</li></p>\n       <p><li><strong>Loan funds</strong> are not included in any of the arrays below. To view remaining principle loan balances, go to the <strong>\"outstandingLoanBalances\"</strong> array\n       </ul>\n<p><li><strong>Units</strong> refers to a portion of ownership in an investment fund. For example, a person will own a portion of the fund instead of directly owning shares. The number of units will increase as you add money to the fund and decrease as you remove it.</li></p> </ul>",
+      "externalDocsDescription": null,
+      "externalDocsUrl": null
+    }
+  ],
+  "operationIds": [
+    "/apis/alight-person-defined-contribution-api/operations/getPersonBrokerageAccountIdentifiers",
+    "/apis/alight-person-defined-contribution-api/operations/getPersonDefinedContribution",
+    "/apis/alight-person-defined-contribution-api/operations/getThirdPartyDefinedContributionBenefits"
+  ],
+  "__GitModuleVersion": 15
+}

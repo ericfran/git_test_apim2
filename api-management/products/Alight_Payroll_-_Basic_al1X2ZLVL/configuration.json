@@ -1,0 +1,15 @@
+{
+  "id": "/products/alight-payroll-basic",
+  "name": "Alight Payroll - Basic",
+  "$ref-description": "api-management/products/Alight_Payroll_-_Basic_al1X2ZLVL/product.description.html",
+  "terms": null,
+  "subscriptionRequired": true,
+  "approvalRequired": false,
+  "subscriptionsLimit": null,
+  "state": "notPublished",
+  "$refs-groups": [
+    "api-management/groups/Administrators/configuration.json"
+  ],
+  "$refs-apis": [],
+  "__GitModuleVersion": 15
+}

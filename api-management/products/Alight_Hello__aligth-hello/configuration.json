@@ -1,0 +1,18 @@
+{
+  "id": "/products/aligth-hello",
+  "name": "Alight Hello ",
+  "$ref-description": "api-management/products/Alight_Hello__aligth-hello/product.description.html",
+  "terms": null,
+  "subscriptionRequired": false,
+  "approvalRequired": null,
+  "subscriptionsLimit": null,
+  "state": "published",
+  "$refs-groups": [
+    "api-management/groups/Administrators/configuration.json",
+    "api-management/groups/Guests/configuration.json"
+  ],
+  "$refs-apis": [
+    "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/configuration.json"
+  ],
+  "__GitModuleVersion": 15
+}

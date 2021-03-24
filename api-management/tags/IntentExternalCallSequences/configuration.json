@@ -1,0 +1,30 @@
+{
+  "id": "/tags/IntentExternalCallSequences",
+  "name": "IntentExternalCallSequences",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/delete-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api/operations/get-api-intent-external-call-sequences",
+    "/apis/hrx-configuration-api/operations/get-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api/operations/put-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api/operations/post-api-intent-external-call-sequences",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api-v1/operations/get-api-intent-external-call-sequences",
+    "/apis/hrx-configuration-api-v1/operations/get-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-intent-external-call-sequences",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-intent-external-call-sequences",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-intent-external-call-sequences",
+    "/apis/hrx-configuration-api-v1/operations/put-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-intent-external-call-sequences",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-intent-external-call-sequences-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-intent-external-call-sequences"
+  ],
+  "__GitModuleVersion": 15
+}

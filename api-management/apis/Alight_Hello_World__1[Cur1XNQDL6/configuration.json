@@ -1,0 +1,196 @@
+{
+  "id": "/apis/6053b6939121b4f00b6be9df",
+  "name": "Alight Hello World",
+  "apiRevision": "1",
+  "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/api.description.html",
+  "subscriptionRequired": false,
+  "serviceUrl": "http://echoapi.cloudapp.net/api",
+  "path": "hello",
+  "protocols": [
+    "https"
+  ],
+  "authenticationSettings": {
+    "oAuth2": null,
+    "openid": null
+  },
+  "subscriptionKeyParameterNames": {
+    "header": "Ocp-Apim-Subscription-Key",
+    "query": "subscription-key"
+  },
+  "isCurrent": true,
+  "operations": [
+    {
+      "id": "/apis/6053b6939121b4f00b6be9df/operations/6053b694413ba6a959dddd0b",
+      "name": "Retrieve resource (cached)",
+      "method": "GET",
+      "urlTemplate": "/resource-cached",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/GET__resource-cached_60531X71U3K.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "param1",
+            "description": "A sample parameter that is required and has a default value of \"sample\".",
+            "type": "string",
+            "defaultValue": "sample",
+            "required": true,
+            "values": [
+              "sample"
+            ]
+          },
+          {
+            "name": "param2",
+            "description": "Another sample parameter, set to not required.",
+            "type": "string",
+            "values": []
+          }
+        ],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/6053b6939121b4f00b6be9df/operations/6053b694e86b696f3d409075",
+      "name": "Retrieve header only",
+      "method": "HEAD",
+      "urlTemplate": "/resource",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/HEAD__resource_6053b693912UFM2QJ.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/6053b6939121b4f00b6be9df/operations/6053b6940bea7e31b55ee445",
+      "name": "Modify Resource",
+      "method": "PUT",
+      "urlTemplate": "/resource",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/PUT__resource_6053b6939121VCHXX7.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/6053b6939121b4f00b6be9df/operations/6053b694a63d6eab0b8a877c",
+      "name": "Create resource",
+      "method": "POST",
+      "urlTemplate": "/resource",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/POST__resource_6053b693912XXCOEA.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": [
+          {
+            "contentType": "application/json",
+            "$ref-sample": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/POST__resource_6053b693912XXCOEA.request.application_json_vehicleT1G5DTUK.html"
+          }
+        ]
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/6053b6939121b4f00b6be9df/operations/6053b6942bcfc16145a9ab7b",
+      "name": "Retrieve resource",
+      "method": "GET",
+      "urlTemplate": "/resource",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/GET__resource_6053b69391219ALLKV.description.html",
+      "request": {
+        "queryParameters": [
+          {
+            "name": "param1",
+            "description": "A sample parameter that is required and has a default value of \"sample\".",
+            "type": "string",
+            "defaultValue": "sample",
+            "required": true,
+            "values": [
+              "sample"
+            ]
+          },
+          {
+            "name": "param2",
+            "description": "Another sample parameter, set to not required.",
+            "type": "number",
+            "values": []
+          }
+        ],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/GET__resource_6053b69391219ALLKV.response.200.description.html",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    },
+    {
+      "id": "/apis/6053b6939121b4f00b6be9df/operations/6053b694fe45c400ef4d4add",
+      "name": "Remove resource",
+      "method": "DELETE",
+      "urlTemplate": "/resource",
+      "templateParameters": [],
+      "$ref-description": "api-management/apis/Alight_Hello_World__1[Cur1XNQDL6/operations/DELETE__resource_6053b6939ID6YV5.description.html",
+      "request": {
+        "queryParameters": [],
+        "headers": [],
+        "representations": []
+      },
+      "responses": [
+        {
+          "statusCode": 200,
+          "$ref-description": "",
+          "representations": [],
+          "headers": []
+        }
+      ],
+      "policies": null
+    }
+  ],
+  "apiSchemas": [],
+  "__GitModuleVersion": 15
+}

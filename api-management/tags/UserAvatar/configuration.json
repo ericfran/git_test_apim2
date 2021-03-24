@@ -1,0 +1,22 @@
+{
+  "id": "/tags/UserAvatar",
+  "name": "UserAvatar",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/delete-api-users-current-avatar",
+    "/apis/hrx-configuration-api/operations/post-api-users-current-avatar",
+    "/apis/hrx-configuration-api/operations/get-api-users-current-avatar",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-users-current-avatar",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-users-current-avatar",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-users-current-avatar",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-users-current-avatar",
+    "/apis/hrx-configuration-api-v1/operations/post-api-users-current-avatar",
+    "/apis/hrx-configuration-api-v1/operations/get-api-users-current-avatar",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-users-current-avatar",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-users-current-avatar",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-users-current-avatar"
+  ],
+  "__GitModuleVersion": 15
+}

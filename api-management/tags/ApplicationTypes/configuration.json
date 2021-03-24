@@ -1,0 +1,30 @@
+{
+  "id": "/tags/ApplicationTypes",
+  "name": "ApplicationTypes",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/delete-api-application-types-id",
+    "/apis/hrx-configuration-api/operations/get-api-application-types",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-application-types",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-application-types-id",
+    "/apis/hrx-configuration-api/operations/put-api-application-types-id",
+    "/apis/hrx-configuration-api/operations/post-api-application-types",
+    "/apis/hrx-configuration-api/operations/GetApplicationType",
+    "/apis/hrx-configuration-api-v1/operations/get-api-application-types",
+    "/apis/hrx-configuration-api-v1/operations/put-api-application-types-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-application-types",
+    "/apis/hrx-configuration-api-v1/operations/GetApplicationType",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-application-types-id",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-application-types-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-application-types",
+    "/apis/hrx-configuration-api;rev=2/operations/GetApplicationType",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-application-types",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-application-types-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-application-types",
+    "/apis/hrx-configuration-api;rev=3/operations/GetApplicationType",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-application-types-id"
+  ],
+  "__GitModuleVersion": 15
+}

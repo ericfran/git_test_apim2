@@ -1,0 +1,11 @@
+{
+  "id": "/tags/wealth",
+  "name": "Wealth",
+  "apiIds": [
+    "/apis/alight-person-defined-contribution-api;rev=1"
+  ],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [],
+  "__GitModuleVersion": 15
+}

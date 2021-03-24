@@ -1,0 +1,30 @@
+{
+  "id": "/tags/IntentDomains",
+  "name": "IntentDomains",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-intent-domains",
+    "/apis/hrx-configuration-api/operations/delete-api-intent-domains-id",
+    "/apis/hrx-configuration-api/operations/post-api-intent-domains",
+    "/apis/hrx-configuration-api/operations/GetIntentDomain",
+    "/apis/hrx-configuration-api/operations/put-api-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-intent-domains",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-intent-domains",
+    "/apis/hrx-configuration-api;rev=2/operations/GetIntentDomain",
+    "/apis/hrx-configuration-api-v1/operations/post-api-intent-domains",
+    "/apis/hrx-configuration-api-v1/operations/GetIntentDomain",
+    "/apis/hrx-configuration-api-v1/operations/get-api-intent-domains",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-intent-domains",
+    "/apis/hrx-configuration-api;rev=3/operations/GetIntentDomain",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-intent-domains-id",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-intent-domains",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-intent-domains-id",
+    "/apis/hrx-configuration-api-v1/operations/put-api-intent-domains-id"
+  ],
+  "__GitModuleVersion": 15
+}

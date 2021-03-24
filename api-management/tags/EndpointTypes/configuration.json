@@ -1,0 +1,30 @@
+{
+  "id": "/tags/EndpointTypes",
+  "name": "EndpointTypes",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/delete-api-endpoint-types-id",
+    "/apis/hrx-configuration-api/operations/get-api-endpoint-types",
+    "/apis/hrx-configuration-api/operations/put-api-endpoint-types-id",
+    "/apis/hrx-configuration-api;rev=2/operations/delete-api-endpoint-types-id",
+    "/apis/hrx-configuration-api/operations/GetEndpointType",
+    "/apis/hrx-configuration-api/operations/post-api-endpoint-types",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-endpoint-types",
+    "/apis/hrx-configuration-api;rev=2/operations/GetEndpointType",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-endpoint-types-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-endpoint-types",
+    "/apis/hrx-configuration-api-v1/operations/get-api-endpoint-types",
+    "/apis/hrx-configuration-api-v1/operations/delete-api-endpoint-types-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-endpoint-types",
+    "/apis/hrx-configuration-api-v1/operations/GetEndpointType",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-endpoint-types-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-endpoint-types",
+    "/apis/hrx-configuration-api;rev=3/operations/GetEndpointType",
+    "/apis/hrx-configuration-api-v1/operations/put-api-endpoint-types-id",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-endpoint-types",
+    "/apis/hrx-configuration-api;rev=3/operations/delete-api-endpoint-types-id"
+  ],
+  "__GitModuleVersion": 15
+}

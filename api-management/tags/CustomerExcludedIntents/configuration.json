@@ -1,0 +1,22 @@
+{
+  "id": "/tags/CustomerExcludedIntents",
+  "name": "CustomerExcludedIntents",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents-intenti",
+    "/apis/hrx-configuration-api/operations/post-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents-intenti",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api-v1/operations/post-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api-v1/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api-v1/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents-intenti",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-customers-gcc-intent-domains-intentdomainid-excluded-intents-intenti"
+  ],
+  "__GitModuleVersion": 15
+}

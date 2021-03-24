@@ -1,0 +1,14 @@
+{
+  "id": "/tags/QnA",
+  "name": "QnA",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/post-api-qna-upload",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-qna-upload",
+    "/apis/hrx-configuration-api-v1/operations/post-api-qna-upload",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-qna-upload"
+  ],
+  "__GitModuleVersion": 15
+}

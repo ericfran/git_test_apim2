@@ -1,0 +1,26 @@
+{
+  "id": "/tags/ConfCustomerConfigs",
+  "name": "ConfCustomerConfigs",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-conf-customer-configs-gcc",
+    "/apis/hrx-configuration-api/operations/get-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-conf-customer-configs-gcc",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api/operations/put-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api/operations/post-api-conf-customer-configs-gcc",
+    "/apis/hrx-configuration-api-v1/operations/get-api-conf-customer-configs-gcc",
+    "/apis/hrx-configuration-api-v1/operations/get-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api-v1/operations/post-api-conf-customer-configs-gcc",
+    "/apis/hrx-configuration-api-v1/operations/put-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-conf-customer-configs-gcc",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-conf-customer-configs-gcc",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-conf-customer-configs-gcc-id",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-conf-customer-configs-gcc"
+  ],
+  "__GitModuleVersion": 15
+}

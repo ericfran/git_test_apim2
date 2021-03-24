@@ -1,0 +1,16 @@
+{
+  "id": "/backends/HRXConfigDEV",
+  "title": null,
+  "description": "HRX Config DEV",
+  "url": "https://hrxconfig-dev.cloudapp.ngahr.com",
+  "protocol": "http",
+  "credentials": {
+    "query": {},
+    "header": {}
+  },
+  "tls": {
+    "validateCertificateChain": false,
+    "validateCertificateName": false
+  },
+  "__GitModuleVersion": 15
+}

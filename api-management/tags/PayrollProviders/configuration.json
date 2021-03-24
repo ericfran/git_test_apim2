@@ -1,0 +1,22 @@
+{
+  "id": "/tags/PayrollProviders",
+  "name": "PayrollProviders",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-configuration-api/operations/get-api-lists-payrollproviders",
+    "/apis/hrx-configuration-api/operations/post-api-lists-payrollproviders",
+    "/apis/hrx-configuration-api/operations/put-api-lists-payrollproviders-code",
+    "/apis/hrx-configuration-api-v1/operations/post-api-lists-payrollproviders",
+    "/apis/hrx-configuration-api-v1/operations/get-api-lists-payrollproviders",
+    "/apis/hrx-configuration-api;rev=2/operations/post-api-lists-payrollproviders",
+    "/apis/hrx-configuration-api;rev=2/operations/put-api-lists-payrollproviders-code",
+    "/apis/hrx-configuration-api;rev=2/operations/get-api-lists-payrollproviders",
+    "/apis/hrx-configuration-api;rev=3/operations/post-api-lists-payrollproviders",
+    "/apis/hrx-configuration-api;rev=3/operations/put-api-lists-payrollproviders-code",
+    "/apis/hrx-configuration-api-v1/operations/put-api-lists-payrollproviders-code",
+    "/apis/hrx-configuration-api;rev=3/operations/get-api-lists-payrollproviders"
+  ],
+  "__GitModuleVersion": 15
+}

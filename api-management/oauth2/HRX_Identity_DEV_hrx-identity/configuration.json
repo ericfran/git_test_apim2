@@ -1,0 +1,29 @@
+{
+  "id": "/authorizationServers/hrx-identity",
+  "name": "HRX Identity DEV",
+  "description": "Test using HRX identity DEV",
+  "clientRegistrationEndpoint": "https://hrxidentity-dev.cloudapp.ngahr.com",
+  "authorizationEndpoint": "https://hrxidentity-dev.cloudapp.ngahr.com/connect/authorize",
+  "authorizationMethods": [
+    "GET"
+  ],
+  "clientAuthenticationMethod": [
+    "Body"
+  ],
+  "tokenBodyParameters": [
+    {
+      "name": "scope",
+      "value": "config_api"
+    }
+  ],
+  "tokenEndpoint": "https://hrxidentity-dev.cloudapp.ngahr.com/connect/token",
+  "supportState": true,
+  "defaultScope": null,
+  "grantTypes": [
+    "clientCredentials"
+  ],
+  "bearerTokenSendingMethods": [
+    "authorizationHeader"
+  ],
+  "__GitModuleVersion": 15
+}

@@ -1,0 +1,15 @@
+{
+  "id": "/tags/TicketsV2",
+  "name": "TicketsV2",
+  "apiIds": [],
+  "productIds": [],
+  "descriptions": [],
+  "operationIds": [
+    "/apis/hrx-assist-core-api/operations/TicketsV2_CloseTicket",
+    "/apis/hrx-assist-core-api/operations/TicketsV2_CloseWithEmail",
+    "/apis/hrx-assist-core-api/operations/TicketsV2_CloseWithoutEmail",
+    "/apis/hrx-assist-core-api/operations/TicketsV2_Post",
+    "/apis/hrx-assist-core-api/operations/TicketsV2_UpdateTicket"
+  ],
+  "__GitModuleVersion": 15
+}
